@@ -1,137 +1,321 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Chapter Reader</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapter</title>
 
-<style>
+  <style>
+    body{font-family:Arial; margin:0; background:#FFFDF7;}
+    .topbar{
+      position:sticky; top:0; z-index:10;
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      padding:12px 14px; background:#FFFDF7; border-bottom:1px solid #eee;
+    }
+    .btn{padding:10px 12px; border-radius:10px; border:1px solid #ddd; background:white; cursor:pointer;}
+    .btn:disabled{opacity:.5; cursor:not-allowed;}
+    .status{font-size:13px; color:#555;}
 
-body{
-font-family:Arial;
-background:#FFFDF7;
-margin:0;
-padding:20px;
-}
+    .wrap{display:grid; grid-template-columns: 1.5fr 1fr; gap:14px; padding:14px;}
+    .card{background:white; border-radius:14px; padding:14px; box-shadow:0 6px 16px rgba(0,0,0,0.08);}
 
-.container{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:20px;
-}
+    h1{margin:8px 0 10px;}
+    .meta{color:#555; font-size:14px; margin-bottom:10px;}
 
-.text p{
-font-size:18px;
-line-height:1.6;
-}
+    /* Static recorder section */
+    .recorder{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+    audio{width:100%; margin-top:10px;}
 
-.term{
-color:#7b3ff2;
-font-weight:bold;
-cursor:pointer;
-}
+    /* Scroll areas */
+    .scrollText{max-height:55vh; overflow:auto; padding-right:6px;}
+    .scrollWork{max-height:68vh; overflow:auto; padding-right:6px;}
 
-.term:hover{
-text-decoration:underline;
-}
+    .text p{line-height:1.7; font-size:18px; margin:0 0 12px;}
+    .term{color:#7b3ff2; font-weight:700; cursor:pointer;}
+    .term:hover{text-decoration:underline;}
 
-.glossary{
-background:white;
-padding:15px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-button{
-padding:8px 12px;
-margin-top:10px;
-cursor:pointer;
-}
-
-</style>
+    textarea{
+      width:100%; min-height:140px; resize:vertical;
+      border:1px solid #ddd; border-radius:12px; padding:10px; font-size:15px;
+    }
+    .small{font-size:13px; color:#555;}
+    .divider{height:1px; background:#eee; margin:12px 0;}
+  </style>
 </head>
 
 <body>
 
-<a href="library.html">← Back</a>
+  <div class="topbar">
+    <button class="btn" onclick="history.back()">← Back</button>
+    <button class="btn" id="howBtn">How This Works</button>
+    <div class="status" id="status">Loading…</div>
+  </div>
 
-<h1 id="chapterTitle">Loading...</h1>
+  <div class="wrap">
+    <!-- LEFT: Recorder + Scrollable Text -->
+    <div class="card">
+      <h1 id="chapterTitle">Loading…</h1>
+      <div class="meta" id="chapterMeta"></div>
 
-<div class="container">
+      <!-- Recorder (static) -->
+      <div class="divider"></div>
+      <div class="recorder">
+        <button class="btn" id="recBtn">⏺ Record</button>
+        <button class="btn" id="stopRecBtn" disabled>⏹ Stop</button>
+        <button class="btn" id="playBtn" disabled>▶ Play</button>
+        <button class="btn" id="clearBtn" disabled>🧹 Clear</button>
+        <button class="btn" id="downloadBtn" disabled>⬇ Download</button>
+        <div class="small" id="recStatus"></div>
+      </div>
+      <audio id="player" controls style="display:none;"></audio>
 
-<div class="text" id="chapterText"></div>
+      <!-- Scrollable chapter text -->
+      <div class="divider"></div>
+      <div class="scrollText">
+        <div class="text" id="chapterText"></div>
+      </div>
+    </div>
 
-<div class="glossary">
-<h3>Glossary</h3>
-<div id="glossaryBox">
-Click a purple word to see the meaning.
-</div>
+    <!-- RIGHT: Worksheet + Glossary (scrollable container) -->
+    <div class="card">
+      <div class="scrollWork">
+        <h2 style="margin-top:0;">Worksheet</h2>
+        <div class="small">Type your answers here. They save on this device.</div>
 
-<button onclick="readChapter()">🔊 Read Aloud</button>
+        <div class="divider"></div>
 
-</div>
+        <h3 style="margin:0 0 6px;">Paraphrasing</h3>
+        <div class="small">Write the main idea of the chapter in your own words.</div>
+        <textarea id="paraBox" placeholder="My paraphrase..."></textarea>
 
-</div>
+        <div class="divider"></div>
+
+        <h2 style="margin-top:0;">Glossary</h2>
+        <div class="small">Tap a purple word in the text.</div>
+        <div class="divider"></div>
+        <div id="glossaryBox" class="small">No word selected yet.</div>
+
+        <div class="divider"></div>
+        <button class="btn" id="speakWordBtn" disabled>🔊 Read Word + Meaning</button>
+      </div>
+    </div>
+  </div>
 
 <script>
+  const params = new URLSearchParams(location.search);
+  const bookId = params.get("book");
+  const chapterId = params.get("chapter");
 
-const params = new URLSearchParams(window.location.search);
-const book = params.get("book");
-const chapter = params.get("chapter");
+  const statusEl = document.getElementById("status");
+  const chapterTitleEl = document.getElementById("chapterTitle");
+  const chapterMetaEl = document.getElementById("chapterMeta");
+  const chapterTextEl = document.getElementById("chapterText");
 
-async function loadChapter(){
+  const howBtn = document.getElementById("howBtn");
 
-const res = await fetch("./data/books.json");
-const data = await res.json();
+  // Worksheet
+  const paraBox = document.getElementById("paraBox");
 
-const bookData = data[book];
-const chapterData = bookData.chapters[chapter];
+  // Glossary
+  const glossaryBox = document.getElementById("glossaryBox");
+  const speakWordBtn = document.getElementById("speakWordBtn");
+  let selectedTerm = null;
+  let selectedDef = null;
+  let chapterGlossary = {};
 
-document.getElementById("chapterTitle").innerText = chapterData.title;
+  // Recorder
+  const recBtn = document.getElementById("recBtn");
+  const stopRecBtn = document.getElementById("stopRecBtn");
+  const playBtn = document.getElementById("playBtn");
+  const clearBtn = document.getElementById("clearBtn");
+  const downloadBtn = document.getElementById("downloadBtn");
+  const recStatus = document.getElementById("recStatus");
+  const player = document.getElementById("player");
 
-const glossary = chapterData.glossary;
+  let mediaRecorder = null;
+  let chunks = [];
+  let audioBlob = null;
+  let audioUrl = null;
 
-let html="";
+  function setStatus(msg){ statusEl.textContent = msg || ""; }
 
-chapterData.content.forEach(p=>{
+  // Save worksheet locally (offline-friendly)
+  function wsKey(){ return `rf_ws_${bookId}_${chapterId}_paraphrase`; }
+  function loadWorksheet(){
+    const saved = localStorage.getItem(wsKey());
+    if(saved) paraBox.value = saved;
+    paraBox.addEventListener("input", ()=> localStorage.setItem(wsKey(), paraBox.value));
+  }
 
-p = p.replace(/\[\[(.*?)\]\]/g,(match,word)=>{
+  async function loadChapter(){
+    try{
+      const res = await fetch("./data/books.json");
+      const data = await res.json();
 
-return `<span class="term" onclick="showMeaning('${word}')">${word}</span>`;
+      const book = data[bookId];
+      if(!book) throw new Error("Book not found: " + bookId);
 
-});
+      const ch = book.chapters[chapterId];
+      if(!ch) throw new Error("Chapter not found: " + chapterId);
 
-html+=`<p>${p}</p>`;
+      chapterTitleEl.textContent = ch.title;
+      chapterMetaEl.textContent = `${book.title} • ${chapterId}`;
 
-});
+      // How This Works button (goes to the new page)
+      howBtn.onclick = () => {
+        location.href = `how-it-works.html?book=${encodeURIComponent(bookId)}`;
+      };
 
-document.getElementById("chapterText").innerHTML=html;
+      chapterGlossary = ch.glossary || {};
+      renderText(ch.content || []);
+      loadWorksheet();
 
-window.chapterGlossary=glossary;
+      setStatus("Ready");
+    }catch(e){
+      chapterTitleEl.textContent = "Could not load chapter";
+      chapterMetaEl.textContent = "";
+      chapterTextEl.innerHTML = `<p>${e.message}</p>`;
+      setStatus("Error");
+    }
+  }
 
-}
+  function escapeHtml(s){
+    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
 
-function showMeaning(word){
+  function renderText(paragraphs){
+    const html = paragraphs.map(p=>{
+      const safe = escapeHtml(p);
+      const withTerms = safe.replace(/\[\[([^\]]+)\]\]/g, (m, term)=>{
+        const key = term.toLowerCase();
+        return `<span class="term" data-term="${key}">${term}</span>`;
+      });
+      return `<p>${withTerms}</p>`;
+    }).join("");
+    chapterTextEl.innerHTML = html;
 
-const g = window.chapterGlossary[word];
+    chapterTextEl.querySelectorAll(".term").forEach(el=>{
+      el.addEventListener("click", ()=>{
+        const key = el.getAttribute("data-term");
+        const entry = chapterGlossary[key];
+        selectedTerm = key;
+        selectedDef = entry || null;
 
-document.getElementById("glossaryBox").innerHTML=
-`<b>${word}</b><br>
-Pronunciation: ${g.pronunciation}<br>
-Meaning: ${g.definition}`;
+        if(!entry){
+          glossaryBox.innerHTML = `<b>${key}</b><div class="small">No definition added yet.</div>`;
+          speakWordBtn.disabled = true;
+          return;
+        }
 
-}
+        glossaryBox.innerHTML = `
+          <b>${key}</b><br><br>
+          <b>Pronunciation:</b> ${entry.pronunciation || "-"}<br>
+          <b>Meaning:</b> ${entry.definition || "-"}<br>
+          ${entry.simpleMeaning ? `<br><b>Simple meaning:</b> ${entry.simpleMeaning}` : ""}
+          ${entry.example ? `<br><br><b>Example:</b> ${entry.example}` : ""}
+        `;
+        speakWordBtn.disabled = false;
+      });
+    });
+  }
 
-function readChapter(){
+  // TTS only for word + meaning
+  function speak(text){
+    if(!("speechSynthesis" in window)){
+      alert("Text-to-speech is not supported on this browser.");
+      return;
+    }
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(u);
+  }
 
-const text = document.getElementById("chapterText").innerText;
+  speakWordBtn.addEventListener("click", ()=>{
+    if(!selectedTerm || !selectedDef) return;
+    const text = `${selectedTerm}. Pronunciation: ${selectedDef.pronunciation || ""}. Meaning: ${selectedDef.definition || ""}`;
+    speak(text);
+  });
 
-const speech = new SpeechSynthesisUtterance(text);
+  // Recorder controls
+  async function startRecording(){
+    try{
+      const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+      mediaRecorder = new MediaRecorder(stream);
+      chunks = [];
 
-speechSynthesis.speak(speech);
+      mediaRecorder.ondataavailable = e => chunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        audioBlob = new Blob(chunks, { type: "audio/webm" });
+        if(audioUrl) URL.revokeObjectURL(audioUrl);
+        audioUrl = URL.createObjectURL(audioBlob);
 
-}
+        player.src = audioUrl;
+        player.style.display = "block";
 
-loadChapter();
+        playBtn.disabled = false;
+        clearBtn.disabled = false;
+        downloadBtn.disabled = false;
 
+        recStatus.textContent = "Recording saved (on this page).";
+        // stop mic
+        stream.getTracks().forEach(t => t.stop());
+      };
+
+      mediaRecorder.start();
+      recStatus.textContent = "Recording…";
+      recBtn.disabled = true;
+      stopRecBtn.disabled = false;
+    }catch(err){
+      recStatus.textContent = "Mic permission blocked. Allow microphone access.";
+    }
+  }
+
+  function stopRecording(){
+    if(mediaRecorder && mediaRecorder.state !== "inactive"){
+      mediaRecorder.stop();
+      recBtn.disabled = false;
+      stopRecBtn.disabled = true;
+    }
+  }
+
+  function playRecording(){
+    if(!audioUrl) return;
+    player.play();
+  }
+
+  function clearRecording(){
+    audioBlob = null;
+    if(audioUrl) URL.revokeObjectURL(audioUrl);
+    audioUrl = null;
+    player.pause();
+    player.removeAttribute("src");
+    player.style.display = "none";
+
+    playBtn.disabled = true;
+    clearBtn.disabled = true;
+    downloadBtn.disabled = true;
+
+    recStatus.textContent = "Cleared.";
+  }
+
+  function downloadRecording(){
+    if(!audioBlob) return;
+    const a = document.createElement("a");
+    const filename = `${bookId}-${chapterId}-reading.webm`;
+    a.href = audioUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
+  recBtn.addEventListener("click", startRecording);
+  stopRecBtn.addEventListener("click", stopRecording);
+  playBtn.addEventListener("click", playRecording);
+  clearBtn.addEventListener("click", clearRecording);
+  downloadBtn.addEventListener("click", downloadRecording);
+
+  loadChapter();
 </script>
 
 </body>
