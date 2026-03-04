@@ -5,14 +5,41 @@
   <style>
     body{font-family:Arial; padding:30px; background:#FFFDF7;}
     a{display:inline-block; margin-bottom:20px;}
-    .chapter{background:white; padding:15px; border-radius:10px; margin:12px 0; box-shadow:0 4px 10px rgba(0,0,0,0.08);}
+    .header{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      margin-bottom:25px;
+    }
+    .cover{
+      width:160px;
+      height:220px;
+      object-fit:cover;
+      border-radius:10px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.15);
+      background:#fff;
+    }
+    .chapter{
+      background:white;
+      padding:18px;
+      border-radius:12px;
+      margin:12px 0;
+      box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    }
+    .chapter a{margin:0;}
   </style>
 </head>
 <body>
 
 <a href="library.html">← Back to Library</a>
 
-<h1 id="bookTitle">Book</h1>
+<div class="header">
+  <img id="cover" class="cover" src="" alt="Book cover">
+  <div>
+    <h1 id="bookTitle" style="margin:0;"></h1>
+    <p id="bookDesc" style="margin:8px 0 0 0; color:#444;"></p>
+  </div>
+</div>
 
 <div id="chapters"></div>
 
@@ -23,6 +50,8 @@
   const books = {
     "reading-comprehension": {
       title: "Reading Comprehension",
+      desc: "Read with understanding using brain-informed strategies.",
+      cover: "../../shared/assets/images/reading-comprehension.png",
       chapters: [
         { id: "ch1", name: "Chapter 1" },
         { id: "ch2", name: "Chapter 2" }
@@ -30,12 +59,16 @@
     },
     "tech-journey": {
       title: "Tech Journey",
+      desc: "A fiction journey into technology and AI.",
+      cover: "../../shared/assets/images/tech-journey.png",
       chapters: [
         { id: "ch1", name: "Chapter 1" }
       ]
     },
     "dictionary": {
       title: "Dictionary",
+      desc: "Frequently used words for young readers.",
+      cover: "../../shared/assets/images/dictionary.png",
       chapters: [
         { id: "main", name: "Open Dictionary" }
       ]
@@ -43,10 +76,16 @@
   };
 
   const selected = books[book];
-  document.getElementById("bookTitle").textContent = selected ? selected.title : "Book not found";
 
-  const container = document.getElementById("chapters");
-  if(selected){
+  if(!selected){
+    document.getElementById("bookTitle").textContent = "Book not found";
+    document.getElementById("chapters").innerHTML = "<p>Invalid book link.</p>";
+  } else {
+    document.getElementById("bookTitle").textContent = selected.title;
+    document.getElementById("bookDesc").textContent = selected.desc;
+    document.getElementById("cover").src = selected.cover;
+
+    const container = document.getElementById("chapters");
     selected.chapters.forEach(ch=>{
       const div = document.createElement("div");
       div.className="chapter";
@@ -54,8 +93,6 @@
       <a href="chapter.html?book=${book}&chapter=${ch.id}">Open</a>`;
       container.appendChild(div);
     });
-  } else {
-    container.innerHTML = "<p>Invalid book link.</p>";
   }
 </script>
 
