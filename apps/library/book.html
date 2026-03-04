@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book</title>
+  <style>
+    body{font-family:Arial; padding:30px; background:#FFFDF7;}
+    a{display:inline-block; margin-bottom:20px;}
+    .chapter{background:white; padding:15px; border-radius:10px; margin:12px 0; box-shadow:0 4px 10px rgba(0,0,0,0.08);}
+  </style>
+</head>
+<body>
+
+<a href="library.html">← Back to Library</a>
+
+<h1 id="bookTitle">Book</h1>
+
+<div id="chapters"></div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const book = params.get("book");
+
+  const books = {
+    "reading-comprehension": {
+      title: "Reading Comprehension",
+      chapters: [
+        { id: "ch1", name: "Chapter 1" },
+        { id: "ch2", name: "Chapter 2" }
+      ]
+    },
+    "tech-journey": {
+      title: "Tech Journey",
+      chapters: [
+        { id: "ch1", name: "Chapter 1" }
+      ]
+    },
+    "dictionary": {
+      title: "Dictionary",
+      chapters: [
+        { id: "main", name: "Open Dictionary" }
+      ]
+    }
+  };
+
+  const selected = books[book];
+  document.getElementById("bookTitle").textContent = selected ? selected.title : "Book not found";
+
+  const container = document.getElementById("chapters");
+  if(selected){
+    selected.chapters.forEach(ch=>{
+      const div = document.createElement("div");
+      div.className="chapter";
+      div.innerHTML = `<b>${ch.name}</b><br>
+      <a href="chapter.html?book=${book}&chapter=${ch.id}">Open</a>`;
+      container.appendChild(div);
+    });
+  } else {
+    container.innerHTML = "<p>Invalid book link.</p>";
+  }
+</script>
+
+</body>
+</html>
