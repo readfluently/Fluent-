@@ -1,19 +1,20 @@
-"global": {
-  "prologue": "Hello there!\n\nI am FluentBuddy, and I am so excited to begin this reading journey with you.\n\nThis is not just another chapter in a book. This is the start of something powerful.\n\nIn this app, YOU do the reading. You practise. You record yourself. You improve.\n\nReady? Let’s begin.",
-  "howItWorks": {
-    "videoUrl": "",
-    "videoCaption": "",
-    "steps": [
-      "Read the main text out loud. This is your practice time.",
-      "Record yourself reading: Record → Stop → Play it back, Clear it, or Download it.",
-      "Tap purple words to see the meaning and hear the word + definition.",
-      "Text-to-speech is for purple words only. The chapter text is for YOU to read.",
-      "Use Books → Dictionary for general word search anytime.",
-      "Some chapters include short model-reading audio/video sections. Listen first, then read and record."
-    ]
-  }
-},
 {
+  "global": {
+    "prologue": "Hello there!\n\nI am FluentBuddy, and I am so excited to begin this reading journey with you.\n\nThis is not just another chapter in a book. This is the start of something powerful.\n\nIn this app, YOU do the reading. You practise. You record yourself. You improve.\n\nReady? Let’s begin.",
+    "howItWorks": {
+      "videoUrl": "",
+      "videoCaption": "",
+      "steps": [
+        "Read the main text out loud. This is your practice time.",
+        "Record yourself reading: Record → Stop → Play it back, Clear it, or Download it.",
+        "Tap purple words to see the meaning and hear the word + definition.",
+        "Text-to-speech is for purple words only. The chapter text is for YOU to read.",
+        "Use Books → Dictionary for general word search anytime.",
+        "Some chapters include short model-reading audio/video sections. Listen first, then read and record."
+      ]
+    }
+  },
+
   "reading-comprehension": {
     "title": "Reading Comprehension",
     "chapters": {
@@ -40,6 +41,7 @@
       }
     }
   },
+
   "tech-journey": {
     "title": "Tech Journey",
     "chapters": {
@@ -58,6 +60,7 @@
       }
     }
   },
+
   "dictionary": {
     "title": "Dictionary",
     "chapters": {
