@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chapter</title>
+  <style>
+    body{font-family:Arial; padding:30px; background:#FFFDF7;}
+  </style>
+</head>
+<body>
+
+<a href="javascript:history.back()">← Back</a>
+
+<h1>Chapter Reader</h1>
+<p>This is where the chapter text/audio/glossary/recording will load.</p>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  document.body.insertAdjacentHTML("beforeend",
+    `<p><b>Book:</b> ${params.get("book")} | <b>Chapter:</b> ${params.get("chapter")}</p>`
+  );
+</script>
+
+</body>
+</html>
