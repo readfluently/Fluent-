@@ -1,23 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chapter</title>
-  <style>
-    body{font-family:Arial; padding:30px; background:#FFFDF7;}
-  </style>
+<title>Chapter Reader</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#FFFDF7;
+margin:0;
+padding:20px;
+}
+
+.container{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+}
+
+.text p{
+font-size:18px;
+line-height:1.6;
+}
+
+.term{
+color:#7b3ff2;
+font-weight:bold;
+cursor:pointer;
+}
+
+.term:hover{
+text-decoration:underline;
+}
+
+.glossary{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+button{
+padding:8px 12px;
+margin-top:10px;
+cursor:pointer;
+}
+
+</style>
 </head>
+
 <body>
 
-<a href="javascript:history.back()">← Back</a>
+<a href="library.html">← Back</a>
 
-<h1>Chapter Reader</h1>
-<p>This is where the chapter text/audio/glossary/recording will load.</p>
+<h1 id="chapterTitle">Loading...</h1>
+
+<div class="container">
+
+<div class="text" id="chapterText"></div>
+
+<div class="glossary">
+<h3>Glossary</h3>
+<div id="glossaryBox">
+Click a purple word to see the meaning.
+</div>
+
+<button onclick="readChapter()">🔊 Read Aloud</button>
+
+</div>
+
+</div>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  document.body.insertAdjacentHTML("beforeend",
-    `<p><b>Book:</b> ${params.get("book")} | <b>Chapter:</b> ${params.get("chapter")}</p>`
-  );
+
+const params = new URLSearchParams(window.location.search);
+const book = params.get("book");
+const chapter = params.get("chapter");
+
+async function loadChapter(){
+
+const res = await fetch("./data/books.json");
+const data = await res.json();
+
+const bookData = data[book];
+const chapterData = bookData.chapters[chapter];
+
+document.getElementById("chapterTitle").innerText = chapterData.title;
+
+const glossary = chapterData.glossary;
+
+let html="";
+
+chapterData.content.forEach(p=>{
+
+p = p.replace(/\[\[(.*?)\]\]/g,(match,word)=>{
+
+return `<span class="term" onclick="showMeaning('${word}')">${word}</span>`;
+
+});
+
+html+=`<p>${p}</p>`;
+
+});
+
+document.getElementById("chapterText").innerHTML=html;
+
+window.chapterGlossary=glossary;
+
+}
+
+function showMeaning(word){
+
+const g = window.chapterGlossary[word];
+
+document.getElementById("glossaryBox").innerHTML=
+`<b>${word}</b><br>
+Pronunciation: ${g.pronunciation}<br>
+Meaning: ${g.definition}`;
+
+}
+
+function readChapter(){
+
+const text = document.getElementById("chapterText").innerText;
+
+const speech = new SpeechSynthesisUtterance(text);
+
+speechSynthesis.speak(speech);
+
+}
+
+loadChapter();
+
 </script>
 
 </body>
