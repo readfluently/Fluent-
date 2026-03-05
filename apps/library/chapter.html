@@ -8,10 +8,25 @@
   <style>
     body{font-family:Arial; margin:0; background:#FFFDF7;}
     .topbar{
-      position:sticky; top:0; z-index:10;
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
-      padding:12px 14px; background:#FFFDF7; border-bottom:1px solid #eee;
-    }
+  position:sticky; top:0; z-index:10;
+  display:flex; align-items:center; gap:10px;
+  padding:12px 14px; background:#FFFDF7; border-bottom:1px solid #eee;
+
+  /* keep buttons on one row */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.topbar .btn{
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.topbar .status{
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
     .btn{padding:10px 12px; border-radius:10px; border:1px solid #ddd; background:white; cursor:pointer;}
     .btn:disabled{opacity:.5; cursor:not-allowed;}
     .status{font-size:13px; color:#555;}
