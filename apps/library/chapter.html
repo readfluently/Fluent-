@@ -16,6 +16,7 @@
     .btn:disabled{opacity:.5; cursor:not-allowed;}
     .status{font-size:13px; color:#555;}
 
+    /* Desktop/tablet: 2 columns */
     .wrap{display:grid; grid-template-columns: 1.5fr 1fr; gap:14px; padding:14px;}
     .card{background:white; border-radius:14px; padding:14px; box-shadow:0 6px 16px rgba(0,0,0,0.08);}
 
@@ -40,6 +41,38 @@
     }
     .small{font-size:13px; color:#555;}
     .divider{height:1px; background:#eee; margin:12px 0;}
+
+    /* Popup definition over the text section */
+    .popup{
+      position:fixed;
+      left:50%;
+      top:18%;
+      transform:translateX(-50%);
+      width:min(520px, calc(100% - 28px));
+      background:white;
+      border:1px solid #e6e6e6;
+      box-shadow:0 12px 30px rgba(0,0,0,0.16);
+      border-radius:14px;
+      padding:14px;
+      z-index:9999;
+      display:none;
+    }
+    .popupHeader{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom:8px;
+    }
+    .popupTitle{font-weight:800;}
+    .closeBtn{
+      border:1px solid #ddd; background:#fff; border-radius:10px;
+      padding:8px 10px; cursor:pointer;
+    }
+
+    /* Mobile: stacked (upper text, lower worksheet) */
+    @media (max-width: 820px){
+      .wrap{display:flex; flex-direction:column; gap:12px;}
+      .scrollText{max-height:42vh;}
+      .scrollWork{max-height:42vh;}
+    }
   </style>
 </head>
 
@@ -52,7 +85,7 @@
   </div>
 
   <div class="wrap">
-    <!-- LEFT: Recorder + Scrollable Text -->
+    <!-- TOP/LEFT: Recorder + Scrollable Text -->
     <div class="card">
       <h1 id="chapterTitle">Loading…</h1>
       <div class="meta" id="chapterMeta"></div>
@@ -76,7 +109,7 @@
       </div>
     </div>
 
-    <!-- RIGHT: Worksheet + Glossary (scrollable container) -->
+    <!-- BOTTOM/RIGHT: Worksheet (scrollable) + Glossary button -->
     <div class="card">
       <div class="scrollWork">
         <h2 style="margin-top:0;">Worksheet</h2>
@@ -84,21 +117,30 @@
 
         <div class="divider"></div>
 
-        <h3 style="margin:0 0 6px;">Paraphrasing</h3>
-        <div class="small">Write the main idea of the chapter in your own words.</div>
-        <textarea id="paraBox" placeholder="My paraphrase..."></textarea>
+        <h3 style="margin:0 0 6px;" id="worksheetTitle">Paraphrasing</h3>
+        <div class="small" id="worksheetPrompt">Write the main idea of the chapter in your own words.</div>
+        <textarea id="wsBox" placeholder="Type here..."></textarea>
 
         <div class="divider"></div>
 
         <h2 style="margin-top:0;">Glossary</h2>
-        <div class="small">Tap a purple word in the text.</div>
+        <div class="small">Tap a purple word in the text to see a pop-up meaning.</div>
         <div class="divider"></div>
-        <div id="glossaryBox" class="small">No word selected yet.</div>
+        <div id="glossaryHint" class="small">No word selected yet.</div>
 
         <div class="divider"></div>
         <button class="btn" id="speakWordBtn" disabled>🔊 Read Word + Meaning</button>
       </div>
     </div>
+  </div>
+
+  <!-- POPUP for word meaning -->
+  <div class="popup" id="popup">
+    <div class="popupHeader">
+      <div class="popupTitle" id="popupTitle">Word</div>
+      <button class="closeBtn" id="closePopup">Close</button>
+    </div>
+    <div class="small" id="popupBody"></div>
   </div>
 
 <script>
@@ -110,18 +152,25 @@
   const chapterTitleEl = document.getElementById("chapterTitle");
   const chapterMetaEl = document.getElementById("chapterMeta");
   const chapterTextEl = document.getElementById("chapterText");
-
   const howBtn = document.getElementById("howBtn");
 
   // Worksheet
-  const paraBox = document.getElementById("paraBox");
+  const worksheetTitleEl = document.getElementById("worksheetTitle");
+  const worksheetPromptEl = document.getElementById("worksheetPrompt");
+  const wsBox = document.getElementById("wsBox");
 
-  // Glossary
-  const glossaryBox = document.getElementById("glossaryBox");
+  // Glossary + TTS
   const speakWordBtn = document.getElementById("speakWordBtn");
+  const glossaryHint = document.getElementById("glossaryHint");
   let selectedTerm = null;
   let selectedDef = null;
   let chapterGlossary = {};
+
+  // Popup
+  const popup = document.getElementById("popup");
+  const popupTitle = document.getElementById("popupTitle");
+  const popupBody = document.getElementById("popupBody");
+  const closePopup = document.getElementById("closePopup");
 
   // Recorder
   const recBtn = document.getElementById("recBtn");
@@ -140,81 +189,119 @@
   function setStatus(msg){ statusEl.textContent = msg || ""; }
 
   // Save worksheet locally (offline-friendly)
-  function wsKey(){ return `rf_ws_${bookId}_${chapterId}_paraphrase`; }
-  function loadWorksheet(){
+  function wsKey(){ return `rf_ws_${bookId}_${chapterId}`; }
+
+  function loadWorksheet(ch){
+    const ws = ch.worksheet || null;
+
+    if(ws && ws.title) worksheetTitleEl.textContent = ws.title;
+    else worksheetTitleEl.textContent = "Worksheet";
+
+    if(ws && ws.prompt) worksheetPromptEl.textContent = ws.prompt;
+    else worksheetPromptEl.textContent = "Type your answers here.";
+
     const saved = localStorage.getItem(wsKey());
-    if(saved) paraBox.value = saved;
-    paraBox.addEventListener("input", ()=> localStorage.setItem(wsKey(), paraBox.value));
+    if(saved) wsBox.value = saved;
+
+    wsBox.addEventListener("input", ()=> localStorage.setItem(wsKey(), wsBox.value));
   }
 
   async function loadChapter(){
     try{
-      const res = await fetch("./data/books.json");
+      // IMPORTANT: file is in /apps/library/data/books.json
+      const res = await fetch("./data/books.json", { cache: "no-store" });
+      if(!res.ok) throw new Error("Could not fetch books.json (" + res.status + ")");
       const data = await res.json();
 
-      const book = data[bookId];
+      // IMPORTANT: your JSON uses data.books
+      const book = data.books?.[bookId];
       if(!book) throw new Error("Book not found: " + bookId);
 
-      const ch = book.chapters[chapterId];
+      const ch = book.chapters?.[chapterId];
       if(!ch) throw new Error("Chapter not found: " + chapterId);
 
-      chapterTitleEl.textContent = ch.title;
-      chapterMetaEl.textContent = `${book.title} • ${chapterId}`;
+      chapterTitleEl.textContent = ch.title || chapterId;
+      chapterMetaEl.textContent = `${book.title || bookId} • ${chapterId}`;
 
-      // How This Works button (goes to the new page)
+      // How This Works button: always goes to the how-it-works chapter if it exists
       howBtn.onclick = () => {
-        location.href = `how-it-works.html?book=${encodeURIComponent(bookId)}`;
+        const howId = "how-it-works";
+        if(book.chapters?.[howId]){
+          location.href = `chapter.html?book=${encodeURIComponent(bookId)}&chapter=${encodeURIComponent(howId)}`;
+        } else {
+          alert("No 'How This Works' chapter yet for this book.");
+        }
       };
 
       chapterGlossary = ch.glossary || {};
       renderText(ch.content || []);
-      loadWorksheet();
+
+      loadWorksheet(ch);
 
       setStatus("Ready");
     }catch(e){
       chapterTitleEl.textContent = "Could not load chapter";
       chapterMetaEl.textContent = "";
-      chapterTextEl.innerHTML = `<p>${e.message}</p>`;
+      chapterTextEl.innerHTML = `<p>${escapeHtml(e.message)}</p>`;
       setStatus("Error");
     }
   }
 
   function escapeHtml(s){
-    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
   }
+
+  function showPopup(termKey, entry){
+    popupTitle.textContent = termKey;
+    popupBody.innerHTML = `
+      <div><b>Pronunciation:</b> ${escapeHtml(entry.pronunciation || "-")}</div>
+      <div style="margin-top:6px;"><b>Meaning:</b> ${escapeHtml(entry.definition || "-")}</div>
+      ${entry.simpleMeaning ? `<div style="margin-top:10px;"><b>Simple meaning:</b> ${escapeHtml(entry.simpleMeaning)}</div>` : ""}
+      ${entry.example ? `<div style="margin-top:10px;"><b>Example:</b> ${escapeHtml(entry.example)}</div>` : ""}
+    `;
+    popup.style.display = "block";
+  }
+
+  function hidePopup(){
+    popup.style.display = "none";
+  }
+
+  closePopup.addEventListener("click", hidePopup);
+  popup.addEventListener("click", (e)=>{
+    if(e.target === popup) hidePopup();
+  });
 
   function renderText(paragraphs){
     const html = paragraphs.map(p=>{
       const safe = escapeHtml(p);
       const withTerms = safe.replace(/\[\[([^\]]+)\]\]/g, (m, term)=>{
-        const key = term.toLowerCase();
-        return `<span class="term" data-term="${key}">${term}</span>`;
+        const key = term.toLowerCase().trim();
+        return `<span class="term" data-term="${escapeHtml(key)}">${escapeHtml(term)}</span>`;
       });
       return `<p>${withTerms}</p>`;
     }).join("");
+
     chapterTextEl.innerHTML = html;
 
     chapterTextEl.querySelectorAll(".term").forEach(el=>{
       el.addEventListener("click", ()=>{
         const key = el.getAttribute("data-term");
         const entry = chapterGlossary[key];
+
         selectedTerm = key;
         selectedDef = entry || null;
 
         if(!entry){
-          glossaryBox.innerHTML = `<b>${key}</b><div class="small">No definition added yet.</div>`;
+          glossaryHint.innerHTML = `<b>${escapeHtml(key)}</b><div class="small">No definition added yet.</div>`;
           speakWordBtn.disabled = true;
           return;
         }
 
-        glossaryBox.innerHTML = `
-          <b>${key}</b><br><br>
-          <b>Pronunciation:</b> ${entry.pronunciation || "-"}<br>
-          <b>Meaning:</b> ${entry.definition || "-"}<br>
-          ${entry.simpleMeaning ? `<br><b>Simple meaning:</b> ${entry.simpleMeaning}` : ""}
-          ${entry.example ? `<br><br><b>Example:</b> ${entry.example}` : ""}
-        `;
+        glossaryHint.innerHTML = `<b>${escapeHtml(key)}</b> selected.`;
         speakWordBtn.disabled = false;
+
+        // Show popup over text area
+        showPopup(key, entry);
       });
     });
   }
@@ -257,7 +344,6 @@
         downloadBtn.disabled = false;
 
         recStatus.textContent = "Recording saved (on this page).";
-        // stop mic
         stream.getTracks().forEach(t => t.stop());
       };
 
@@ -287,6 +373,7 @@
     audioBlob = null;
     if(audioUrl) URL.revokeObjectURL(audioUrl);
     audioUrl = null;
+
     player.pause();
     player.removeAttribute("src");
     player.style.display = "none";
