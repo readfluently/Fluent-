@@ -56,75 +56,9 @@
               "example": "I show engagement in class when I listen carefully and take part in activities."
             }
           },
-"worksheet": {
-  "title": "Chapter 1 Activities",
-  "items": [
-    {
-      "id": "para-main-idea",
-      "type": "textarea",
-      "label": "Paraphrasing",
-      "prompt": "Write the main idea of Chapter 1 in your own words."
-    },
-    {
-      "id": "para-example",
-      "type": "textarea",
-      "label": "Paraphrase the Example",
-      "prompt": "Paraphrase this sentence in your own words: Reading is like exercise for your brain. The more you do it, the stronger your brain gets."
-    },
-
-    {
-      "id": "g-engagement-para",
-      "type": "textarea",
-      "label": "Glossary: engagement",
-      "prompt": "Paraphrase the meaning of the word engagement in your own words."
-    },
-    {
-      "id": "g-engagement-sentence",
-      "type": "textarea",
-      "label": "Glossary: engagement",
-      "prompt": "Use the word engagement in your own sentence."
-    },
-
-    {
-      "id": "g-comprehension-para",
-      "type": "textarea",
-      "label": "Glossary: comprehension",
-      "prompt": "Paraphrase the meaning of the word comprehension in your own words."
-    },
-    {
-      "id": "g-comprehension-sentence",
-      "type": "textarea",
-      "label": "Glossary: comprehension",
-      "prompt": "Use the word comprehension in your own sentence."
-    },
-
-    {
-      "id": "g-information-text-para",
-      "type": "textarea",
-      "label": "Glossary: information text",
-      "prompt": "Paraphrase the meaning of the words information text in your own words."
-    },
-    {
-      "id": "g-information-text-sentence",
-      "type": "textarea",
-      "label": "Glossary: information text",
-      "prompt": "Use the words information text in your own sentence."
-    },
-
-    {
-      "id": "g-neuroplasticity-para",
-      "type": "textarea",
-      "label": "Glossary: neuroplasticity",
-      "prompt": "Paraphrase the meaning of the word neuroplasticity in your own words."
-    },
-    {
-      "id": "g-neuroplasticity-sentence",
-      "type": "textarea",
-      "label": "Glossary: neuroplasticity",
-      "prompt": "Use the word neuroplasticity in your own sentence."
-    }
-  ]
-}
+          "worksheet": {
+            "title": "Paraphrasing",
+            "prompt": "Write the main idea of the chapter in your own words."
           }
         }
       }
