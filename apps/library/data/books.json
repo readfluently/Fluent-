@@ -12,11 +12,15 @@
       ]
     }
   },
+
   "books": {
+
     "reading-comprehension": {
       "title": "Reading Comprehension",
       "coverImage": "../../shared/assets/images/reading-comprehension.png",
+
       "chapters": {
+
         "how-it-works": {
           "title": "How This Works",
           "type": "howto",
@@ -35,130 +39,123 @@
             "prompt": "Write one sentence about what you think this book will help you do."
           }
         },
-"ch1": {
-  "title": "Chapter 1: Welcome to Your Reading Journey",
-  "content": [
-    "Hello there! I am FluentBuddy, and I am so excited to begin this reading journey with you.",
-    "In this program, you will learn how to read with understanding—not just read the words, but understand what they mean.",
-    "Reading is like travelling to a new place. You can rush through it, or you can explore it carefully. That is why reading is a [[journey]].",
-    "Today you will learn one powerful idea that helps you understand anything you read: [[engagement]].",
-    "When you are engaged, your mind is awake. You are not just looking at words—you are thinking, connecting, and understanding.",
-    "Being engaged means you focus, you participate, and you try to make meaning from the text. This is called [[being engaged]].",
-    "Some learners think reading is only about speed. But real reading is about meaning. Meaning is the message inside the words.",
-    "If you read fast but do not understand, you are not finished. A strong reader reads in a way that helps the brain understand.",
-    "Your brain learns best when you connect new ideas to what you already know. This connection is called [[background knowledge]].",
-    "For example: if you already know what a bicycle is, then reading a story about a bicycle becomes easier because your brain has a picture and knowledge ready.",
-    "In this chapter, you will practise 5 simple habits that help you stay engaged while reading.",
-    "Habit 1: [[previewing]]. Before you read, look at the title and think: What will this be about?",
-    "Habit 2: [[predicting]]. While you read, guess what might happen next or what the next paragraph might explain.",
-    "Habit 3: [[questioning]]. Ask yourself questions like: Who is this about? What is the main point? Why did that happen?",
-    "Habit 4: [[visualising]]. Make a picture in your mind. When your brain can picture the idea, it becomes easier to understand and remember.",
-    "Habit 5: [[summarising]]. After a section, say it in your own words. This helps you check if you really understood.",
-    "Now let’s practise engagement with a short reading.",
-    "Imagine a learner named Nomsa. She opens a book and reads the first paragraph. Her eyes move across the page, but her mind is thinking about lunch.",
-    "Nomsa finishes the paragraph, but she cannot explain what it said. That is reading without engagement.",
-    "Now Nomsa tries again. This time she previews the title, predicts what the text might teach her, and asks questions while reading.",
-    "She reads more slowly, but she understands more. This is reading with engagement.",
-    "Engaged reading is not about being perfect. It is about using your brain actively while you read.",
-    "Sometimes you will meet a word you do not know. Do not panic. Pause, check the meaning, and continue. That is called [[self-monitoring]].",
-    "Self-monitoring means you notice when you do not understand, and you do something to fix it.",
-    "Here are 3 quick “fix-it” moves when meaning becomes unclear.",
-    "Fix-it Move 1: Reread the sentence slowly.",
-    "Fix-it Move 2: Look for clues in the next sentence.",
-    "Fix-it Move 3: Use the glossary or ask an adult/teacher for help.",
-    "Remember: practice changes your brain. The more you practise engaged reading, the stronger your understanding becomes. This is called [[neuroplasticity]].",
-    "Neuroplasticity means your brain can grow and improve when you practise skills again and again.",
-    "You are not “born” a strong reader. You become a strong reader by practising the right habits.",
-    "Before you move to the worksheet, read this important promise to yourself.",
-    "I will try. I will stay engaged. I will practise. I will improve.",
-    "Welcome to your reading journey—let’s go!"
-  ],
-  "glossary": {
-    "journey": {
-      "definition": "An experience that happens over time as you move forward and learn.",
-      "pronunciation": "JUR-nee",
-      "simpleMeaning": "A path of learning and growth.",
-      "example": "Learning to read well is a journey."
-    },
-    "engagement": {
-      "definition": "Being fully focused, involved, and mentally active while learning or reading.",
-      "pronunciation": "en-GAYJ-ment",
-      "simpleMeaning": "Paying close attention and taking part.",
-      "example": "I show engagement when I think about what I read."
-    },
-    "being engaged": {
-      "definition": "Being focused and involved while learning or reading.",
-      "pronunciation": "BEE-ing en-GAYJD",
-      "simpleMeaning": "Staying focused and active in your mind.",
-      "example": "I am being engaged when I read and ask questions."
-    },
-    "background knowledge": {
-      "definition": "What you already know about a topic before you read or learn more about it.",
-      "pronunciation": "BACK-ground NAH-lij",
-      "simpleMeaning": "The knowledge you bring with you.",
-      "example": "My background knowledge about animals helped me understand the story."
-    },
-    "previewing": {
-      "definition": "Looking at the title, headings, or pictures before reading to prepare your mind.",
-      "pronunciation": "PREE-vyoo-ing",
-      "simpleMeaning": "Taking a quick look first.",
-      "example": "Previewing the title helped me understand what the chapter is about."
-    },
-    "predicting": {
-      "definition": "Making a smart guess about what will happen next or what the text will say.",
-      "pronunciation": "pri-DIK-ting",
-      "simpleMeaning": "Guessing using clues.",
-      "example": "I was predicting the next part of the story."
-    },
-    "questioning": {
-      "definition": "Asking yourself questions while reading to help you understand.",
-      "pronunciation": "KWES-chuh-ning",
-      "simpleMeaning": "Asking questions in your mind.",
-      "example": "Questioning helped me find the main idea."
-    },
-    "visualising": {
-      "definition": "Creating a picture in your mind while you read.",
-      "pronunciation": "VIZH-oo-uh-ly-zing",
-      "simpleMeaning": "Making a mind picture.",
-      "example": "Visualising helped me understand the scene."
-    },
-    "summarising": {
-      "definition": "Saying the main idea in your own words after reading.",
-      "pronunciation": "SUM-uh-ry-zing",
-      "simpleMeaning": "Explaining the most important parts.",
-      "example": "After summarising, I knew I understood the text."
-    },
-    "self-monitoring": {
-      "definition": "Noticing when you do not understand and taking steps to fix it.",
-      "pronunciation": "self MON-uh-tuh-ring",
-      "simpleMeaning": "Checking your own understanding.",
-      "example": "I used self-monitoring and reread the sentence."
-    },
-    "neuroplasticity": {
-      "definition": "The brain’s ability to change and grow stronger through practice and learning.",
-      "pronunciation": "NYOO-roh-plas-TISS-ih-tee",
-      "simpleMeaning": "Your brain can improve with practice.",
-      "example": "Neuroplasticity means I can become a better reader over time."
-    }
-  },
-  "worksheet": {
-    "title": "Paraphrasing",
-    "prompt": "Write the main idea of Chapter 1 in your own words. Then write 2 habits you will use to stay engaged when you read."
-  }
-}
+
+        "ch1": {
+          "title": "Chapter 1: Welcome to Your Reading Journey",
+
+          "content": [
+            "Hello there! I am FluentBuddy, and I am so excited to begin this reading journey with you.",
+            "In this program, you will learn how to read with understanding—not just read the words, but understand what they mean.",
+            "Reading is like travelling to a new place. You can rush through it, or you can explore it carefully. That is why reading is a [[journey]].",
+            "Today you will learn one powerful idea that helps you understand anything you read: [[engagement]].",
+            "When you are engaged, your mind is awake. You are not just looking at words—you are thinking, connecting, and understanding.",
+            "Being engaged means you focus, you participate, and you try to make meaning from the text. This is called [[being engaged]].",
+            "Some learners think reading is only about speed. But real reading is about meaning. Meaning is the message inside the words.",
+            "If you read fast but do not understand, you are not finished. A strong reader reads in a way that helps the brain understand.",
+            "Your brain learns best when you connect new ideas to what you already know. This connection is called [[background knowledge]].",
+            "For example: if you already know what a bicycle is, then reading a story about a bicycle becomes easier because your brain has a picture and knowledge ready.",
+            "In this chapter, you will practise 5 simple habits that help you stay engaged while reading.",
+            "Habit 1: [[previewing]]. Before you read, look at the title and think: What will this be about?",
+            "Habit 2: [[predicting]]. While you read, guess what might happen next or what the next paragraph might explain.",
+            "Habit 3: [[questioning]]. Ask yourself questions like: Who is this about? What is the main point? Why did that happen?",
+            "Habit 4: [[visualising]]. Make a picture in your mind. When your brain can picture the idea, it becomes easier to understand and remember.",
+            "Habit 5: [[summarising]]. After a section, say it in your own words. This helps you check if you really understood.",
+            "Now let’s practise engagement with a short reading.",
+            "Imagine a learner named Nomsa. She opens a book and reads the first paragraph. Her eyes move across the page, but her mind is thinking about lunch.",
+            "Nomsa finishes the paragraph, but she cannot explain what it said. That is reading without engagement.",
+            "Now Nomsa tries again. This time she previews the title, predicts what the text might teach her, and asks questions while reading.",
+            "She reads more slowly, but she understands more. This is reading with engagement.",
+            "Engaged reading is not about being perfect. It is about using your brain actively while you read.",
+            "Sometimes you will meet a word you do not know. Do not panic. Pause, check the meaning, and continue. That is called [[self-monitoring]].",
+            "Self-monitoring means you notice when you do not understand, and you do something to fix it.",
+            "Here are 3 quick “fix-it” moves when meaning becomes unclear.",
+            "Fix-it Move 1: Reread the sentence slowly.",
+            "Fix-it Move 2: Look for clues in the next sentence.",
+            "Fix-it Move 3: Use the glossary or ask an adult or teacher for help.",
+            "Remember: practice changes your brain. The more you practise engaged reading, the stronger your understanding becomes. This is called [[neuroplasticity]].",
+            "Neuroplasticity means your brain can grow and improve when you practise skills again and again.",
+            "You are not born a strong reader. You become a strong reader by practising the right habits.",
+            "Before you move to the worksheet, read this important promise to yourself.",
+            "I will try. I will stay engaged. I will practise. I will improve.",
+            "Welcome to your reading journey—let’s go!"
+          ],
+
+          "glossary": {
+            "journey": {
+              "definition": "An experience that happens over time as you move forward and learn.",
+              "pronunciation": "JUR-nee",
+              "simpleMeaning": "A path of learning and growth.",
+              "example": "Learning to read well is a journey."
+            },
+            "engagement": {
+              "definition": "Being fully focused, involved, and mentally active while learning or reading.",
+              "pronunciation": "en-GAYJ-ment",
+              "simpleMeaning": "Paying close attention and taking part.",
+              "example": "I show engagement when I think about what I read."
+            },
+            "being engaged": {
+              "definition": "Being focused and involved while learning or reading.",
+              "pronunciation": "BEE-ing en-GAYJD",
+              "simpleMeaning": "Staying focused and active in your mind.",
+              "example": "I am being engaged when I read and ask questions."
+            },
+            "background knowledge": {
+              "definition": "What you already know about a topic before you read or learn more about it.",
+              "pronunciation": "BACK-ground NAH-lij",
+              "simpleMeaning": "The knowledge you bring with you.",
+              "example": "My background knowledge helped me understand the story."
+            },
+            "previewing": {
+              "definition": "Looking at the title or headings before reading to prepare your mind.",
+              "pronunciation": "PREE-vyoo-ing",
+              "simpleMeaning": "Taking a quick look first."
+            },
+            "predicting": {
+              "definition": "Making a smart guess about what will happen next.",
+              "pronunciation": "pri-DIK-ting"
+            },
+            "questioning": {
+              "definition": "Asking yourself questions while reading.",
+              "pronunciation": "KWES-chuh-ning"
+            },
+            "visualising": {
+              "definition": "Creating a picture in your mind while you read.",
+              "pronunciation": "VIZH-oo-uh-ly-zing"
+            },
+            "summarising": {
+              "definition": "Saying the main idea in your own words.",
+              "pronunciation": "SUM-uh-ry-zing"
+            },
+            "self-monitoring": {
+              "definition": "Noticing when you do not understand and fixing it.",
+              "pronunciation": "self MON-uh-tuh-ring"
+            },
+            "neuroplasticity": {
+              "definition": "The brain’s ability to grow and change through learning.",
+              "pronunciation": "NYOO-roh-plas-TISS-ih-tee"
+            }
+          },
+
+          "worksheet": {
+            "title": "Paraphrasing",
+            "prompt": "Write the main idea of Chapter 1 in your own words. Then write two habits you will use to stay engaged when you read."
           }
+
         }
+
       }
     },
+
     "tech-journey": {
       "title": "Tech Journey",
       "coverImage": "../../shared/assets/images/tech-journey.png",
+
       "chapters": {
         "how-it-works": {
           "title": "How This Works",
           "type": "howto",
           "content": [
-            "Welcome to Tech Journey..."
+            "Welcome to Tech Journey."
           ],
           "glossary": {},
           "worksheet": {
@@ -168,9 +165,11 @@
         }
       }
     },
+
     "dictionary": {
       "title": "Dictionary",
       "coverImage": "../../shared/assets/images/dictionary.png",
+
       "chapters": {
         "main": {
           "title": "Dictionary",
@@ -182,5 +181,6 @@
         }
       }
     }
+
   }
 }
