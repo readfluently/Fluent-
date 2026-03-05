@@ -137,8 +137,9 @@
       coverEl.src = book.coverImage || "../../shared/assets/images/books.png";
 
       const chapters = book.chapters || {};
-      const keys = Object.keys(chapters).sort(chapterSort);
-
+      const keys = Object.keys(chapters)
+  .filter(k => k !== "how-it-works")
+  .sort(chapterSort);
       chaptersListEl.innerHTML = keys.map((key)=>{
         const ch = chapters[key] || {};
         const isHow = key === "how-it-works" || ch.type === "howto";
