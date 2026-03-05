@@ -37,32 +37,27 @@
           }
         },
 
-     "ch1": {
-  "title": "Chapter 1: Welcome to Your Reading Journey",
-  "content": [
-    "Hello there! I am FluentBuddy, and I am so excited to begin this reading journey with you.",
-    "You connect new ideas to what you already know. This is called [[being engaged]].",
-    "Just like practice helps you improve in a game, [[engagement]] helps you become a stronger reader, thinker, and learner."
-  ],
-  "glossary": {
-    "being engaged": {
-      "definition": "Being fully focused and involved while learning.",
-      "pronunciation": "BEE-ing en-GAYJD",
-      "simpleMeaning": "Paying close attention and taking part when you learn.",
-      "example": "I am being engaged when I listen carefully and participate."
+        "ch1": {
+          "title": "Chapter 1: Welcome to Your Reading Journey",
+          "content": [
+            "Hello there! I am FluentBuddy...",
+            "Learning is like playing your favourite game...",
+            "Your brain can change. This is called [[neuroplasticity]]."
+          ],
+          "glossary": {
+            "neuroplasticity": {
+              "definition": "The brain’s ability to change and form new connections through learning.",
+              "pronunciation": "nyoo-roh-plas-TIS-ih-tee"
+            }
+          },
+          "worksheet": {
+            "title": "Paraphrasing",
+            "prompt": "Write the main idea of the chapter in your own words."
+          }
+        }
+      }
     },
-    "engagement": {
-      "definition": "Being fully focused and involved while learning.",
-      "pronunciation": "en-GAYJ-ment",
-      "simpleMeaning": "Paying close attention and taking part when you learn.",
-      "example": "I show engagement in class when I listen carefully and take part in activities."
-    }
-  },
-  "worksheet": {
-    "title": "Paraphrasing",
-    "prompt": "Write the main idea of the chapter in your own words."
-  }
-}   
+
     "tech-journey": {
       "title": "Tech Journey",
       "coverImage": "../../shared/assets/images/tech-journey.png",
