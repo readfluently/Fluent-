@@ -1,0 +1,67 @@
+{
+  "title": "Dictionary",
+  "prologue": {
+    "title": "How to Use This Dictionary",
+    "intro": "Welcome to the Read Fluently Dictionary. This dictionary is designed to help you understand words as you read.",
+    "parts": [
+      {
+        "name": "Word",
+        "explanation": "This is the main word you are learning."
+      },
+      {
+        "name": "Part of Speech",
+        "explanation": "This tells you how the word works in a sentence."
+      },
+      {
+        "name": "Syllables",
+        "explanation": "This shows how the word can be broken into smaller sound parts."
+      },
+      {
+        "name": "Definition",
+        "explanation": "This explains what the word means in simple language."
+      },
+      {
+        "name": "Example Sentence",
+        "explanation": "This shows how the word is used in a sentence."
+      }
+    ],
+    "searchHelp": "Use the search button to look for a word quickly. If the word is not here yet, you may check another trusted dictionary while this one continues to grow."
+  },
+  "words": [
+    {
+      "word": "ability",
+      "partOfSpeech": "noun",
+      "syllables": ["a", "bil", "i", "ty"],
+      "definition": "The power or skill to do something.",
+      "example": "Her reading ability improved with practice."
+    },
+    {
+      "word": "able",
+      "partOfSpeech": "adjective",
+      "syllables": ["a", "ble"],
+      "definition": "Having the power or skill to do something.",
+      "example": "She is able to read the whole story."
+    },
+    {
+      "word": "about",
+      "partOfSpeech": "preposition",
+      "syllables": ["a", "bout"],
+      "definition": "Connected with or relating to something.",
+      "example": "We read a story about animals."
+    },
+    {
+      "word": "above",
+      "partOfSpeech": "preposition",
+      "syllables": ["a", "bove"],
+      "definition": "In a higher place than something else.",
+      "example": "The picture hung above the desk."
+    },
+    {
+      "word": "accept",
+      "partOfSpeech": "verb",
+      "syllables": ["ac", "cept"],
+      "definition": "To agree to take something that is offered.",
+      "example": "She accepted the teacher's help."
+    }
+  ]
+}
