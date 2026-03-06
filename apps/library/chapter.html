@@ -158,6 +158,18 @@
       cursor:pointer;
     }
 
+    .dictionary-entry{
+      margin-bottom:18px;
+      padding:12px;
+      background:#fff;
+      border:1px solid #eee;
+      border-radius:12px;
+    }
+
+    .dictionary-entry h3{
+      margin:0 0 8px 0;
+    }
+
     @media (max-width: 820px){
       .wrap{
         display:flex;
@@ -214,7 +226,7 @@
     </div>
 
     <div class="card">
-      <div class="scrollWork">
+      <div class="scrollWork" id="worksheetBody">
         <h2 style="margin-top:0;">Worksheet</h2>
         <div class="small">Type your answers here. They save on this device.</div>
 
@@ -260,6 +272,7 @@
   const dictBtn = document.getElementById("dictBtn");
   const nextChapterBtn = document.getElementById("nextChapterBtn");
 
+  const worksheetBody = document.getElementById("worksheetBody");
   const worksheetTitleEl = document.getElementById("worksheetTitle");
   const worksheetPromptEl = document.getElementById("worksheetPrompt");
   const wsBox = document.getElementById("wsBox");
@@ -321,11 +334,13 @@
     const saved = localStorage.getItem(wsKey());
     if(saved){
       wsBox.value = saved;
+    } else {
+      wsBox.value = "";
     }
 
-    wsBox.addEventListener("input", () => {
+    wsBox.oninput = () => {
       localStorage.setItem(wsKey(), wsBox.value);
-    });
+    };
   }
 
   function getNextChapter(current, chapters){
@@ -335,10 +350,7 @@
         const ma = /^ch(\d+)$/i.exec(a);
         const mb = /^ch(\d+)$/i.exec(b);
 
-        if (ma && mb) {
-          return Number(ma[1]) - Number(mb[1]);
-        }
-
+        if (ma && mb) return Number(ma[1]) - Number(mb[1]);
         if (ma) return -1;
         if (mb) return 1;
 
@@ -371,6 +383,69 @@
 
   async function loadChapter(){
     try{
+      if (bookId === "dictionary") {
+        const res = await fetch("./data/dictionary.json", { cache: "no-store" });
+        if (!res.ok) throw new Error("Could not fetch dictionary.json (" + res.status + ")");
+
+        const data = await res.json();
+
+        chapterTitleEl.textContent = data.title || "Dictionary";
+        chapterMetaEl.textContent = "A–D";
+        chapterProgressText.textContent = "";
+        chapterProgressBar.style.width = "0%";
+        nextChapterBtn.style.display = "none";
+        howBtn.style.display = "none";
+
+        recBtn.style.display = "none";
+        stopRecBtn.style.display = "none";
+        playBtn.style.display = "none";
+        clearBtn.style.display = "none";
+        downloadBtn.style.display = "none";
+        recStatus.textContent = "";
+        player.style.display = "none";
+
+        const prologueTitle = data.prologue?.title || "How to Use This Dictionary";
+        const intro = data.prologue?.intro || "";
+        const parts = Array.isArray(data.prologue?.parts) ? data.prologue.parts : [];
+        const searchHelp = data.prologue?.searchHelp || "";
+        const words = Array.isArray(data.words) ? data.words : [];
+
+        chapterTextEl.innerHTML = `
+          <h2>${escapeHtml(prologueTitle)}</h2>
+          <p>${escapeHtml(intro)}</p>
+
+          ${parts.map(part => `
+            <p><strong>${escapeHtml(part.name)}:</strong> ${escapeHtml(part.explanation)}</p>
+          `).join("")}
+
+          <p><strong>Search:</strong> ${escapeHtml(searchHelp)}</p>
+
+          <hr style="margin: 24px 0;">
+
+          ${words.map(entry => `
+            <div class="dictionary-entry">
+              <h3>${escapeHtml(entry.word || "")}</h3>
+              <p><strong>Part of Speech:</strong> ${escapeHtml(entry.partOfSpeech || "-")}</p>
+              <p><strong>Syllables:</strong> ${
+                Array.isArray(entry.syllables)
+                  ? entry.syllables.map(s => escapeHtml(s)).join(" - ")
+                  : "-"
+              }</p>
+              <p><strong>Definition:</strong> ${escapeHtml(entry.definition || "-")}</p>
+              <p><strong>Example:</strong> ${escapeHtml(entry.example || "-")}</p>
+            </div>
+          `).join("")}
+        `;
+
+        worksheetBody.innerHTML = `
+          <h2 style="margin-top:0;">Dictionary</h2>
+          <div class="small">Search will be added next. For now, scroll and read the entries.</div>
+        `;
+
+        setStatus("Ready");
+        return;
+      }
+
       const res = await fetch("./data/books.json", { cache: "no-store" });
       if(!res.ok) throw new Error("Could not fetch books.json (" + res.status + ")");
       const data = await res.json();
