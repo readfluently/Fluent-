@@ -466,31 +466,71 @@
   }
 },
 "ch5": {
-  "title": "Chapter 5: Thinking Like a Critical Reader",
+  "title": "Chapter 5: Thinking Deeply About What You Read",
   "content": [
-    "Reading is not only about understanding words.",
-    "Strong readers also think carefully about ideas.",
+    "Understanding the words in a text is important, but strong readers do something more.",
+    "They think carefully about the ideas they read.",
     "This skill is called [[critical thinking]].",
-    "Critical thinkers ask questions while reading.",
-    "They ask: Is this information true? Why does the author say this?",
-    "Nomsa practiced critical thinking when reading a news article.",
-    "She asked herself what evidence supported the author's idea.",
-    "Vonani also learned to question information.",
-    "He discovered that asking questions helped him understand the text more deeply.",
-    "Critical thinking helps readers become independent learners.",
-    "It helps you evaluate ideas instead of accepting everything automatically."
+    "Critical thinking means examining information carefully before accepting it as true.",
+    "When readers think critically, they ask questions about the text.",
+    "For example, they might ask: Is this information reliable? What evidence supports this idea?",
+    "Critical readers also try to understand the author's [[purpose]].",
+    "The author’s purpose is the reason why the writer created the text.",
+    "Sometimes authors write to inform readers by sharing knowledge or facts.",
+    "Other times authors write to entertain readers with stories or interesting ideas.",
+    "Sometimes writers even try to persuade readers to believe something or take action.",
+    "Understanding the author’s purpose helps readers interpret the text more clearly.",
+    "Another important skill in critical reading is looking for [[evidence]].",
+    "Evidence is the information that supports an idea or claim.",
+    "Strong readers look for examples, facts, and explanations that support the author’s ideas.",
+    "When readers search for evidence, they become active thinkers instead of passive readers.",
+    "Critical readers also learn to recognise the difference between a [[fact]] and an [[opinion]].",
+    "A fact is something that can be proven true with evidence.",
+    "An opinion is a belief or feeling that someone has about a topic.",
+    "For example, the statement 'Water boils at 100 degrees Celsius' is a fact.",
+    "But the statement 'Summer is the best season' is an opinion.",
+    "Critical readers learn to recognise these differences while reading.",
+    "This helps them understand the text more clearly and think independently.",
+    "Critical thinking does not mean arguing with everything you read.",
+    "Instead, it means thinking carefully about ideas and understanding them fully.",
+    "When readers ask questions, search for evidence, and think about the author’s purpose, their understanding becomes deeper.",
+    "Reading then becomes a powerful tool for learning and discovery."
   ],
   "glossary": {
     "critical thinking": {
-      "definition": "Carefully analysing information before deciding what to believe.",
-      "pronunciation": "KRIT-ih-kul THINK-ing",
-      "simpleMeaning": "Thinking carefully about ideas.",
-      "example": "Critical thinking helps readers understand information better."
+      "definition": "Carefully analysing and evaluating information before accepting it as true.",
+      "pronunciation": "KRIT-i-kuhl THING-king",
+      "simpleMeaning": "Thinking carefully about information.",
+      "example": "Critical thinking helps readers evaluate ideas in a text."
+    },
+    "purpose": {
+      "definition": "The reason why a writer creates a text.",
+      "pronunciation": "PUR-puhs",
+      "simpleMeaning": "Why something was written.",
+      "example": "The author's purpose was to inform readers about climate change."
+    },
+    "evidence": {
+      "definition": "Facts, examples, or information that support an idea.",
+      "pronunciation": "EV-i-duhns",
+      "simpleMeaning": "Proof that supports an idea.",
+      "example": "The author used evidence to explain the importance of recycling."
+    },
+    "fact": {
+      "definition": "A statement that can be proven true with evidence.",
+      "pronunciation": "FAKT",
+      "simpleMeaning": "Something that is true and can be proven.",
+      "example": "Water freezes at zero degrees Celsius is a fact."
+    },
+    "opinion": {
+      "definition": "A belief or feeling that someone has about something.",
+      "pronunciation": "uh-PIN-yuhn",
+      "simpleMeaning": "What someone thinks or believes.",
+      "example": "My opinion is that reading is the best hobby."
     }
   },
   "worksheet": {
-    "title": "Question the Text",
-    "prompt": "Write one question you would ask about a paragraph you just read."
+    "title": "Thinking About Ideas",
+    "prompt": "1. In your own words, explain what critical thinking means.\n\n2. What is the difference between a fact and an opinion? Write one example of each.\n\n3. Why is it important for readers to look for evidence when reading a text?"
   }
 },
 
