@@ -115,7 +115,28 @@
   }
 
   async function loadBook(){
-    try{
+    try{,
+      if (bookId === "dictionary") {
+  const res = await fetch("./data/dictionary.json", { cache: "no-store" });
+  if (!res.ok) throw new Error("Could not fetch dictionary.json (" + res.status + ")");
+
+  const data = await res.json();
+
+  bookTitleEl.textContent = data.title || "Dictionary";
+  bookMetaEl.textContent = "Search and explore words.";
+  coverEl.src = "../../shared/assets/images/books.png";
+
+  howBtn.style.display = "none";
+
+  chaptersListEl.innerHTML = `
+    <a class="card" href="chapter.html?book=dictionary&chapter=main">
+      <div class="title">Open Dictionary</div>
+    </a>
+  `;
+
+  setStatus("Ready");
+  return;
+}
       const res = await fetch("./data/books.json", { cache:"no-store" });
       if(!res.ok) throw new Error("Could not fetch books.json ("+res.status+")");
       const data = await res.json();
