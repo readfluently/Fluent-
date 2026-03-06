@@ -366,6 +366,18 @@
       const ch = book.chapters?.[chapterId];
       if(!ch) throw new Error("Chapter not found: " + chapterId);
 
+      const orderedKeys = getOrderedChapterKeys(book.chapters);
+const currentIndex = orderedKeys.indexOf(chapterId);
+
+if(currentIndex >= 0){
+  const chapterNumber = currentIndex + 1;
+  const totalChapters = orderedKeys.length;
+  const percent = (chapterNumber / totalChapters) * 100;
+
+  chapterProgressText.textContent = `Chapter ${chapterNumber} of ${totalChapters}`;
+  chapterProgressBar.style.width = `${percent}%`;
+}
+
       chapterTitleEl.textContent = ch.title || chapterId;
       chapterMetaEl.textContent = `${book.title || bookId} • ${chapterId}`;
 
