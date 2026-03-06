@@ -686,29 +686,68 @@
     "title": "How the Brain Learns",
     "prompt": "1. In your own words, explain what neuroplasticity means.\n\n2. Why does practice help the brain improve reading skills?\n\n3. The chapter says learning is like playing a new game. Explain what this comparison means."
   }
-}
+},
 "ch8": {
-  "title": "Chapter 8: Building Reading Fluency",
+  "title": "Chapter 8: Thinking About Your Thinking",
   "content": [
-    "Fluent readers read smoothly and understand what they read.",
-    "Fluency develops through practice.",
-    "Reading aloud can help improve fluency.",
-    "Nomsa practiced reading aloud to improve her confidence.",
-    "Vonani recorded himself reading and listened to the recording.",
-    "This helped him notice where he could improve.",
-    "Fluent reading allows the brain to focus more on meaning than on decoding words."
+    "By now you have learned many important reading skills.",
+    "You have learned how to stay engaged, how to find meaning, how to use reading strategies, and how practice helps your brain grow.",
+    "In this chapter you will learn a powerful skill called [[metacognition]].",
+    "Metacognition means thinking about your own thinking.",
+    "When readers use metacognition, they become aware of how their mind works while reading.",
+    "Instead of reading automatically, they pay attention to their understanding.",
+    "Good readers often pause and ask themselves questions while reading.",
+    "For example, they may ask: Do I understand this paragraph?",
+    "If the answer is yes, they continue reading.",
+    "If the answer is no, they stop and fix the problem.",
+    "This process is sometimes called [[self-monitoring]].",
+    "Self-monitoring means checking whether the text makes sense to you.",
+    "When readers notice confusion, they can use strategies to repair their understanding.",
+    "One helpful strategy is [[rereading]].",
+    "Rereading means reading the sentence or paragraph again more carefully.",
+    "Often the meaning becomes clearer the second time.",
+    "Another helpful strategy is [[slowing down]].",
+    "When a text becomes difficult, slowing your reading speed can help your brain process the ideas more carefully.",
+    "Readers can also use the glossary or ask someone for help when they encounter unfamiliar words.",
+    "All these actions are examples of metacognition.",
+    "Metacognitive readers guide their own learning.",
+    "They notice when they understand and when they do not.",
+    "They adjust their strategies to improve understanding.",
+    "This skill is very powerful because it allows readers to become independent learners.",
+    "Instead of waiting for someone else to explain the text, they take control of their own understanding.",
+    "The more you practise metacognition, the more confident you become as a reader.",
+    "You begin to understand how your brain learns best.",
+    "This awareness helps you improve not only in reading but in many other subjects as well."
   ],
   "glossary": {
-    "fluency": {
-      "definition": "Reading smoothly, accurately, and with expression.",
-      "pronunciation": "FLOO-en-see",
-      "simpleMeaning": "Reading easily and naturally.",
-      "example": "Practice helped improve her reading fluency."
+    "metacognition": {
+      "definition": "Thinking about how you think and learn.",
+      "pronunciation": "met-uh-kog-NISH-uhn",
+      "simpleMeaning": "Being aware of your own thinking.",
+      "example": "Metacognition helps readers notice when they do not understand a paragraph."
+    },
+    "self-monitoring": {
+      "definition": "Checking your own understanding while reading.",
+      "pronunciation": "self MON-uh-tuh-ring",
+      "simpleMeaning": "Watching your own understanding.",
+      "example": "Self-monitoring helped me realise I needed to reread the sentence."
+    },
+    "rereading": {
+      "definition": "Reading a sentence or paragraph again to improve understanding.",
+      "pronunciation": "ree-REE-ding",
+      "simpleMeaning": "Reading something again carefully.",
+      "example": "Rereading helped me understand the difficult paragraph."
+    },
+    "slowing down": {
+      "definition": "Reducing your reading speed to understand difficult information better.",
+      "pronunciation": "SLOH-ing DOWN",
+      "simpleMeaning": "Reading more slowly to understand.",
+      "example": "Slowing down helped me understand the complex explanation."
     }
   },
   "worksheet": {
-    "title": "Fluency Practice",
-    "prompt": "Read a paragraph aloud and focus on reading smoothly and clearly."
+    "title": "Thinking About Your Thinking",
+    "prompt": "1. In your own words, explain what metacognition means.\n\n2. Why is self-monitoring important when reading?\n\n3. Describe one strategy you could use when a paragraph does not make sense."
   }
 },
 
