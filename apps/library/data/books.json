@@ -145,10 +145,113 @@
             "title": "Paraphrasing",
             "prompt": "Write the main idea of Chapter 1 in your own words. Then write 2 habits you will use to stay engaged when you read."
           }
-        }
-      }
+        },
+        "ch2": 
+        {"title": "Chapter 2: Understanding Meaning While You Read",
+  "content": [
+    "Welcome back!",
+    "In Chapter 1, you learned how to stay [[engaged]] while reading. You learned that strong readers do not simply move their eyes across the page. They think about what the words mean.",
+    "Now we are going to learn something very important.",
+    "We are going to learn how to understand the [[meaning]] of what we read.",
+    "Reading is not only about saying the words correctly. Reading is about understanding the message inside the words. When you understand the message, you can learn new ideas, imagine new worlds, and discover new knowledge.",
+    "Think of reading like opening a treasure chest. The words are the key, but the meaning is the treasure inside.",
+    "Strong readers always search for meaning.",
+    "When you read a paragraph, ask yourself a simple question:",
+    "What is this mostly about?",
+    "The answer to that question is called the [[main idea]].",
+    "The main idea is the most important point the writer wants you to understand.",
+    "Writers often add extra information to help explain their main idea. These are called [[supporting details]]. Supporting details give examples, explanations, or facts that help the reader understand the main idea better.",
+    "Let’s look at a simple example.",
+    "Imagine you read this short paragraph:",
+    "Dogs are wonderful pets. They are friendly, loyal, and enjoy spending time with people. Many dogs also protect their families and homes.",
+    "What is the paragraph mostly about?",
+    "The main idea is that dogs are wonderful pets.",
+    "The other sentences explain why dogs are wonderful pets. These sentences are the supporting details.",
+    "Good readers train their brains to look for the main idea while they read.",
+    "Sometimes the writer tells you the main idea directly. Other times you must figure it out by thinking carefully about the sentences.",
+    "This is where your brain becomes very powerful.",
+    "Remember the idea from Chapter 1 called engagement? When you stay engaged, your brain stays active and alert. This helps you notice the important ideas in the text.",
+    "Now let’s see how this works for two learners.",
+    "Nomsa reads a short paragraph about recycling. After reading it, she pauses for a moment and asks herself:",
+    "What was the main idea?",
+    "She thinks carefully and then says:",
+    "The paragraph explains why recycling helps protect the environment.",
+    "Nomsa has just explained the idea in her own words.",
+    "This skill is called [[paraphrasing]].",
+    "Paraphrasing means saying the same idea using your own words.",
+    "Now let’s meet another learner.",
+    "His name is Vonani.",
+    "At first, Vonani found reading difficult. He could read many words, but when his teacher asked him what the paragraph meant, he often felt confused.",
+    "Sometimes Vonani reached the end of a page and realised he did not understand what he had just read.",
+    "His teacher showed him a helpful strategy.",
+    "She said, Vonani, after every paragraph, pause and think. Ask yourself what the paragraph is mostly about.",
+    "Vonani started trying this.",
+    "At first it felt slow, but something interesting began to happen.",
+    "The more he practised stopping, thinking, and explaining ideas in his own words, the more his understanding improved.",
+    "Vonani discovered that strong readers do not rush through reading. They take time to think about the meaning.",
+    "Good readers often use a habit called [[self-checking]].",
+    "Self-checking means noticing when something does not make sense and taking a moment to fix it.",
+    "For example, if you read a paragraph and cannot explain it, you can:",
+    "Reread the paragraph.",
+    "Look for important clues in the sentences.",
+    "Ask yourself what the text is mostly about.",
+    "These simple steps help your brain build understanding.",
+    "Just like Vonani, you can train your brain to find meaning while reading.",
+    "Remember these three powerful steps:",
+    "First, read the paragraph carefully.",
+    "Second, ask yourself what the paragraph is mostly about.",
+    "Third, explain the idea in your own words.",
+    "When you practise these steps often, your brain becomes stronger at understanding text.",
+    "Reading then becomes more enjoyable because you are not just reading words — you are discovering ideas.",
+    "In the worksheet for this chapter, you will practise identifying the main idea and explaining it in your own words.",
+    "Let’s continue your reading journey."
+  ],
+  "glossary": {
+    "engaged": {
+      "definition": "Being focused and mentally involved while reading or learning.",
+      "pronunciation": "en-GAYJD",
+      "simpleMeaning": "Paying close attention and thinking while you read.",
+      "example": "I am engaged when I concentrate and think about the meaning."
     },
-    
+    "meaning": {
+      "definition": "The message or idea that the writer is trying to communicate.",
+      "pronunciation": "MEE-ning",
+      "simpleMeaning": "What the text is saying.",
+      "example": "I stopped reading to think about the meaning of the paragraph."
+    },
+    "main idea": {
+      "definition": "The most important point the writer wants the reader to understand.",
+      "pronunciation": "MAYN eye-DEE-uh",
+      "simpleMeaning": "What the paragraph is mostly about.",
+      "example": "The main idea is the biggest message in the paragraph."
+    },
+    "supporting details": {
+      "definition": "Extra information that explains or proves the main idea.",
+      "pronunciation": "suh-POR-ting DEE-taylz",
+      "simpleMeaning": "Sentences that help explain the main idea.",
+      "example": "Supporting details give examples that make the main idea clearer."
+    },
+    "paraphrasing": {
+      "definition": "Explaining an idea in your own words.",
+      "pronunciation": "PAIR-uh-FRAY-zing",
+      "simpleMeaning": "Saying it again in a new way.",
+      "example": "Paraphrasing helps me check if I understood what I read."
+    },
+    "self-checking": {
+      "definition": "Noticing when something does not make sense and taking steps to understand it.",
+      "pronunciation": "self CHEK-ing",
+      "simpleMeaning": "Checking your own understanding.",
+      "example": "I used self-checking and reread the paragraph."
+    }
+  },
+ "worksheet": {
+  "title": "Finding the Main Idea",
+  "prompt": "1) In your own words, explain the main idea of this chapter.\n\n2) Vonani improved his reading by using a strategy. What strategy helped him understand better?\n\n3) Write one sentence explaining why finding the main idea helps readers understand a text."
+}
+}
+}
+},
+"tech-journey": {
     "tech-journey": {
       "title": "Tech Journey",
       "coverImage": "../../shared/assets/images/tech-journey.png",
