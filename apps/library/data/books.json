@@ -249,691 +249,681 @@
             "prompt": "1) In your own words, explain the main idea of this chapter.\n\n2) Vonani improved his reading by using a strategy. What strategy helped him understand better?\n\n3) Write one sentence explaining why finding the main idea helps readers understand a text."
           }
         },
-"ch3": {
-  "title": "Chapter 3: Learning From Listening",
-  "content": [
-    "Before children learn to read on their own, they first learn by [[listening]].",
-    "Think about when you were very young. Long before you could read words in a book, you were already learning language. You listened to people speaking around you. You listened to stories, conversations, instructions, and questions.",
-    "Listening is one of the first ways the brain learns how language works.",
-    "When you listen carefully, your brain begins to notice [[language patterns]]. You hear how words sound. You hear how sentences are formed. You hear how ideas are connected.",
-    "All of this information helps prepare your brain for reading.",
-    "In fact, strong readers are often strong listeners first.",
-    "When someone reads a story aloud, your brain does something very interesting. Even though you are not reading the words yourself, your brain still processes the language. It still builds meaning. It still creates images in your mind.",
-    "This means that listening can help train your brain to understand stories and ideas.",
-    "Imagine listening to someone read a story about a forest. As you listen, you might imagine tall trees, birds singing, and sunlight shining through the leaves. Even though you are only hearing the story, your brain is actively building a picture.",
-    "This ability to create pictures in your mind is called [[visualising]].",
-    "Visualising is a powerful reading skill. When readers imagine what they are hearing or reading, they understand the text more deeply.",
-    "Listening also helps you learn how [[fluent reading]] sounds.",
-    "Fluent reading means reading smoothly, clearly, and with [[expression]]. When someone reads fluently, the words sound natural and meaningful, almost like a conversation.",
-    "If you listen to fluent reading often, your brain learns what good reading sounds like. Later, when you read on your own, you will naturally try to read in a similar way.",
-    "This is why listening to someone read aloud is such a powerful learning tool.",
-    "Teachers often use [[modelled reading]] by reading a text aloud to learners. While listening, learners can follow the words in the text. This helps connect the sound of the words with the written words on the page.",
-    "Your brain is making important connections during this process.",
-    "You hear the words.",
-    "You see the words.",
-    "You understand the meaning.",
-    "These connections help strengthen your reading ability.",
-    "Listening can also help you understand difficult texts.",
-    "Sometimes when you read a challenging paragraph silently, it may feel confusing. But when you hear someone read the same paragraph aloud, the meaning may suddenly become clearer.",
-    "That happens because fluent reading adds rhythm, pauses, and emphasis. These features help the brain organise information.",
-    "Listening also allows you to focus more on understanding instead of struggling with difficult words.",
-    "This does not mean you should always depend on someone else to read for you. Instead, listening should be used as a learning tool that helps you improve your own reading skills.",
-    "One helpful [[strategy]] is called [[listen and follow]].",
-    "In this strategy, you listen to someone read while your eyes follow the words in the book. This helps your brain connect spoken language with written language.",
-    "Another helpful strategy is listen first, then read.",
-    "In this strategy, you first listen to a text being read aloud. After that, you read the same text on your own. Because your brain already understands the story or information, reading becomes easier.",
-    "You may notice that many successful learners enjoy listening to audiobooks, podcasts, and recorded stories. These activities expose the brain to new [[vocabulary]], ideas, and sentence structure.",
-    "Vocabulary means the number of words you know and understand.",
-    "The more words you understand, the easier reading becomes. When readers recognise many words quickly, they can focus more on [[comprehension]].",
-    "Listening can therefore strengthen both vocabulary and comprehension.",
-    "However, listening alone is not enough to become a strong reader.",
-    "You must combine listening with active reading practice.",
-    "Think of listening as training for your brain. It prepares your mind to understand language, but reading practice builds the full skill.",
-    "Strong learners use both listening and reading together.",
-    "When you listen carefully and then practise reading, your brain becomes better at recognising words, understanding sentences, and remembering ideas.",
-    "This process strengthens your reading comprehension.",
-    "Listening is therefore not just something we do every day without thinking. It is an important learning skill that helps build the [[foundation]] for reading.",
-    "The more carefully you listen, the more your brain learns about language.",
-    "And the more your brain understands language, the easier reading becomes."
-  ],
-  "glossary": {
-    "listening": {
-      "definition": "Paying careful attention to spoken words in order to understand them.",
-      "pronunciation": "LIS-uh-ning",
-      "simpleMeaning": "Hearing and thinking about what someone says.",
-      "example": "Listening to stories helps learners understand language."
-    },
-    "language patterns": {
-      "definition": "The common ways words and sentences are used in a language.",
-      "pronunciation": "LANG-gwij PAT-ernz",
-      "simpleMeaning": "The usual way language works.",
-      "example": "Children learn language patterns by listening to others speak."
-    },
-    "visualising": {
-      "definition": "Creating pictures in your mind while hearing or reading a story.",
-      "pronunciation": "VIZH-oo-uh-ly-zing",
-      "simpleMeaning": "Imagining what the words describe.",
-      "example": "I was visualising the forest while the teacher read the story."
-    },
-    "fluent reading": {
-      "definition": "Reading smoothly, clearly, and with natural expression.",
-      "pronunciation": "FLOO-ent REE-ding",
-      "simpleMeaning": "Reading in a way that sounds like normal speaking.",
-      "example": "Fluent reading makes it easier for others to understand the story."
-    },
-    "expression": {
-      "definition": "Changing your voice to match the meaning and emotion of the text.",
-      "pronunciation": "ik-SPRESH-uhn",
-      "simpleMeaning": "Using feeling in your voice while reading.",
-      "example": "She read the dialogue with expression, making the story more exciting."
-    },
-    "modelled reading": {
-      "definition": "When a teacher or skilled reader demonstrates fluent reading for learners.",
-      "pronunciation": "MOD-uhld REE-ding",
-      "simpleMeaning": "A teacher showing how good reading sounds.",
-      "example": "Modelled reading helps learners hear how fluent reading should sound."
-    },
-    "strategy": {
-      "definition": "A plan or method used to help achieve a goal.",
-      "pronunciation": "STRAT-uh-jee",
-      "simpleMeaning": "A smart way to solve a problem or learn something.",
-      "example": "Good readers use strategies to understand difficult texts."
-    },
-    "listen and follow": {
-      "definition": "A reading strategy where you listen to someone read while following the words in the text.",
-      "pronunciation": "LIS-uhn and FOL-oh",
-      "simpleMeaning": "Listening while your eyes track the words.",
-      "example": "The class used listen and follow to practise reading fluency."
-    },
-    "vocabulary": {
-      "definition": "The collection of words a person knows and understands.",
-      "pronunciation": "voh-KAB-yuh-lair-ee",
-      "simpleMeaning": "The number of words you know.",
-      "example": "Listening to stories helps build your vocabulary."
-    },
-    "comprehension": {
-      "definition": "The ability to understand what you read or hear.",
-      "pronunciation": "kom-pri-HEN-shuhn",
-      "simpleMeaning": "Understanding the meaning of the text.",
-      "example": "Good readers focus on comprehension, not just saying the words."
-    },
-    "foundation": {
-      "definition": "The basic skills that support further learning.",
-      "pronunciation": "fown-DAY-shuhn",
-      "simpleMeaning": "The strong base something is built on.",
-      "example": "Listening skills form the foundation of reading development."
-    }
-  },
-  "worksheet": {
-    "title": "Listening and Understanding",
-    "prompt": "1. In your own words, explain why listening is important for learning how to read.\n\n2. Think about a story you have heard before. What pictures did you imagine in your mind while listening?\n\n3. Why does listening to fluent reading help learners become better readers?\n\n4. How can listening to stories help a learner build a larger vocabulary?\n\n5. Which strategy do you think would help you more when learning a difficult text?\n- Listen and follow\n- Listen first, then read\n\nExplain why you chose that strategy."
-  }
-},       
-"ch4": {
-  "title": "Chapter 4: Using Reading Strategies",
-  "content": [
-    "When strong readers open a book, they do not simply start reading and hope to understand everything. Instead, they use helpful tools called [[strategy|strategies]].",
-    "A [[strategy]] is a plan that helps you solve a problem or reach a goal.",
-    "In reading, strategies help your brain understand the meaning of the text.",
-    "Good readers use strategies before reading, during reading, and after reading.",
-    "These strategies help the brain stay focused and organised.",
-    "Let us explore some of the most powerful strategies that skilled readers use.",
-    "Before you begin reading, take a moment to look at the title, headings, and pictures.",
-    "Ask yourself: What might this text be about?",
-    "This strategy is called [[previewing]].",
-    "Previewing prepares your brain for the information that is about to come. When the brain already has an idea of what the text might explain, understanding becomes easier.",
-    "Previewing is like looking at a map before starting a journey.",
-    "While reading, good readers often make guesses about what might happen next or what the next paragraph might explain.",
-    "This is called [[predicting]].",
-    "Predicting keeps your mind actively involved in the text. Your brain begins searching for clues to confirm whether your prediction is correct.",
-    "When readers predict, they are not just reading words. They are thinking.",
-    "Another powerful strategy is [[questioning]].",
-    "Good readers ask questions while they read.",
-    "For example: What is the main idea of this paragraph? Why did this happen? What is the author trying to explain?",
-    "These questions help the brain focus on meaning.",
-    "When readers ask questions, they turn reading into an active process instead of a passive one.",
-    "Sometimes readers reach a sentence that does not make sense.",
-    "Strong readers do not ignore confusion. Instead, they use a strategy called [[clarifying]].",
-    "Clarifying means stopping and fixing the problem.",
-    "You can clarify by rereading the sentence, looking for clues in the next sentence, or checking the glossary for new words.",
-    "Clarifying helps the brain stay on track when reading becomes difficult.",
-    "After finishing a paragraph or a section, strong readers pause and think: What was the most important idea here?",
-    "This strategy is called [[summarising]].",
-    "Summarising means explaining the most important idea in your own words.",
-    "When you summarise, your brain organises information and remembers it better.",
-    "All these strategies work together.",
-    "Good readers preview before reading.",
-    "They predict and ask questions while reading.",
-    "They clarify confusing parts.",
-    "And they summarise important ideas.",
-    "These strategies turn reading into an active process where your brain is constantly thinking and learning.",
-    "The more you practise these strategies, the stronger your reading [[comprehension]] becomes.",
-    "Reading then becomes easier, more enjoyable, and more meaningful."
-  ],
-  "glossary": {
-    "strategy": {
-      "definition": "A plan or method used to achieve a goal or solve a problem.",
-      "pronunciation": "STRAT-uh-jee",
-      "simpleMeaning": "A smart way to do something.",
-      "example": "Good readers use strategies to understand difficult texts."
-    },
-    "strategies": {
-      "definition": "Plans or methods used to achieve goals or solve problems.",
-      "pronunciation": "STRAT-uh-jeez",
-      "simpleMeaning": "Smart ways to do things.",
-      "example": "Skilled readers use strategies before, during, and after reading."
-    },
-    "previewing": {
-      "definition": "Looking at the title, headings, or pictures before reading to prepare your brain for the text.",
-      "pronunciation": "PREE-vyoo-ing",
-      "simpleMeaning": "Taking a quick look before reading.",
-      "example": "Previewing the chapter helped me understand what the text might explain."
-    },
-    "predicting": {
-      "definition": "Making a thoughtful guess about what might happen next in a text.",
-      "pronunciation": "pri-DIK-ting",
-      "simpleMeaning": "Guessing what comes next using clues.",
-      "example": "I was predicting what the character would do next in the story."
-    },
-    "questioning": {
-      "definition": "Asking yourself questions while reading to help you understand the text.",
-      "pronunciation": "KWES-chuh-ning",
-      "simpleMeaning": "Asking questions about what you read.",
-      "example": "Questioning helped me understand the main idea of the paragraph."
-    },
-    "clarifying": {
-      "definition": "Stopping to fix confusion when a sentence or idea does not make sense.",
-      "pronunciation": "KLAR-uh-fy-ing",
-      "simpleMeaning": "Making something clearer when you do not understand.",
-      "example": "I used clarifying by rereading the sentence."
-    },
-    "summarising": {
-      "definition": "Explaining the most important idea of a text in your own words.",
-      "pronunciation": "SUM-uh-ry-zing",
-      "simpleMeaning": "Saying the main idea briefly.",
-      "example": "Summarising helped me remember the important information."
-    },
-    "comprehension": {
-      "definition": "The ability to understand what you read.",
-      "pronunciation": "kom-pri-HEN-shuhn",
-      "simpleMeaning": "Understanding the meaning of a text.",
-      "example": "Reading strategies help improve comprehension."
-    }
-  },
-  "worksheet": {
-    "title": "Using Reading Strategies",
-    "prompt": "1. In your own words, explain what a reading strategy is and why strategies help readers understand texts.\n\n2. Choose one strategy from this chapter: previewing, predicting, questioning, clarifying, or summarising. Explain how that strategy could help you understand a difficult paragraph.\n\n3. Which reading strategy do you think will help you the most in the future? Explain why."
-  }
-},
-"ch5": {
-  "title": "Chapter 5: Thinking Deeply About What You Read",
-  "content": [
-    "Understanding the words in a text is important, but strong readers do something more.",
-    "They think carefully about the ideas they read.",
-    "This skill is called [[critical thinking]].",
-    "Critical thinking means examining information carefully before accepting it as true.",
-    "When readers think critically, they ask questions about the text.",
-    "For example, they might ask: Is this information reliable? What evidence supports this idea?",
-    "Critical readers also try to understand the author's [[purpose]].",
-    "The author’s purpose is the reason why the writer created the text.",
-    "Sometimes authors write to inform readers by sharing knowledge or facts.",
-    "Other times authors write to entertain readers with stories or interesting ideas.",
-    "Sometimes writers even try to persuade readers to believe something or take action.",
-    "Understanding the author’s purpose helps readers interpret the text more clearly.",
-    "Another important skill in critical reading is looking for [[evidence]].",
-    "Evidence is the information that supports an idea or claim.",
-    "Strong readers look for examples, facts, and explanations that support the author’s ideas.",
-    "When readers search for evidence, they become active thinkers instead of passive readers.",
-    "Critical readers also learn to recognise the difference between a [[fact]] and an [[opinion]].",
-    "A fact is something that can be proven true with evidence.",
-    "An opinion is a belief or feeling that someone has about a topic.",
-    "For example, the statement 'Water boils at 100 degrees Celsius' is a fact.",
-    "But the statement 'Summer is the best season' is an opinion.",
-    "Critical readers learn to recognise these differences while reading.",
-    "This helps them understand the text more clearly and think independently.",
-    "Critical thinking does not mean arguing with everything you read.",
-    "Instead, it means thinking carefully about ideas and understanding them fully.",
-    "When readers ask questions, search for evidence, and think about the author’s purpose, their understanding becomes deeper.",
-    "Reading then becomes a powerful tool for learning and discovery."
-  ],
-  "glossary": {
-    "critical thinking": {
-      "definition": "Carefully analysing and evaluating information before accepting it as true.",
-      "pronunciation": "KRIT-i-kuhl THING-king",
-      "simpleMeaning": "Thinking carefully about information.",
-      "example": "Critical thinking helps readers evaluate ideas in a text."
-    },
-    "purpose": {
-      "definition": "The reason why a writer creates a text.",
-      "pronunciation": "PUR-puhs",
-      "simpleMeaning": "Why something was written.",
-      "example": "The author's purpose was to inform readers about climate change."
-    },
-    "evidence": {
-      "definition": "Facts, examples, or information that support an idea.",
-      "pronunciation": "EV-i-duhns",
-      "simpleMeaning": "Proof that supports an idea.",
-      "example": "The author used evidence to explain the importance of recycling."
-    },
-    "fact": {
-      "definition": "A statement that can be proven true with evidence.",
-      "pronunciation": "FAKT",
-      "simpleMeaning": "Something that is true and can be proven.",
-      "example": "Water freezes at zero degrees Celsius is a fact."
-    },
-    "opinion": {
-      "definition": "A belief or feeling that someone has about something.",
-      "pronunciation": "uh-PIN-yuhn",
-      "simpleMeaning": "What someone thinks or believes.",
-      "example": "My opinion is that reading is the best hobby."
-    }
-  },
-  "worksheet": {
-    "title": "Thinking About Ideas",
-    "prompt": "1. In your own words, explain what critical thinking means.\n\n2. What is the difference between a fact and an opinion? Write one example of each.\n\n3. Why is it important for readers to look for evidence when reading a text?"
-  }
-},
-
-"ch6": {
-  "title": "Chapter 6: Reading Fluently",
-  "content": [
-    "As your reading skills improve, you begin to notice something important.",
-    "Reading starts to feel smoother and easier.",
-    "This ability is called [[fluency]].",
-    "Fluency means reading accurately, smoothly, and with expression.",
-    "When readers are fluent, they do not struggle with every word.",
-    "Instead, their brain recognises many words quickly.",
-    "This allows the brain to focus on understanding the [[meaning]] of the text.",
-    "Fluency is important because it connects word reading with [[comprehension]].",
-    "If a reader struggles with every word, the brain becomes busy trying to decode the words.",
-    "When this happens, it becomes harder to understand the ideas in the text.",
-    "But when reading becomes fluent, the brain has more energy to think about the ideas and messages in the text.",
-    "Fluent readers also pay attention to [[expression]].",
-    "Expression means reading with the correct tone, pauses, and emphasis.",
-    "For example, when you read a question, your voice usually rises at the end.",
-    "When you read dialogue in a story, your voice may change to match the character.",
-    "Expression helps readers understand the emotions and meaning inside the text.",
-    "Another important part of fluency is [[automaticity]].",
-    "Automaticity means recognising many words quickly without needing to stop and sound them out.",
-    "The more words your brain recognises automatically, the faster and smoother your reading becomes.",
-    "Fluency improves through practice.",
-    "One helpful method is called [[repeated reading]].",
-    "Repeated reading means reading the same passage several times until it becomes smoother and easier.",
-    "Each time you read the passage, your brain becomes more familiar with the words and patterns.",
-    "Another helpful method is listening to a strong reader and then reading the same text yourself.",
-    "This allows your brain to hear what fluent reading sounds like.",
-    "Then you can practise matching that smooth and natural reading style.",
-    "Fluency grows step by step.",
-    "At first reading may feel slow.",
-    "But with practice, your brain recognises words faster and your reading becomes smoother.",
-    "As fluency improves, comprehension also becomes stronger.",
-    "This is because the brain can focus on understanding ideas instead of struggling with individual words."
-  ],
-  "glossary": {
-    "fluency": {
-      "definition": "The ability to read smoothly, accurately, and with expression.",
-      "pronunciation": "FLOO-uhn-see",
-      "simpleMeaning": "Reading smoothly and naturally.",
-      "example": "Practising reading helps improve fluency."
-    },
-    "meaning": {
-      "definition": "The message or idea that the writer is trying to communicate.",
-      "pronunciation": "MEE-ning",
-      "simpleMeaning": "What the text is saying.",
-      "example": "Fluent readers can focus on the meaning of the text."
-    },
-    "comprehension": {
-      "definition": "The ability to understand what you read.",
-      "pronunciation": "kom-pri-HEN-shuhn",
-      "simpleMeaning": "Understanding the ideas in a text.",
-      "example": "Fluency helps improve reading comprehension."
-    },
-    "expression": {
-      "definition": "Reading with the correct tone, pauses, and emphasis.",
-      "pronunciation": "ek-SPRESH-uhn",
-      "simpleMeaning": "Reading with feeling and natural voice changes.",
-      "example": "Good readers use expression when reading aloud."
-    },
-    "automaticity": {
-      "definition": "The ability to recognise words quickly without needing to sound them out.",
-      "pronunciation": "aw-tuh-muh-TIS-uh-tee",
-      "simpleMeaning": "Recognising words instantly.",
-      "example": "Automaticity helps readers read faster and more smoothly."
-    },
-    "repeated reading": {
-      "definition": "Reading the same passage several times to improve fluency.",
-      "pronunciation": "ri-PEE-tid REE-ding",
-      "simpleMeaning": "Reading something again to become smoother.",
-      "example": "Repeated reading helped me read the paragraph more smoothly."
-    }
-  },
-  "worksheet": {
-    "title": "Building Fluency",
-    "prompt": "1. In your own words, explain what reading fluency means.\n\n2. Why does fluency help readers understand texts better?\n\n3. Describe one way you can practise fluency when reading."
-  }
-},
-
-"ch7": {
-  "title": "Chapter 7: Your Brain Can Grow",
-  "content": [
-    "By now you may have noticed something interesting.",
-    "The more you practise reading, the easier it begins to feel.",
-    "At first, reading might feel slow. You may need to stop often to think about words or sentences. But after practising for some time, your reading becomes smoother.",
-    "This improvement is not an accident.",
-    "It happens because your brain is changing.",
-    "Scientists call this ability [[neuroplasticity]].",
-    "Neuroplasticity means that the brain can grow, change, and become stronger when you practise new skills.",
-    "Your brain is made up of billions of tiny cells called [[neurons]].",
-    "These neurons communicate with each other through connections.",
-    "When you learn something new, the brain begins forming new [[pathways]] between these neurons.",
-    "Think of it like creating a path through grass.",
-    "The first time you walk across a field, the path is not clear.",
-    "But if you walk across the same path every day, the grass becomes flatter and the path becomes easier to follow.",
-    "Learning works in a similar way.",
-    "Each time you practise reading, your brain strengthens the pathways that help you recognise words and understand ideas.",
-    "Even mistakes help your brain grow.",
-    "When you make a mistake and correct it, your brain learns what works and what does not.",
-    "Over time the pathways in your brain become stronger and faster.",
-    "This is when reading begins to feel easier.",
-    "Many people believe that some learners are simply born good at reading.",
-    "But science shows something different.",
-    "Strong readers usually became strong readers through practice.",
-    "Their brains built stronger pathways because they read often and used helpful strategies.",
-    "This means improvement is possible for everyone.",
-    "If you practise reading regularly, your brain will continue to grow stronger.",
-    "Remember this idea:",
-    "Learning is like playing a new game that slowly becomes your favourite.",
-    "At first a new game can feel confusing.",
-    "But the more you play, the more you understand the rules.",
-    "Soon the game becomes easier and more enjoyable.",
-    "Learning to read works in the same way.",
-    "Your brain is always capable of learning something new.",
-    "The key is simple: keep practising."
-  ],
-  "glossary": {
-    "neuroplasticity": {
-      "definition": "The brain’s ability to change and grow stronger when learning new skills.",
-      "pronunciation": "NYOO-roh-plas-TISS-ih-tee",
-      "simpleMeaning": "Your brain can grow and improve with practice.",
-      "example": "Neuroplasticity allows readers to improve their skills through practice."
-    },
-    "neurons": {
-      "definition": "Special cells in the brain that send and receive information.",
-      "pronunciation": "NYOO-ronz",
-      "simpleMeaning": "Cells in the brain that communicate with each other.",
-      "example": "Neurons send signals that help the brain learn new skills."
-    },
-    "pathways": {
-      "definition": "Connections between brain cells that allow information to travel.",
-      "pronunciation": "PATH-wayz",
-      "simpleMeaning": "Routes that information travels in the brain.",
-      "example": "Practice strengthens the pathways used for reading."
-    },
-    "practice": {
-      "definition": "Repeating a skill in order to improve.",
-      "pronunciation": "PRAK-tis",
-      "simpleMeaning": "Doing something again to get better at it.",
-      "example": "Regular practice helps readers become stronger."
-    },
-    "learning": {
-      "definition": "The process of gaining knowledge or developing new skills.",
-      "pronunciation": "LUR-ning",
-      "simpleMeaning": "Understanding and gaining new abilities.",
-      "example": "Reading helps support lifelong learning."
-    }
-  },
-  "worksheet": {
-    "title": "How the Brain Learns",
-    "prompt": "1. In your own words, explain what neuroplasticity means.\n\n2. Why does practice help the brain improve reading skills?\n\n3. The chapter says learning is like playing a new game. Explain what this comparison means."
-  }
-},
-"ch8": {
-  "title": "Chapter 8: Thinking About Your Thinking",
-  "content": [
-    "By now you have learned many important reading skills.",
-    "You have learned how to stay engaged, how to find meaning, how to use reading strategies, and how practice helps your brain grow.",
-    "In this chapter you will learn a powerful skill called [[metacognition]].",
-    "Metacognition means thinking about your own thinking.",
-    "When readers use metacognition, they become aware of how their mind works while reading.",
-    "Instead of reading automatically, they pay attention to their understanding.",
-    "Good readers often pause and ask themselves questions while reading.",
-    "For example, they may ask: Do I understand this paragraph?",
-    "If the answer is yes, they continue reading.",
-    "If the answer is no, they stop and fix the problem.",
-    "This process is sometimes called [[self-monitoring]].",
-    "Self-monitoring means checking whether the text makes sense to you.",
-    "When readers notice confusion, they can use strategies to repair their understanding.",
-    "One helpful strategy is [[rereading]].",
-    "Rereading means reading the sentence or paragraph again more carefully.",
-    "Often the meaning becomes clearer the second time.",
-    "Another helpful strategy is [[slowing down]].",
-    "When a text becomes difficult, slowing your reading speed can help your brain process the ideas more carefully.",
-    "Readers can also use the glossary or ask someone for help when they encounter unfamiliar words.",
-    "All these actions are examples of metacognition.",
-    "Metacognitive readers guide their own learning.",
-    "They notice when they understand and when they do not.",
-    "They adjust their strategies to improve understanding.",
-    "This skill is very powerful because it allows readers to become independent learners.",
-    "Instead of waiting for someone else to explain the text, they take control of their own understanding.",
-    "The more you practise metacognition, the more confident you become as a reader.",
-    "You begin to understand how your brain learns best.",
-    "This awareness helps you improve not only in reading but in many other subjects as well."
-  ],
-  "glossary": {
-    "metacognition": {
-      "definition": "Thinking about how you think and learn.",
-      "pronunciation": "met-uh-kog-NISH-uhn",
-      "simpleMeaning": "Being aware of your own thinking.",
-      "example": "Metacognition helps readers notice when they do not understand a paragraph."
-    },
-    "self-monitoring": {
-      "definition": "Checking your own understanding while reading.",
-      "pronunciation": "self MON-uh-tuh-ring",
-      "simpleMeaning": "Watching your own understanding.",
-      "example": "Self-monitoring helped me realise I needed to reread the sentence."
-    },
-    "rereading": {
-      "definition": "Reading a sentence or paragraph again to improve understanding.",
-      "pronunciation": "ree-REE-ding",
-      "simpleMeaning": "Reading something again carefully.",
-      "example": "Rereading helped me understand the difficult paragraph."
-    },
-    "slowing down": {
-      "definition": "Reducing your reading speed to understand difficult information better.",
-      "pronunciation": "SLOH-ing DOWN",
-      "simpleMeaning": "Reading more slowly to understand.",
-      "example": "Slowing down helped me understand the complex explanation."
-    }
-  },
-  "worksheet": {
-    "title": "Thinking About Your Thinking",
-    "prompt": "1. In your own words, explain what metacognition means.\n\n2. Why is self-monitoring important when reading?\n\n3. Describe one strategy you could use when a paragraph does not make sense."
-  }
-},
-
-"ch9": {
-  "title": "Chapter 9: Believing You Can Improve",
-  "content": [
-    "As you continue your reading journey, there is one more powerful idea that can help you grow.",
-    "This idea is called a [[growth mindset]].",
-    "A growth mindset means believing that your abilities can improve through effort and practice.",
-    "Many learners think that intelligence and reading ability are fixed.",
-    "They believe that some people are simply born good at reading while others are not.",
-    "But research shows that skills improve with effort and learning.",
-    "When learners believe they can improve, they become more willing to practise and try new strategies.",
-    "This belief gives them confidence when they face challenges.",
-    "A growth mindset is closely connected to [[effort]].",
-    "Effort means putting energy and persistence into learning something new.",
-    "When learning feels difficult, effort helps you keep going.",
-    "Readers with a growth mindset understand that mistakes are part of learning.",
-    "Instead of feeling discouraged by mistakes, they treat them as opportunities to improve.",
-    "Each mistake teaches the brain something new.",
-    "This is how learning becomes stronger over time.",
-    "Another important idea connected to a growth mindset is [[perseverance]].",
-    "Perseverance means continuing to try even when something feels difficult.",
-    "Strong readers know that improvement takes time.",
-    "They practise regularly and remain patient with themselves.",
-    "When you combine practice, effort, and perseverance, your reading skills will continue to grow.",
-    "Remember the idea from the previous chapter: your brain changes through practice.",
-    "Every time you read, your brain strengthens the connections that support understanding.",
-    "This means that progress is always possible.",
-    "When you believe that improvement is possible, reading becomes less stressful and more enjoyable.",
-    "A growth mindset encourages learners to see challenges as opportunities.",
-    "Instead of saying, 'I cannot do this,' they say, 'I cannot do this yet.'",
-    "That one small word, 'yet', reminds us that learning is a process.",
-    "With time and effort, today's challenge can become tomorrow's strength."
-  ],
-  "glossary": {
-    "growth mindset": {
-      "definition": "The belief that abilities and intelligence can improve through effort and learning.",
-      "pronunciation": "GROHTH MYND-set",
-      "simpleMeaning": "Believing you can get better with practice.",
-      "example": "A growth mindset helps learners stay motivated when reading becomes difficult."
-    },
-    "effort": {
-      "definition": "Energy and determination used when trying to achieve something.",
-      "pronunciation": "EF-urt",
-      "simpleMeaning": "Trying your best to do something.",
-      "example": "Effort helps readers improve their skills."
-    },
-    "perseverance": {
-      "definition": "Continuing to try even when something is difficult.",
-      "pronunciation": "per-suh-VEER-uhns",
-      "simpleMeaning": "Not giving up when learning is hard.",
-      "example": "Perseverance helps learners succeed in challenging tasks."
-    }
-  },
-  "worksheet": {
-    "title": "Your Mindset Matters",
-    "prompt": "1. In your own words, explain what a growth mindset means.\n\n2. Why is effort important when learning to read?\n\n3. The chapter says to add the word 'yet' when something feels difficult. Write one sentence showing how you could use this idea."
-  }
-},
-"ch10": {
-  "title": "Chapter 10: Becoming a Lifelong Reader",
-  "content": [
-    "You have reached the final chapter of this reading journey.",
-    "Throughout this book you have learned many powerful ideas about reading and learning.",
-    "You discovered that strong readers stay [[engaged]] while reading.",
-    "You learned how to find the [[meaning]] of a paragraph and identify the [[main idea]].",
-    "You explored strategies such as [[previewing]], [[predicting]], [[questioning]], and [[summarising]].",
-    "You practised reading more smoothly and learned about [[fluency]].",
-    "You also discovered something amazing about your brain called [[neuroplasticity]].",
-    "Neuroplasticity means your brain can grow stronger when you practise new skills.",
-    "Every time you read, your brain strengthens the pathways that help you recognise words and understand ideas.",
-    "You also learned about [[metacognition]], which means thinking about your thinking while reading.",
-    "This skill helps readers notice when something does not make sense and choose strategies to fix the problem.",
-    "Another powerful idea you explored is the [[growth mindset]].",
-    "A growth mindset means believing that your abilities can improve through effort and practice.",
-    "These ideas together form the foundation of strong reading.",
-    "Reading is not only about recognising words.",
-    "Reading is about understanding ideas, exploring knowledge, and growing your thinking.",
-    "The more you read, the more your brain learns how to connect ideas and remember information.",
-    "Reading also opens doors to new worlds.",
-    "Through books you can travel to different places, learn about science, explore history, and discover new perspectives.",
-    "Reading helps you become a more curious and thoughtful learner.",
-    "Remember this important idea:",
-    "Learning is like playing a new game that slowly becomes your favourite.",
-    "At first the game may feel confusing.",
-    "But as you continue practising, the rules become clearer.",
-    "Your skills improve, and the game becomes more enjoyable.",
-    "Reading works in exactly the same way.",
-    "Each time you read, your brain becomes stronger.",
-    "Each book you read adds new knowledge to your mind.",
-    "Each challenge you overcome helps you grow as a learner.",
-    "This is why reading can become a lifelong journey.",
-    "A [[lifelong learner]] is someone who continues learning throughout life.",
-    "Strong readers often become lifelong learners because they enjoy discovering new ideas.",
-    "Even though this book is ending, your learning journey is only beginning.",
-    "Continue exploring new books.",
-    "Ask questions about what you read.",
-    "Use the strategies you have learned.",
-    "Most importantly, keep practising.",
-    "Your brain will continue to grow, and your understanding will continue to deepen.",
-    "Your reading journey does not end here.",
-    "In many ways, it has just begun."
-  ],
-  "glossary": {
-    "engaged": {
-      "definition": "Being focused and mentally involved while reading or learning.",
-      "pronunciation": "en-GAYJD",
-      "simpleMeaning": "Paying close attention and thinking while reading.",
-      "example": "Engaged readers think about the meaning of the text."
-    },
-    "meaning": {
-      "definition": "The message or idea that the writer is trying to communicate.",
-      "pronunciation": "MEE-ning",
-      "simpleMeaning": "What the text is saying.",
-      "example": "Readers think about the meaning of each paragraph."
-    },
-    "main idea": {
-      "definition": "The most important point that a paragraph or text is explaining.",
-      "pronunciation": "MAYN eye-DEE-uh",
-      "simpleMeaning": "What the paragraph is mostly about.",
-      "example": "The main idea explains the central message of the text."
-    },
-    "previewing": {
-      "definition": "Looking at titles, headings, or pictures before reading to prepare your mind.",
-      "pronunciation": "PREE-vyoo-ing",
-      "simpleMeaning": "Taking a quick look before reading.",
-      "example": "Previewing helps readers understand what a chapter might explain."
-    },
-    "predicting": {
-      "definition": "Making a thoughtful guess about what might happen next in a text.",
-      "pronunciation": "pri-DIK-ting",
-      "simpleMeaning": "Guessing what comes next using clues.",
-      "example": "Predicting keeps readers actively thinking."
-    },
-    "questioning": {
-      "definition": "Asking yourself questions while reading to improve understanding.",
-      "pronunciation": "KWES-chuh-ning",
-      "simpleMeaning": "Asking questions about what you read.",
-      "example": "Questioning helps readers focus on important ideas."
-    },
-    "summarising": {
-      "definition": "Explaining the most important idea of a text in your own words.",
-      "pronunciation": "SUM-uh-ry-zing",
-      "simpleMeaning": "Saying the main idea briefly.",
-      "example": "Summarising helps readers remember what they learned."
-    },
-    "fluency": {
-      "definition": "Reading smoothly, accurately, and with expression.",
-      "pronunciation": "FLOO-uhn-see",
-      "simpleMeaning": "Reading smoothly and naturally.",
-      "example": "Fluency helps readers focus on understanding ideas."
-    },
-    "neuroplasticity": {
-      "definition": "The brain’s ability to change and grow stronger through practice and learning.",
-      "pronunciation": "NYOO-roh-plas-TISS-ih-tee",
-      "simpleMeaning": "Your brain can grow and improve with practice.",
-      "example": "Neuroplasticity helps readers improve their skills."
-    },
-    "metacognition": {
-      "definition": "Thinking about how you think and learn.",
-      "pronunciation": "met-uh-kog-NISH-uhn",
-      "simpleMeaning": "Being aware of your thinking.",
-      "example": "Metacognition helps readers monitor their understanding."
-    },
-    "growth mindset": {
-      "definition": "The belief that abilities can improve through effort and practice.",
-      "pronunciation": "GROHTH MYND-set",
-      "simpleMeaning": "Believing you can improve.",
-      "example": "A growth mindset helps learners stay motivated."
-    },
-    "lifelong learner": {
-      "definition": "A person who continues learning throughout life.",
-      "pronunciation": "LYF-long LUR-ner",
-      "simpleMeaning": "Someone who keeps learning.",
-      "example": "Reading helps people become lifelong learners."
-    }
-  },
-  "worksheet": {
-    "title": "Your Reading Journey",
-    "prompt": "1. In your own words, explain what you learned from this book.\n\n2. Which reading strategy helped you the most and why?\n\n3. What does it mean to be a lifelong learner?"
-  }
-      }
+        "ch3": {
+          "title": "Chapter 3: Learning From Listening",
+          "content": [
+            "Before children learn to read on their own, they first learn by [[listening]].",
+            "Think about when you were very young. Long before you could read words in a book, you were already learning language. You listened to people speaking around you. You listened to stories, conversations, instructions, and questions.",
+            "Listening is one of the first ways the brain learns how language works.",
+            "When you listen carefully, your brain begins to notice [[language patterns]]. You hear how words sound. You hear how sentences are formed. You hear how ideas are connected.",
+            "All of this information helps prepare your brain for reading.",
+            "In fact, strong readers are often strong listeners first.",
+            "When someone reads a story aloud, your brain does something very interesting. Even though you are not reading the words yourself, your brain still processes the language. It still builds meaning. It still creates images in your mind.",
+            "This means that listening can help train your brain to understand stories and ideas.",
+            "Imagine listening to someone read a story about a forest. As you listen, you might imagine tall trees, birds singing, and sunlight shining through the leaves. Even though you are only hearing the story, your brain is actively building a picture.",
+            "This ability to create pictures in your mind is called [[visualising]].",
+            "Visualising is a powerful reading skill. When readers imagine what they are hearing or reading, they understand the text more deeply.",
+            "Listening also helps you learn how [[fluent reading]] sounds.",
+            "Fluent reading means reading smoothly, clearly, and with [[expression]]. When someone reads fluently, the words sound natural and meaningful, almost like a conversation.",
+            "If you listen to fluent reading often, your brain learns what good reading sounds like. Later, when you read on your own, you will naturally try to read in a similar way.",
+            "This is why listening to someone read aloud is such a powerful learning tool.",
+            "Teachers often use [[modelled reading]] by reading a text aloud to learners. While listening, learners can follow the words in the text. This helps connect the sound of the words with the written words on the page.",
+            "Your brain is making important connections during this process.",
+            "You hear the words.",
+            "You see the words.",
+            "You understand the meaning.",
+            "These connections help strengthen your reading ability.",
+            "Listening can also help you understand difficult texts.",
+            "Sometimes when you read a challenging paragraph silently, it may feel confusing. But when you hear someone read the same paragraph aloud, the meaning may suddenly become clearer.",
+            "That happens because fluent reading adds rhythm, pauses, and emphasis. These features help the brain organise information.",
+            "Listening also allows you to focus more on understanding instead of struggling with difficult words.",
+            "This does not mean you should always depend on someone else to read for you. Instead, listening should be used as a learning tool that helps you improve your own reading skills.",
+            "One helpful [[strategy]] is called [[listen and follow]].",
+            "In this strategy, you listen to someone read while your eyes follow the words in the book. This helps your brain connect spoken language with written language.",
+            "Another helpful strategy is listen first, then read.",
+            "In this strategy, you first listen to a text being read aloud. After that, you read the same text on your own. Because your brain already understands the story or information, reading becomes easier.",
+            "You may notice that many successful learners enjoy listening to audiobooks, podcasts, and recorded stories. These activities expose the brain to new [[vocabulary]], ideas, and sentence structure.",
+            "Vocabulary means the number of words you know and understand.",
+            "The more words you understand, the easier reading becomes. When readers recognise many words quickly, they can focus more on [[comprehension]].",
+            "Listening can therefore strengthen both vocabulary and comprehension.",
+            "However, listening alone is not enough to become a strong reader.",
+            "You must combine listening with active reading practice.",
+            "Think of listening as training for your brain. It prepares your mind to understand language, but reading practice builds the full skill.",
+            "Strong learners use both listening and reading together.",
+            "When you listen carefully and then practise reading, your brain becomes better at recognising words, understanding sentences, and remembering ideas.",
+            "This process strengthens your reading comprehension.",
+            "Listening is therefore not just something we do every day without thinking. It is an important learning skill that helps build the [[foundation]] for reading.",
+            "The more carefully you listen, the more your brain learns about language.",
+            "And the more your brain understands language, the easier reading becomes."
+          ],
+          "glossary": {
+            "listening": {
+              "definition": "Paying careful attention to spoken words in order to understand them.",
+              "pronunciation": "LIS-uh-ning",
+              "simpleMeaning": "Hearing and thinking about what someone says.",
+              "example": "Listening to stories helps learners understand language."
+            },
+            "language patterns": {
+              "definition": "The common ways words and sentences are used in a language.",
+              "pronunciation": "LANG-gwij PAT-ernz",
+              "simpleMeaning": "The usual way language works.",
+              "example": "Children learn language patterns by listening to others speak."
+            },
+            "visualising": {
+              "definition": "Creating pictures in your mind while hearing or reading a story.",
+              "pronunciation": "VIZH-oo-uh-ly-zing",
+              "simpleMeaning": "Imagining what the words describe.",
+              "example": "I was visualising the forest while the teacher read the story."
+            },
+            "fluent reading": {
+              "definition": "Reading smoothly, clearly, and with natural expression.",
+              "pronunciation": "FLOO-ent REE-ding",
+              "simpleMeaning": "Reading in a way that sounds like normal speaking.",
+              "example": "Fluent reading makes it easier for others to understand the story."
+            },
+            "expression": {
+              "definition": "Changing your voice to match the meaning and emotion of the text.",
+              "pronunciation": "ik-SPRESH-uhn",
+              "simpleMeaning": "Using feeling in your voice while reading.",
+              "example": "She read the dialogue with expression, making the story more exciting."
+            },
+            "modelled reading": {
+              "definition": "When a teacher or skilled reader demonstrates fluent reading for learners.",
+              "pronunciation": "MOD-uhld REE-ding",
+              "simpleMeaning": "A teacher showing how good reading sounds.",
+              "example": "Modelled reading helps learners hear how fluent reading should sound."
+            },
+            "strategy": {
+              "definition": "A plan or method used to help achieve a goal.",
+              "pronunciation": "STRAT-uh-jee",
+              "simpleMeaning": "A smart way to solve a problem or learn something.",
+              "example": "Good readers use strategies to understand difficult texts."
+            },
+            "listen and follow": {
+              "definition": "A reading strategy where you listen to someone read while following the words in the text.",
+              "pronunciation": "LIS-uhn and FOL-oh",
+              "simpleMeaning": "Listening while your eyes track the words.",
+              "example": "The class used listen and follow to practise reading fluency."
+            },
+            "vocabulary": {
+              "definition": "The collection of words a person knows and understands.",
+              "pronunciation": "voh-KAB-yuh-lair-ee",
+              "simpleMeaning": "The number of words you know.",
+              "example": "Listening to stories helps build your vocabulary."
+            },
+            "comprehension": {
+              "definition": "The ability to understand what you read or hear.",
+              "pronunciation": "kom-pri-HEN-shuhn",
+              "simpleMeaning": "Understanding the meaning of the text.",
+              "example": "Good readers focus on comprehension, not just saying the words."
+            },
+            "foundation": {
+              "definition": "The basic skills that support further learning.",
+              "pronunciation": "fown-DAY-shuhn",
+              "simpleMeaning": "The strong base something is built on.",
+              "example": "Listening skills form the foundation of reading development."
+            }
+          },
+          "worksheet": {
+            "title": "Listening and Understanding",
+            "prompt": "1. In your own words, explain why listening is important for learning how to read.\n\n2. Think about a story you have heard before. What pictures did you imagine in your mind while listening?\n\n3. Why does listening to fluent reading help learners become better readers?"
+          }
+        },
+        "ch4": {
+          "title": "Chapter 4: Using Reading Strategies",
+          "content": [
+            "When strong readers open a book, they do not simply start reading and hope to understand everything. Instead, they use helpful tools called [[strategy]].",
+            "A [[strategy]] is a plan that helps you solve a problem or reach a goal.",
+            "In reading, strategies help your brain understand the meaning of the text.",
+            "Good readers use strategies before reading, during reading, and after reading.",
+            "These strategies help the brain stay focused and organised.",
+            "Let us explore some of the most powerful strategies that skilled readers use.",
+            "Before you begin reading, take a moment to look at the title, headings, and pictures.",
+            "Ask yourself: What might this text be about?",
+            "This strategy is called [[previewing]].",
+            "Previewing prepares your brain for the information that is about to come. When the brain already has an idea of what the text might explain, understanding becomes easier.",
+            "Previewing is like looking at a map before starting a journey.",
+            "While reading, good readers often make guesses about what might happen next or what the next paragraph might explain.",
+            "This is called [[predicting]].",
+            "Predicting keeps your mind actively involved in the text. Your brain begins searching for clues to confirm whether your prediction is correct.",
+            "When readers predict, they are not just reading words. They are thinking.",
+            "Another powerful strategy is [[questioning]].",
+            "Good readers ask questions while they read.",
+            "For example: What is the main idea of this paragraph? Why did this happen? What is the author trying to explain?",
+            "These questions help the brain focus on meaning.",
+            "When readers ask questions, they turn reading into an active process instead of a passive one.",
+            "Sometimes readers reach a sentence that does not make sense.",
+            "Strong readers do not ignore confusion. Instead, they use a strategy called [[clarifying]].",
+            "Clarifying means stopping and fixing the problem.",
+            "You can clarify by rereading the sentence, looking for clues in the next sentence, or checking the glossary for new words.",
+            "Clarifying helps the brain stay on track when reading becomes difficult.",
+            "After finishing a paragraph or a section, strong readers pause and think: What was the most important idea here?",
+            "This strategy is called [[summarising]].",
+            "Summarising means explaining the most important idea in your own words.",
+            "When you summarise, your brain organises information and remembers it better.",
+            "All these strategies work together.",
+            "Good readers preview before reading.",
+            "They predict and ask questions while reading.",
+            "They clarify confusing parts.",
+            "And they summarise important ideas.",
+            "These strategies turn reading into an active process where your brain is constantly thinking and learning.",
+            "The more you practise these strategies, the stronger your reading [[comprehension]] becomes.",
+            "Reading then becomes easier, more enjoyable, and more meaningful."
+          ],
+          "glossary": {
+            "strategy": {
+              "definition": "A plan or method used to achieve a goal or solve a problem.",
+              "pronunciation": "STRAT-uh-jee",
+              "simpleMeaning": "A smart way to do something.",
+              "example": "Good readers use strategies to understand difficult texts."
+            },
+            "previewing": {
+              "definition": "Looking at the title, headings, or pictures before reading to prepare your brain for the text.",
+              "pronunciation": "PREE-vyoo-ing",
+              "simpleMeaning": "Taking a quick look before reading.",
+              "example": "Previewing the chapter helped me understand what the text might explain."
+            },
+            "predicting": {
+              "definition": "Making a thoughtful guess about what might happen next in a text.",
+              "pronunciation": "pri-DIK-ting",
+              "simpleMeaning": "Guessing what comes next using clues.",
+              "example": "I was predicting what the character would do next in the story."
+            },
+            "questioning": {
+              "definition": "Asking yourself questions while reading to help you understand the text.",
+              "pronunciation": "KWES-chuh-ning",
+              "simpleMeaning": "Asking questions about what you read.",
+              "example": "Questioning helped me understand the main idea of the paragraph."
+            },
+            "clarifying": {
+              "definition": "Stopping to fix confusion when a sentence or idea does not make sense.",
+              "pronunciation": "KLAR-uh-fy-ing",
+              "simpleMeaning": "Making something clearer when you do not understand.",
+              "example": "I used clarifying by rereading the sentence."
+            },
+            "summarising": {
+              "definition": "Explaining the most important idea of a text in your own words.",
+              "pronunciation": "SUM-uh-ry-zing",
+              "simpleMeaning": "Saying the main idea briefly.",
+              "example": "Summarising helped me remember the important information."
+            },
+            "comprehension": {
+              "definition": "The ability to understand what you read.",
+              "pronunciation": "kom-pri-HEN-shuhn",
+              "simpleMeaning": "Understanding the meaning of a text.",
+              "example": "Reading strategies help improve comprehension."
+            }
+          },
+          "worksheet": {
+            "title": "Using Reading Strategies",
+            "prompt": "1. In your own words, explain what a reading strategy is and why strategies help readers understand texts.\n\n2. Choose one strategy from this chapter: previewing, predicting, questioning, clarifying, or summarising. Explain how that strategy could help you understand a difficult paragraph.\n\n3. Which reading strategy do you think will help you the most in the future? Explain why."
+          }
+        },
+        "ch5": {
+          "title": "Chapter 5: Thinking Deeply About What You Read",
+          "content": [
+            "Understanding the words in a text is important, but strong readers do something more.",
+            "They think carefully about the ideas they read.",
+            "This skill is called [[critical thinking]].",
+            "Critical thinking means examining information carefully before accepting it as true.",
+            "When readers think critically, they ask questions about the text.",
+            "For example, they might ask: Is this information reliable? What evidence supports this idea?",
+            "Critical readers also try to understand the author's [[purpose]].",
+            "The author’s purpose is the reason why the writer created the text.",
+            "Sometimes authors write to inform readers by sharing knowledge or facts.",
+            "Other times authors write to entertain readers with stories or interesting ideas.",
+            "Sometimes writers even try to persuade readers to believe something or take action.",
+            "Understanding the author’s purpose helps readers interpret the text more clearly.",
+            "Another important skill in critical reading is looking for [[evidence]].",
+            "Evidence is the information that supports an idea or claim.",
+            "Strong readers look for examples, facts, and explanations that support the author’s ideas.",
+            "When readers search for evidence, they become active thinkers instead of passive readers.",
+            "Critical readers also learn to recognise the difference between a [[fact]] and an [[opinion]].",
+            "A fact is something that can be proven true with evidence.",
+            "An opinion is a belief or feeling that someone has about a topic.",
+            "For example, the statement 'Water boils at 100 degrees Celsius' is a fact.",
+            "But the statement 'Summer is the best season' is an opinion.",
+            "Critical readers learn to recognise these differences while reading.",
+            "This helps them understand the text more clearly and think independently.",
+            "Critical thinking does not mean arguing with everything you read.",
+            "Instead, it means thinking carefully about ideas and understanding them fully.",
+            "When readers ask questions, search for evidence, and think about the author’s purpose, their understanding becomes deeper.",
+            "Reading then becomes a powerful tool for learning and discovery."
+          ],
+          "glossary": {
+            "critical thinking": {
+              "definition": "Carefully analysing and evaluating information before accepting it as true.",
+              "pronunciation": "KRIT-i-kuhl THING-king",
+              "simpleMeaning": "Thinking carefully about information.",
+              "example": "Critical thinking helps readers evaluate ideas in a text."
+            },
+            "purpose": {
+              "definition": "The reason why a writer creates a text.",
+              "pronunciation": "PUR-puhs",
+              "simpleMeaning": "Why something was written.",
+              "example": "The author's purpose was to inform readers about climate change."
+            },
+            "evidence": {
+              "definition": "Facts, examples, or information that support an idea.",
+              "pronunciation": "EV-i-duhns",
+              "simpleMeaning": "Proof that supports an idea.",
+              "example": "The author used evidence to explain the importance of recycling."
+            },
+            "fact": {
+              "definition": "A statement that can be proven true with evidence.",
+              "pronunciation": "FAKT",
+              "simpleMeaning": "Something that is true and can be proven.",
+              "example": "Water freezes at zero degrees Celsius is a fact."
+            },
+            "opinion": {
+              "definition": "A belief or feeling that someone has about something.",
+              "pronunciation": "uh-PIN-yuhn",
+              "simpleMeaning": "What someone thinks or believes.",
+              "example": "My opinion is that reading is the best hobby."
+            }
+          },
+          "worksheet": {
+            "title": "Thinking About Ideas",
+            "prompt": "1. In your own words, explain what critical thinking means.\n\n2. What is the difference between a fact and an opinion? Write one example of each.\n\n3. Why is it important for readers to look for evidence when reading a text?"
+          }
+        },
+        "ch6": {
+          "title": "Chapter 6: Reading Fluently",
+          "content": [
+            "As your reading skills improve, you begin to notice something important.",
+            "Reading starts to feel smoother and easier.",
+            "This ability is called [[fluency]].",
+            "Fluency means reading accurately, smoothly, and with expression.",
+            "When readers are fluent, they do not struggle with every word.",
+            "Instead, their brain recognises many words quickly.",
+            "This allows the brain to focus on understanding the [[meaning]] of the text.",
+            "Fluency is important because it connects word reading with [[comprehension]].",
+            "If a reader struggles with every word, the brain becomes busy trying to decode the words.",
+            "When this happens, it becomes harder to understand the ideas in the text.",
+            "But when reading becomes fluent, the brain has more energy to think about the ideas and messages in the text.",
+            "Fluent readers also pay attention to [[expression]].",
+            "Expression means reading with the correct tone, pauses, and emphasis.",
+            "For example, when you read a question, your voice usually rises at the end.",
+            "When you read dialogue in a story, your voice may change to match the character.",
+            "Expression helps readers understand the emotions and meaning inside the text.",
+            "Another important part of fluency is [[automaticity]].",
+            "Automaticity means recognising many words quickly without needing to stop and sound them out.",
+            "The more words your brain recognises automatically, the faster and smoother your reading becomes.",
+            "Fluency improves through practice.",
+            "One helpful method is called [[repeated reading]].",
+            "Repeated reading means reading the same passage several times until it becomes smoother and easier.",
+            "Each time you read the passage, your brain becomes more familiar with the words and patterns.",
+            "Another helpful method is listening to a strong reader and then reading the same text yourself.",
+            "This allows your brain to hear what fluent reading sounds like.",
+            "Then you can practise matching that smooth and natural reading style.",
+            "Fluency grows step by step.",
+            "At first reading may feel slow.",
+            "But with practice, your brain recognises words faster and your reading becomes smoother.",
+            "As fluency improves, comprehension also becomes stronger.",
+            "This is because the brain can focus on understanding ideas instead of struggling with individual words."
+          ],
+          "glossary": {
+            "fluency": {
+              "definition": "The ability to read smoothly, accurately, and with expression.",
+              "pronunciation": "FLOO-uhn-see",
+              "simpleMeaning": "Reading smoothly and naturally.",
+              "example": "Practising reading helps improve fluency."
+            },
+            "meaning": {
+              "definition": "The message or idea that the writer is trying to communicate.",
+              "pronunciation": "MEE-ning",
+              "simpleMeaning": "What the text is saying.",
+              "example": "Fluent readers can focus on the meaning of the text."
+            },
+            "comprehension": {
+              "definition": "The ability to understand what you read.",
+              "pronunciation": "kom-pri-HEN-shuhn",
+              "simpleMeaning": "Understanding the ideas in a text.",
+              "example": "Fluency helps improve reading comprehension."
+            },
+            "expression": {
+              "definition": "Reading with the correct tone, pauses, and emphasis.",
+              "pronunciation": "ek-SPRESH-uhn",
+              "simpleMeaning": "Reading with feeling and natural voice changes.",
+              "example": "Good readers use expression when reading aloud."
+            },
+            "automaticity": {
+              "definition": "The ability to recognise words quickly without needing to sound them out.",
+              "pronunciation": "aw-tuh-muh-TIS-uh-tee",
+              "simpleMeaning": "Recognising words instantly.",
+              "example": "Automaticity helps readers read faster and more smoothly."
+            },
+            "repeated reading": {
+              "definition": "Reading the same passage several times to improve fluency.",
+              "pronunciation": "ri-PEE-tid REE-ding",
+              "simpleMeaning": "Reading something again to become smoother.",
+              "example": "Repeated reading helped me read the paragraph more smoothly."
+            }
+          },
+          "worksheet": {
+            "title": "Building Fluency",
+            "prompt": "1. In your own words, explain what reading fluency means.\n\n2. Why does fluency help readers understand texts better?\n\n3. Describe one way you can practise fluency when reading."
+          }
+        },
+        "ch7": {
+          "title": "Chapter 7: Your Brain Can Grow",
+          "content": [
+            "By now you may have noticed something interesting.",
+            "The more you practise reading, the easier it begins to feel.",
+            "At first, reading might feel slow. You may need to stop often to think about words or sentences. But after practising for some time, your reading becomes smoother.",
+            "This improvement is not an accident.",
+            "It happens because your brain is changing.",
+            "Scientists call this ability [[neuroplasticity]].",
+            "Neuroplasticity means that the brain can grow, change, and become stronger when you practise new skills.",
+            "Your brain is made up of billions of tiny cells called [[neurons]].",
+            "These neurons communicate with each other through connections.",
+            "When you learn something new, the brain begins forming new [[pathways]] between these neurons.",
+            "Think of it like creating a path through grass.",
+            "The first time you walk across a field, the path is not clear.",
+            "But if you walk across the same path every day, the grass becomes flatter and the path becomes easier to follow.",
+            "Learning works in a similar way.",
+            "Each time you practise reading, your brain strengthens the pathways that help you recognise words and understand ideas.",
+            "Even mistakes help your brain grow.",
+            "When you make a mistake and correct it, your brain learns what works and what does not.",
+            "Over time the pathways in your brain become stronger and faster.",
+            "This is when reading begins to feel easier.",
+            "Many people believe that some learners are simply born good at reading.",
+            "But science shows something different.",
+            "Strong readers usually became strong readers through practice.",
+            "Their brains built stronger pathways because they read often and used helpful strategies.",
+            "This means improvement is possible for everyone.",
+            "If you practise reading regularly, your brain will continue to grow stronger.",
+            "Remember this idea:",
+            "Learning is like playing a new game that slowly becomes your favourite.",
+            "At first a new game can feel confusing.",
+            "But the more you play, the more you understand the rules.",
+            "Soon the game becomes easier and more enjoyable.",
+            "Learning to read works in the same way.",
+            "Your brain is always capable of learning something new.",
+            "The key is simple: keep practising."
+          ],
+          "glossary": {
+            "neuroplasticity": {
+              "definition": "The brain’s ability to change and grow stronger when learning new skills.",
+              "pronunciation": "NYOO-roh-plas-TISS-ih-tee",
+              "simpleMeaning": "Your brain can grow and improve with practice.",
+              "example": "Neuroplasticity allows readers to improve their skills through practice."
+            },
+            "neurons": {
+              "definition": "Special cells in the brain that send and receive information.",
+              "pronunciation": "NYOO-ronz",
+              "simpleMeaning": "Cells in the brain that communicate with each other.",
+              "example": "Neurons send signals that help the brain learn new skills."
+            },
+            "pathways": {
+              "definition": "Connections between brain cells that allow information to travel.",
+              "pronunciation": "PATH-wayz",
+              "simpleMeaning": "Routes that information travels in the brain.",
+              "example": "Practice strengthens the pathways used for reading."
+            },
+            "practice": {
+              "definition": "Repeating a skill in order to improve.",
+              "pronunciation": "PRAK-tis",
+              "simpleMeaning": "Doing something again to get better at it.",
+              "example": "Regular practice helps readers become stronger."
+            },
+            "learning": {
+              "definition": "The process of gaining knowledge or developing new skills.",
+              "pronunciation": "LUR-ning",
+              "simpleMeaning": "Understanding and gaining new abilities.",
+              "example": "Reading helps support lifelong learning."
+            }
+          },
+          "worksheet": {
+            "title": "How the Brain Learns",
+            "prompt": "1. In your own words, explain what neuroplasticity means.\n\n2. Why does practice help the brain improve reading skills?\n\n3. The chapter says learning is like playing a new game. Explain what this comparison means."
+          }
+        },
+        "ch8": {
+          "title": "Chapter 8: Thinking About Your Thinking",
+          "content": [
+            "By now you have learned many important reading skills.",
+            "You have learned how to stay engaged, how to find meaning, how to use reading strategies, and how practice helps your brain grow.",
+            "In this chapter you will learn a powerful skill called [[metacognition]].",
+            "Metacognition means thinking about your own thinking.",
+            "When readers use metacognition, they become aware of how their mind works while reading.",
+            "Instead of reading automatically, they pay attention to their understanding.",
+            "Good readers often pause and ask themselves questions while reading.",
+            "For example, they may ask: Do I understand this paragraph?",
+            "If the answer is yes, they continue reading.",
+            "If the answer is no, they stop and fix the problem.",
+            "This process is sometimes called [[self-monitoring]].",
+            "Self-monitoring means checking whether the text makes sense to you.",
+            "When readers notice confusion, they can use strategies to repair their understanding.",
+            "One helpful strategy is [[rereading]].",
+            "Rereading means reading the sentence or paragraph again more carefully.",
+            "Often the meaning becomes clearer the second time.",
+            "Another helpful strategy is [[slowing down]].",
+            "When a text becomes difficult, slowing your reading speed can help your brain process the ideas more carefully.",
+            "Readers can also use the glossary or ask someone for help when they encounter unfamiliar words.",
+            "All these actions are examples of metacognition.",
+            "Metacognitive readers guide their own learning.",
+            "They notice when they understand and when they do not.",
+            "They adjust their strategies to improve understanding.",
+            "This skill is very powerful because it allows readers to become independent learners.",
+            "Instead of waiting for someone else to explain the text, they take control of their own understanding.",
+            "The more you practise metacognition, the more confident you become as a reader.",
+            "You begin to understand how your brain learns best.",
+            "This awareness helps you improve not only in reading but in many other subjects as well."
+          ],
+          "glossary": {
+            "metacognition": {
+              "definition": "Thinking about how you think and learn.",
+              "pronunciation": "met-uh-kog-NISH-uhn",
+              "simpleMeaning": "Being aware of your own thinking.",
+              "example": "Metacognition helps readers notice when they do not understand a paragraph."
+            },
+            "self-monitoring": {
+              "definition": "Checking your own understanding while reading.",
+              "pronunciation": "self MON-uh-tuh-ring",
+              "simpleMeaning": "Watching your own understanding.",
+              "example": "Self-monitoring helped me realise I needed to reread the sentence."
+            },
+            "rereading": {
+              "definition": "Reading a sentence or paragraph again to improve understanding.",
+              "pronunciation": "ree-REE-ding",
+              "simpleMeaning": "Reading something again carefully.",
+              "example": "Rereading helped me understand the difficult paragraph."
+            },
+            "slowing down": {
+              "definition": "Reducing your reading speed to understand difficult information better.",
+              "pronunciation": "SLOH-ing DOWN",
+              "simpleMeaning": "Reading more slowly to understand.",
+              "example": "Slowing down helped me understand the complex explanation."
+            }
+          },
+          "worksheet": {
+            "title": "Thinking About Your Thinking",
+            "prompt": "1. In your own words, explain what metacognition means.\n\n2. Why is self-monitoring important when reading?\n\n3. Describe one strategy you could use when a paragraph does not make sense."
+          }
+        },
+        "ch9": {
+          "title": "Chapter 9: Believing You Can Improve",
+          "content": [
+            "As you continue your reading journey, there is one more powerful idea that can help you grow.",
+            "This idea is called a [[growth mindset]].",
+            "A growth mindset means believing that your abilities can improve through effort and practice.",
+            "Many learners think that intelligence and reading ability are fixed.",
+            "They believe that some people are simply born good at reading while others are not.",
+            "But research shows that skills improve with effort and learning.",
+            "When learners believe they can improve, they become more willing to practise and try new strategies.",
+            "This belief gives them confidence when they face challenges.",
+            "A growth mindset is closely connected to [[effort]].",
+            "Effort means putting energy and persistence into learning something new.",
+            "When learning feels difficult, effort helps you keep going.",
+            "Readers with a growth mindset understand that mistakes are part of learning.",
+            "Instead of feeling discouraged by mistakes, they treat them as opportunities to improve.",
+            "Each mistake teaches the brain something new.",
+            "This is how learning becomes stronger over time.",
+            "Another important idea connected to a growth mindset is [[perseverance]].",
+            "Perseverance means continuing to try even when something feels difficult.",
+            "Strong readers know that improvement takes time.",
+            "They practise regularly and remain patient with themselves.",
+            "When you combine practice, effort, and perseverance, your reading skills will continue to grow.",
+            "Remember the idea from the previous chapter: your brain changes through practice.",
+            "Every time you read, your brain strengthens the connections that support understanding.",
+            "This means that progress is always possible.",
+            "When you believe that improvement is possible, reading becomes less stressful and more enjoyable.",
+            "A growth mindset encourages learners to see challenges as opportunities.",
+            "Instead of saying, 'I cannot do this,' they say, 'I cannot do this yet.'",
+            "That one small word, 'yet', reminds us that learning is a process.",
+            "With time and effort, today's challenge can become tomorrow's strength."
+          ],
+          "glossary": {
+            "growth mindset": {
+              "definition": "The belief that abilities and intelligence can improve through effort and learning.",
+              "pronunciation": "GROHTH MYND-set",
+              "simpleMeaning": "Believing you can get better with practice.",
+              "example": "A growth mindset helps learners stay motivated when reading becomes difficult."
+            },
+            "effort": {
+              "definition": "Energy and determination used when trying to achieve something.",
+              "pronunciation": "EF-urt",
+              "simpleMeaning": "Trying your best to do something.",
+              "example": "Effort helps readers improve their skills."
+            },
+            "perseverance": {
+              "definition": "Continuing to try even when something is difficult.",
+              "pronunciation": "per-suh-VEER-uhns",
+              "simpleMeaning": "Not giving up when learning is hard.",
+              "example": "Perseverance helps learners succeed in challenging tasks."
+            }
+          },
+          "worksheet": {
+            "title": "Your Mindset Matters",
+            "prompt": "1. In your own words, explain what a growth mindset means.\n\n2. Why is effort important when learning to read?\n\n3. The chapter says to add the word 'yet' when something feels difficult. Write one sentence showing how you could use this idea."
+          }
+        },
+        "ch10": {
+          "title": "Chapter 10: Becoming a Lifelong Reader",
+          "content": [
+            "You have reached the final chapter of this reading journey.",
+            "Throughout this book you have learned many powerful ideas about reading and learning.",
+            "You discovered that strong readers stay [[engaged]] while reading.",
+            "You learned how to find the [[meaning]] of a paragraph and identify the [[main idea]].",
+            "You explored strategies such as [[previewing]], [[predicting]], [[questioning]], and [[summarising]].",
+            "You practised reading more smoothly and learned about [[fluency]].",
+            "You also discovered something amazing about your brain called [[neuroplasticity]].",
+            "Neuroplasticity means your brain can grow stronger when you practise new skills.",
+            "Every time you read, your brain strengthens the pathways that help you recognise words and understand ideas.",
+            "You also learned about [[metacognition]], which means thinking about your thinking while reading.",
+            "This skill helps readers notice when something does not make sense and choose strategies to fix the problem.",
+            "Another powerful idea you explored is the [[growth mindset]].",
+            "A growth mindset means believing that your abilities can improve through effort and practice.",
+            "These ideas together form the foundation of strong reading.",
+            "Reading is not only about recognising words.",
+            "Reading is about understanding ideas, exploring knowledge, and growing your thinking.",
+            "The more you read, the more your brain learns how to connect ideas and remember information.",
+            "Reading also opens doors to new worlds.",
+            "Through books you can travel to different places, learn about science, explore history, and discover new perspectives.",
+            "Reading helps you become a more curious and thoughtful learner.",
+            "Remember this important idea:",
+            "Learning is like playing a new game that slowly becomes your favourite.",
+            "At first the game may feel confusing.",
+            "But as you continue practising, the rules become clearer.",
+            "Your skills improve, and the game becomes more enjoyable.",
+            "Reading works in exactly the same way.",
+            "Each time you read, your brain becomes stronger.",
+            "Each book you read adds new knowledge to your mind.",
+            "Each challenge you overcome helps you grow as a learner.",
+            "This is why reading can become a lifelong journey.",
+            "A [[lifelong learner]] is someone who continues learning throughout life.",
+            "Strong readers often become lifelong learners because they enjoy discovering new ideas.",
+            "Even though this book is ending, your learning journey is only beginning.",
+            "Continue exploring new books.",
+            "Ask questions about what you read.",
+            "Use the strategies you have learned.",
+            "Most importantly, keep practising.",
+            "Your brain will continue to grow, and your understanding will continue to deepen.",
+            "Your reading journey does not end here.",
+            "In many ways, it has just begun."
+          ],
+          "glossary": {
+            "engaged": {
+              "definition": "Being focused and mentally involved while reading or learning.",
+              "pronunciation": "en-GAYJD",
+              "simpleMeaning": "Paying close attention and thinking while reading.",
+              "example": "Engaged readers think about the meaning of the text."
+            },
+            "meaning": {
+              "definition": "The message or idea that the writer is trying to communicate.",
+              "pronunciation": "MEE-ning",
+              "simpleMeaning": "What the text is saying.",
+              "example": "Readers think about the meaning of each paragraph."
+            },
+            "main idea": {
+              "definition": "The most important point that a paragraph or text is explaining.",
+              "pronunciation": "MAYN eye-DEE-uh",
+              "simpleMeaning": "What the paragraph is mostly about.",
+              "example": "The main idea explains the central message of the text."
+            },
+            "previewing": {
+              "definition": "Looking at titles, headings, or pictures before reading to prepare your mind.",
+              "pronunciation": "PREE-vyoo-ing",
+              "simpleMeaning": "Taking a quick look before reading.",
+              "example": "Previewing helps readers understand what a chapter might explain."
+            },
+            "predicting": {
+              "definition": "Making a thoughtful guess about what might happen next in a text.",
+              "pronunciation": "pri-DIK-ting",
+              "simpleMeaning": "Guessing what comes next using clues.",
+              "example": "Predicting keeps readers actively thinking."
+            },
+            "questioning": {
+              "definition": "Asking yourself questions while reading to improve understanding.",
+              "pronunciation": "KWES-chuh-ning",
+              "simpleMeaning": "Asking questions about what you read.",
+              "example": "Questioning helps readers focus on important ideas."
+            },
+            "summarising": {
+              "definition": "Explaining the most important idea of a text in your own words.",
+              "pronunciation": "SUM-uh-ry-zing",
+              "simpleMeaning": "Saying the main idea briefly.",
+              "example": "Summarising helps readers remember what they learned."
+            },
+            "fluency": {
+              "definition": "Reading smoothly, accurately, and with expression.",
+              "pronunciation": "FLOO-uhn-see",
+              "simpleMeaning": "Reading smoothly and naturally.",
+              "example": "Fluency helps readers focus on understanding ideas."
+            },
+            "neuroplasticity": {
+              "definition": "The brain’s ability to change and grow stronger through practice and learning.",
+              "pronunciation": "NYOO-roh-plas-TISS-ih-tee",
+              "simpleMeaning": "Your brain can grow and improve with practice.",
+              "example": "Neuroplasticity helps readers improve their skills."
+            },
+            "metacognition": {
+              "definition": "Thinking about how you think and learn.",
+              "pronunciation": "met-uh-kog-NISH-uhn",
+              "simpleMeaning": "Being aware of your thinking.",
+              "example": "Metacognition helps readers monitor their understanding."
+            },
+            "growth mindset": {
+              "definition": "The belief that abilities can improve through effort and practice.",
+              "pronunciation": "GROHTH MYND-set",
+              "simpleMeaning": "Believing you can improve.",
+              "example": "A growth mindset helps learners stay motivated."
+            },
+            "lifelong learner": {
+              "definition": "A person who continues learning throughout life.",
+              "pronunciation": "LYF-long LUR-ner",
+              "simpleMeaning": "Someone who keeps learning.",
+              "example": "Reading helps people become lifelong learners."
+            }
+          },
+          "worksheet": {
+            "title": "Your Reading Journey",
+            "prompt": "1. In your own words, explain what you learned from this book.\n\n2. Which reading strategy helped you the most and why?\n\n3. What does it mean to be a lifelong learner?"
+          }
         }
+      }
     },
-    "tech-journey": {
     "tech-journey": {
       "title": "Tech Journey",
       "coverImage": "../../shared/assets/images/tech-journey.png",
