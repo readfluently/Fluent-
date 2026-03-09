@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
 
+<meta charset="UTF-8">
+<title>Sound Memory</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#FFFDF7;
+text-align:center;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,120px);
+gap:15px;
+justify-content:center;
+margin-top:40px;
+}
+
+.card{
+width:120px;
+height:120px;
+background:#4B6EF5;
+color:white;
+font-size:28px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:12px;
+cursor:pointer;
+}
+
+.matched{
+background:gold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Sound Memory Game</h2>
+
+<div class="grid" id="grid"></div>
+
+<script>
+
+const sounds = [
+"bl",
+"br",
+"cl",
+"cr",
+"fl",
+"fr",
+"gl",
+"gr"
+];
+
+let cards=[...sounds,...sounds];
+cards.sort(()=>Math.random()-0.5);
+
+let first=null;
+let second=null;
+
+const grid=document.getElementById("grid");
+
+cards.forEach(sound=>{
+
+let card=document.createElement("div");
+card.className="card";
+card.dataset.sound=sound;
+card.innerHTML="?";
+
+card.onclick=()=>flip(card);
+
+grid.appendChild(card);
+
+});
+
+function playSound(sound){
+
+let audio=new Audio(`/shared/assets/sounds/beginning-blends/${sound}.mp3`);
+audio.play();
+
+}
+
+function flip(card){
+
+if(card.innerHTML!="?") return;
+
+card.innerHTML=card.dataset.sound;
+
+playSound(card.dataset.sound);
+
+if(!first){
+
+first=card;
+return;
+
+}
+
+second=card;
+
+if(first.dataset.sound===second.dataset.sound){
+
+first.classList.add("matched");
+second.classList.add("matched");
+
+first=null;
+second=null;
+
+}else{
+
+setTimeout(()=>{
+
+first.innerHTML="?";
+second.innerHTML="?";
+
+first=null;
+second=null;
+
+},800)
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
