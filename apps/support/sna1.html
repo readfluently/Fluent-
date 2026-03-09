@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SNA 1 – Individual Support Plan</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#FFFDF7;
+margin:0;
+padding:20px;
+}
+
+h1{
+color:#333;
+}
+
+.section{
+background:white;
+border-radius:10px;
+padding:15px;
+margin-bottom:20px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+label{
+font-weight:bold;
+display:block;
+margin-top:10px;
+}
+
+input, textarea{
+width:100%;
+padding:8px;
+margin-top:5px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+margin-top:20px;
+padding:10px 16px;
+border:none;
+border-radius:8px;
+background:#4CAF50;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>SNA 1 – Individual Learner Support Plan</h1>
+
+<div class="section">
+<h3>Learner Information</h3>
+
+<label>Learner Name</label>
+<input id="learnerName">
+
+<label>Grade</label>
+<input id="grade">
+
+<label>School</label>
+<input id="school">
+
+<label>Date</label>
+<input type="date" id="date">
+
+</div>
+
+
+<div class="section">
+
+<h3>Teacher Observations</h3>
+
+<label>Learning difficulties observed</label>
+<textarea id="teacherObs"></textarea>
+
+<label>Support already provided</label>
+<textarea id="teacherSupport"></textarea>
+
+</div>
+
+
+<div class="section">
+
+<h3>Parent Input</h3>
+
+<label>Parent observations</label>
+<textarea id="parentObs"></textarea>
+
+<label>Home support strategies</label>
+<textarea id="homeSupport"></textarea>
+
+</div>
+
+
+<div class="section">
+
+<h3>Support Team Notes</h3>
+
+<label>Recommended interventions</label>
+<textarea id="interventions"></textarea>
+
+<label>Review date</label>
+<input type="date" id="reviewDate">
+
+</div>
+
+
+<button onclick="saveForm()">Save Form</button>
+
+<script>
+
+function saveForm(){
+
+let data = {
+
+learnerName: document.getElementById("learnerName").value,
+grade: document.getElementById("grade").value,
+school: document.getElementById("school").value,
+date: document.getElementById("date").value,
+teacherObs: document.getElementById("teacherObs").value,
+teacherSupport: document.getElementById("teacherSupport").value,
+parentObs: document.getElementById("parentObs").value,
+homeSupport: document.getElementById("homeSupport").value,
+interventions: document.getElementById("interventions").value,
+reviewDate: document.getElementById("reviewDate").value
+
+}
+
+localStorage.setItem("snaForm", JSON.stringify(data))
+
+alert("Form Saved")
+
+}
+
+</script>
+
+</body>
+</html>
