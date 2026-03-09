@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Build the Word</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#FFFDF7;
+text-align:center;
+padding:20px;
+}
+
+.wordSlots{
+display:flex;
+justify-content:center;
+gap:10px;
+margin:30px;
+}
+
+.slot{
+width:60px;
+height:60px;
+border:2px dashed #ccc;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+}
+
+.letters{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.letter{
+width:60px;
+height:60px;
+background:#4CAF50;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+border-radius:10px;
+font-size:26px;
+}
+
+.correct{
+background:#D4AF37;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Build the Word</h1>
+
+<div class="wordSlots" id="slots"></div>
+
+<div class="letters" id="letters"></div>
+
+<script>
+
+const word="block";
+
+const slots=document.getElementById("slots");
+const letters=document.getElementById("letters");
+
+let built="";
+
+function playSound(){
+let audio=new Audio("/fluent-/shared/assets/sounds/beginning-blends/beginning-blends/bl.mp3");
+audio.play();
+}
+
+playSound();
+
+word.split("").forEach(()=>{
+let slot=document.createElement("div");
+slot.className="slot";
+slots.appendChild(slot);
+});
+
+let shuffled=[...word].sort(()=>0.5-Math.random());
+
+shuffled.forEach(letter=>{
+
+let tile=document.createElement("div");
+tile.className="letter";
+tile.innerText=letter;
+
+tile.onclick=()=>{
+
+if(built.length>=word.length) return;
+
+slots.children[built.length].innerText=letter;
+
+built+=letter;
+
+checkWord();
+
+};
+
+letters.appendChild(tile);
+
+});
+
+function checkWord(){
+
+if(built===word){
+
+document.querySelectorAll(".slot").forEach(s=>{
+s.classList.add("correct");
+});
+
+let clap=new Audio("/fluent-/shared/assets/sounds/clap.mp3");
+clap.play();
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
