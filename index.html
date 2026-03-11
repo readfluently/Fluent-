@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fluent | Home</title>
   <style>
     :root {
       --bg: #f7f8fc;
       --surface: #ffffff;
-      --surface-soft: #f3f5fb;
       --text: #1f2937;
       --muted: #5f6b7a;
       --line: #d8deea;
       --primary: #2563eb;
+      --primary-dark: #1d4ed8;
       --shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
       --shadow-hover: 0 14px 30px rgba(15, 23, 42, 0.14);
+      --radius: 22px;
     }
 
     * {
@@ -25,235 +26,410 @@
       margin: 0;
       font-family: Arial, sans-serif;
       color: var(--text);
-      background: linear-gradient(180deg, #f9fbff 0%, #f2f5fc 100%);
+      background: linear-gradient(180deg, #f9fbff 0%, #f5f7fb 100%);
     }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .topbar-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .brand {
-      font-weight: 700;
-      margin-right: 8px;
-    }
-
-    .top-link {
+    a {
+      color: inherit;
       text-decoration: none;
-      color: var(--text);
-      padding: 8px 10px;
-      border-radius: 10px;
-      font-size: 0.95rem;
-    }
-
-    .top-link:hover,
-    .top-link:focus-visible {
-      background: var(--surface-soft);
-      outline: none;
     }
 
     .page {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 26px 20px 48px;
+      padding: 20px 16px 40px;
     }
 
     .hero {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 20px;
+      align-items: center;
+      background: linear-gradient(135deg, #eaf2ff 0%, #f7fbff 100%);
+      border: 1px solid #dbe6f5;
+      border-radius: 28px;
+      padding: 28px;
       box-shadow: var(--shadow);
-      padding: 24px;
-      margin-bottom: 22px;
+      margin-bottom: 28px;
     }
 
     .hero h1 {
-      margin: 0 0 8px;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin: 0 0 12px;
+      font-size: 2.4rem;
+      line-height: 1.1;
+      color: #244a82;
     }
 
     .hero p {
       margin: 0;
-      color: var(--muted);
-      line-height: 1.5;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #4b5b6b;
+      max-width: 680px;
     }
 
-    .category {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-      margin-bottom: 16px;
-    }
-
-    .category h2 {
-      margin: 0 0 14px;
-      font-size: 1.02rem;
-      letter-spacing: 0.05em;
-      color: #334155;
-    }
-
-    .tiles {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    .hero-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
       gap: 12px;
     }
 
-    .tile {
-      display: block;
-      text-decoration: none;
-      color: var(--text);
-      background: #fff;
-      border: 1px solid var(--line);
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 150px;
+      padding: 14px 18px;
       border-radius: 14px;
-      padding: 18px;
-      min-height: 110px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
-    .tile:hover,
-    .tile:focus-visible {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-      border-color: #b8c4de;
-      outline: none;
+    .hero-btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
     }
 
-    .tile strong {
-      display: block;
-      font-size: 1.05rem;
-      margin-bottom: 6px;
+    .hero-btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
     }
 
-    .tile span {
-      display: block;
-      font-size: 0.92rem;
-      line-height: 1.4;
-      color: var(--muted);
+    .hero-btn-soft {
+      background: #ffffff;
+      color: #244a82;
+      border: 1px solid #dbe6f5;
     }
 
-    .note {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 0.92rem;
+    .hero-btn-soft:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .buddy-card {
+      justify-self: end;
+      width: 100%;
+      max-width: 320px;
+      min-height: 220px;
+      background: #ffffff;
+      border: 1px solid #dbe6f5;
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
       text-align: center;
     }
 
-    @media (max-width: 860px) {
-      .tiles {
+    .buddy-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dff7e7 0%, #f2fbf5 100%);
+      border: 1px solid #cbe9d4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin-bottom: 14px;
+    }
+
+    .buddy-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+      color: #244a82;
+    }
+
+    .buddy-card p {
+      margin: 0;
+      font-size: 0.98rem;
+      color: #5f6b7a;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 1.25rem;
+      color: #244a82;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .emoji {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      border: 1px solid rgba(36, 74, 130, 0.08);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #243b63;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0 0 18px;
+      font-size: 0.98rem;
+      color: #4b5b6b;
+      line-height: 1.6;
+    }
+
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      min-width: 120px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      background: #244a82;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .card-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .tile-library { background: #f2f4ff; }
+    .tile-read-fluently { background: #eaf8f1; }
+    .tile-guided-reading { background: #fff4e8; }
+    .tile-practice { background: #eef8ff; }
+    .tile-fluency-support { background: #f4efff; }
+    .tile-listen { background: #ebeefe; }
+    .tile-play { background: #edf9ef; }
+    .tile-profile { background: #fff1e8; }
+    .tile-support { background: #ebf6ff; }
+
+    .footer-note {
+      margin-top: 26px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .buddy-card {
+        justify-self: stretch;
+        max-width: none;
+      }
+
+      .cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 640px) {
       .page {
-        padding: 18px 14px 36px;
+        padding: 16px 12px 30px;
       }
 
-      .topbar-inner {
-        padding: 10px 14px;
+      .hero {
+        padding: 20px;
+        border-radius: 22px;
       }
 
-      .tiles {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .cards {
         grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: 200px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-btn {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="topbar" aria-label="Main navigation">
-    <div class="topbar-inner">
-      <span class="brand">Fluent</span>
-      <a class="top-link" href="index.html">Home</a>
-      <a class="top-link" href="apps/library/library.html">Library</a>
-      <a class="top-link" href="apps/play-learn/index.html">Games</a>
-      <a class="top-link" href="apps/dictionary/dictionary.html">Dictionary</a>
-      <a class="top-link" href="apps/exemplars/exemplars.html">Exemplars</a>
-      <a class="top-link" href="apps/teachers/teachers.html">Teacher</a>
-    </div>
-  </nav>
-
   <main class="page">
-    <header class="hero">
-      <h1>Welcome to Fluent</h1>
-      <p>
-        Where learners learn and teachers facilitate the learning process
-      </p>
-    </header>
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Welcome to Read Fluently</h1>
+        <p>
+          Where learners learn and teachers facilitate the learning process.
+          Explore reading, listening, practice activities, and support tools in one place.
+        </p>
 
-    <section class="category" aria-labelledby="reading-heading">
-      <h2 id="reading-heading">READING</h2>
-      <div class="tiles">
-        <a class="tile" href="apps/library/library.html">
-          <strong>Library</strong>
-          <span>Browse and open books for reading.</span>
-        </a>
-        <a class="tile" href="apps/decoding/decoding.html">
-          <strong>Read Fluently</strong>
-          <span>Guided reading practice and fluency support.</span>
-        </a>
-        <a class="tile" href="apps/phonics-path/phonics-path.html">
-          <strong>Phonics Path</strong>
-          <span>Build foundational decoding and sound-letter skills.</span>
-        </a>
+        <div class="hero-actions">
+          <a class="hero-btn hero-btn-primary" href="apps/listen-learn/listen-learn.html">Start Learning</a>
+          <a class="hero-btn hero-btn-soft" href="#main-library">View Library</a>
+        </div>
+      </div>
+
+      <div class="buddy-card">
+        <div class="buddy-icon">🦉</div>
+        <h2>FluentBuddy</h2>
+        <p>
+          Your friendly learning guide for stories, fluency practice, and learner support.
+        </p>
       </div>
     </section>
 
-    <section class="category" aria-labelledby="learner-heading">
-      <h2 id="learner-heading">LEARNER ACTIVITIES</h2>
-      <div class="tiles">
-       <a class="tile" href="apps/play-learn/index.html">
-  <strong>Games</strong>
-  <span>Play literacy games for practice and confidence.</span>
-</a>
-        <a class="tile" href="apps/listen-learn/listen-learn.html">
-  <strong>Listen &amp; Learn</strong>
-  <span>Audio stories and comprehension-focused activities.</span>
-</a>
-        <a class="tile" href="apps/writing/writing.html">
-          <strong>Writing</strong>
-          <span>Respond to writing prompts and build expression.</span>
-        </a>
-      </div>
+    <h2 class="section-title" id="main-library">Explore the Library</h2>
+
+    <section class="cards">
+      <a class="card tile-library" href="apps/listen-learn/listen-learn.html">
+        <div>
+          <div class="card-top">
+            <div class="emoji">📚</div>
+            <h3>Library</h3>
+          </div>
+          <p>Open stories and audio-based reading resources in the library.</p>
+        </div>
+        <span class="card-btn">Open</span>
+      </a>
+
+      <a class="card tile-read-fluently" href="#">
+        <div>
+          <div class="card-top">
+            <div class="emoji">🗣️</div>
+            <h3>Read Fluently</h3>
+          </div>
+          <p>Guided reading, practice, and fluency support for confident readers.</p>
+        </div>
+        <span class="card-btn">Open</span>
+      </a>
+
+      <a class="card tile-guided-reading" href="#">
+        <div>
+          <div class="card-top">
+            <div class="emoji">👩‍🏫</div>
+            <h3>Guided Reading</h3>
+          </div>
+          <p>Support learners with focused teacher-led reading activities.</p>
+        </div>
+        <span class="card-btn">Open</span>
+      </a>
+
+      <a class="card tile-practice" href="#">
+        <div>
+          <div class="card-top">
+            <div class="emoji">✏️</div>
+            <h3>Practice</h3>
+          </div>
+          <p>Build confidence with simple reading tasks and repeated practice.</p>
+        </div>
+        <span class="card-btn">Open</span>
+      </a>
+
+      <a class="card tile-fluency-support" href="#">
+        <div>
+          <div class="card-top">
+            <div class="emoji">✨</div>
+            <h3>Fluency Support</h3>
+          </div>
+          <p>Help learners improve pace, accuracy, and expression while reading.</p>
+        </div>
+        <span class="card-btn">Open</span>
+      </a>
+
+      <a class="card tile-listen" href="apps/listen-learn/listen-learn.html">
+        <div>
+          <div class="card-top">
+            <div class="emoji">🎧</div>
+            <h3>Listen &amp; Learn</h3>
+          </div>
+          <p>Listen to stories, follow audio, and record responses to questions.</p>
+        </div>
+        <span class="card-btn">Open</span>
+      </a>
+
+      <a class="card tile-play" href="apps/play-learn/memory.html">
+        <div>
+          <div class="card-top">
+            <div class="emoji">🎮</div>
+            <h3>Play &amp; Learn</h3>
+          </div>
+          <p>Interactive literacy games that make practice fun and engaging.</p>
+        </div>
+        <span class="card-btn">Open</span>
+      </a>
+
+      <a class="card tile-profile" href="#">
+        <div>
+          <div class="card-top">
+            <div class="emoji">👤</div>
+            <h3>Learner Profile</h3>
+          </div>
+          <p>View learner information, strengths, support needs, and progress.</p>
+        </div>
+        <span class="card-btn">Open</span>
+      </a>
+
+      <a class="card tile-support" href="#">
+        <div>
+          <div class="card-top">
+            <div class="emoji">🧠</div>
+            <h3>Individual Support Plan</h3>
+          </div>
+          <p>Teacher tools for planning support, tracking progress, and interventions.</p>
+        </div>
+        <span class="card-btn">Open</span>
+      </a>
     </section>
 
-<section class="category" aria-labelledby="teacher-heading">
-  <h2 id="teacher-heading">TEACHER TOOLS</h2>
-  <div class="tiles">
-
-    <a class="tile" href="apps/lesson-planner/lesson-planner.html">
-      <strong>Lesson Planner</strong>
-      <span>Plan AI-supported lessons and classroom sequences.</span>
-    </a>
-
-    <a class="tile" href="apps/support/sna1.html">
-      <strong>Individual Support Plan</strong>
-      <span>Coordinate SNA 1–3 learner support in shared workflows.</span>
-    </a>
-
-    <a class="tile" href="apps/resources/resources.html">
-      <strong>Resources</strong>
-      <span>Access teacher files, references, and support materials.</span>
-    </a>
-
-  </div>
-</section>
-    <p class="note">Tip: Use tab + enter to navigate with a keyboard.</p>
+    <p class="footer-note">
+      Read Fluently helps learners build fluency, comprehension, and confidence.
+    </p>
   </main>
 </body>
 </html>
