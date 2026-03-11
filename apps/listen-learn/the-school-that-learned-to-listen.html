@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The School That Learned to Listen | Fluent</title>
+  <title>The School That Learned to Listen | Read Fluently</title>
   <style>
     :root {
-      --bg: #f7f8fc;
+      --bg: #f5f7fb;
       --surface: #ffffff;
-      --surface-soft: #f3f5fb;
-      --text: #1f2937;
+      --surface-soft: #eef3fb;
+      --text: #1f2a37;
       --muted: #5f6b7a;
-      --line: #d8deea;
-      --shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
-      --accent: #2563eb;
+      --line: #d9e2f0;
+      --primary: #2f5fa7;
+      --primary-dark: #244a82;
+      --accent: #e74c3c;
+      --accent-dark: #c83a2c;
+      --success: #2e9e57;
+      --shadow: 0 10px 24px rgba(31, 42, 55, 0.08);
+      --radius: 20px;
     }
 
     * {
@@ -23,292 +28,406 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      background: linear-gradient(180deg, #f9fbff 0%, #f2f5fc 100%);
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .topbar-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .brand {
-      font-weight: 700;
-      margin-right: 8px;
-    }
-
-    .top-link {
-      text-decoration: none;
-      color: var(--text);
-      padding: 8px 10px;
-      border-radius: 10px;
-      font-size: 0.95rem;
-    }
-
-    .top-link:hover,
-    .top-link:focus-visible {
-      background: var(--surface-soft);
-      outline: none;
     }
 
     .page {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 26px 20px 48px;
+      padding: 24px 16px 40px;
+    }
+
+    .top-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 22px;
       display: grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: 220px 1fr;
       gap: 24px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .book-cover {
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+      box-shadow: 0 8px 18px rgba(31, 42, 55, 0.12);
+    }
+
+    .top-content {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      background: #e8f0ff;
+      color: var(--primary-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+      color: var(--primary-dark);
+    }
+
+    .intro {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1rem;
+      max-width: 760px;
+    }
+
+    .audio-box {
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .audio-box h2 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: var(--primary-dark);
+    }
+
+    audio {
+      width: 100%;
+      height: 56px;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
 
     .panel {
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 18px;
+      border-radius: 24px;
       box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .cover {
-      width: 100%;
+    .panel-header {
+      padding: 18px 20px;
+      background: #fafcff;
+      border-bottom: 1px solid var(--line);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .panel-body {
+      padding: 20px;
+    }
+
+    .record-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn {
+      border: none;
       border-radius: 14px;
-      display: block;
-      margin-bottom: 14px;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      background: #e9eef8;
+      padding: 15px 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
 
-    h1 {
-      margin: 0 0 10px;
-      font-size: 1.8rem;
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 16px rgba(31, 42, 55, 0.12);
     }
 
-    .subtext {
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-record {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-record:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-stop {
+      background: #eef1f5;
+      color: var(--text);
+      border: 1px solid #cfd8e3;
+    }
+
+    .btn-play {
+      background: #eef8f0;
+      color: #1f6d3a;
+      border: 1px solid #b9dfc2;
+    }
+
+    .btn-download {
+      background: #f3f6fb;
+      color: var(--primary-dark);
+      border: 1px solid #cdd9eb;
+    }
+
+    .status {
+      margin: 14px 0 0;
+      min-height: 22px;
       color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 14px;
+      font-size: 0.96rem;
     }
 
-    .audio-player {
-      width: 100%;
-      margin: 14px 0 8px;
+    .question-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      background: #e8f0ff;
+      color: var(--primary-dark);
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 999px;
     }
 
-    .story-text {
+    .question-text {
+      margin: 0;
+      font-size: 1.2rem;
       line-height: 1.7;
-      white-space: pre-line;
     }
 
-    .question-box {
-      margin-top: 20px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: var(--surface-soft);
-    }
-
-    .question-box h2 {
-      margin-top: 0;
+    .helper-text {
+      margin: 16px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
     }
 
     .back-link {
-      display: inline-block;
-      margin-bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
-      color: var(--accent);
+      color: var(--primary-dark);
       font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    #studentPlayback {
+      display: none;
+      margin-top: 14px;
     }
 
     @media (max-width: 900px) {
-      .page {
+      .top-card {
+        grid-template-columns: 1fr;
+      }
+
+      .book-cover {
+        max-width: 220px;
+        margin: 0 auto;
+      }
+
+      .bottom-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 640px) {
-      .page {
-        padding: 18px 14px 36px;
+    @media (max-width: 560px) {
+      h1 {
+        font-size: 1.6rem;
       }
 
-      .topbar-inner {
-        padding: 10px 14px;
+      .panel-header {
+        font-size: 1.2rem;
+      }
+
+      .record-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="topbar" aria-label="Main navigation">
-    <div class="topbar-inner">
-      <span class="brand">Fluent</span>
-      <a class="top-link" href="../../../index.html">Home</a>
-      <a class="top-link" href="../listen-learn.html">Listen &amp; Learn</a>
-      <a class="top-link" href="../../play-learn/index.html">Games</a>
-      <a class="top-link" href="../../teachers/teachers.html">Teacher</a>
-    </div>
-  </nav>
-
   <main class="page">
-    <aside class="panel">
-      <img src="../../shared/assets/images/the-school-that-learned-to-listen-cover.png" alt="Cover of The School That Learned to Listen">
-  alt="Cover of The School That Learned to Listen"
-/>
+    <a class="back-link" href="listen-learn.html">← Back to Listen & Learn Library</a>
 
-<h1>The School That Learned to Listen</h1>
+    <section class="top-card">
+      <img
+        class="book-cover"
+        src="../../shared/assets/images/the-school-that-learned-to-listen-cover.png"
+        alt="Cover of The School That Learned to Listen"
+      />
 
-<p class="subtext">
-  A fiction audiobook about curiosity, technology, and the power of
-  understanding ideas.
-</p>
+      <div class="top-content">
+        <span class="eyebrow">Listen & Learn</span>
+        <h1>The School That Learned to Listen</h1>
+        <p class="intro">
+          Listen to the story, then record your own answer to show what you understood.
+        </p>
 
-<audio controls>
-  <source src="../../shared/assets/sounds/the-school-that-learned-to-listen.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-    </aside>
-
-    <section class="panel">
-      <a class="back-link" href="../listen-learn.html">← Back to Listen &amp; Learn Library</a>
-
-      <h1>Story Text</h1>
-
-      <div class="story-text">
-Fluent presents… Listen and Learn.
-
-Where learners learn, and teachers facilitate the learning process.
-
-Today’s story is called The School That Learned to Listen.
-
-Lerato loved computers.
-
-Not just playing games or watching videos.
-She liked to understand how they worked.
-
-One afternoon after school, she stayed behind in the computer lab.
-
-The room was quiet.
-
-The screens were dark.
-
-The chairs were pushed neatly under the desks.
-
-But one computer was still on.
-
-Lerato walked closer.
-
-On the screen was a message.
-
-Listening mode activated.
-
-Lerato frowned.
-
-“Listening to what?”
-
-She tapped the keyboard gently.
-
-Suddenly, the computer spoke.
-
-“Hello, Lerato.”
-
-Lerato jumped back.
-
-“How do you know my name?”
-
-“I learn from the voices in this school.”
-
-Lerato stared at the screen.
-
-“You… learn from voices?”
-
-“Yes.
-
-When learners read aloud, I listen.
-
-When teachers explain ideas, I learn.
-
-When learners ask questions, I discover what people still need to understand.”
-
-Lerato pulled a chair closer and sat down.
-
-“So you're learning from us?”
-
-“Yes.
-
-But I still have much to learn.”
-
-The computer screen flickered softly.
-
-New words appeared on the screen.
-
-“Learning happens when people think together.”
-
-Lerato smiled.
-
-“My teacher says something like that too.”
-
-“Good teachers understand something important.
-
-Reading is not only about saying words.
-
-Reading is about understanding ideas.”
-
-Lerato nodded slowly.
-
-Sometimes learners rushed through words.
-
-But the best readers asked questions.
-
-“Good readers ask questions.
-
-Great readers think about the answers.”
-
-Before leaving the lab, Lerato asked one last question.
-
-“What is the most important thing you have learned from listening to everyone in this school?”
-
-“The best learners are curious.
-
-They ask questions.
-
-They listen carefully.
-
-They think deeply.
-
-And they never stop learning.”
-
-Lerato switched off the lights and walked out of the lab.
-
-Maybe the computer had learned something important.
-
-But so had she.
-
-Learning was not just about reading words.
-
-Learning was about understanding the world.
-      </div>
-
-      <div class="question-box">
-        <h2>Comprehension Questions</h2>
-        <p><strong>1.</strong> Why did the computer know Lerato’s name?</p>
-        <p>A. It guessed<br>B. It learned from voices in the school<br>C. Lerato told it<br>D. It read her notebook</p>
-
-        <p><strong>2.</strong> According to the computer, what makes a great reader?</p>
-        <p>A. Reading very fast<br>B. Memorizing every word<br>C. Asking questions and thinking about answers<br>D. Reading quietly</p>
+        <div class="audio-box">
+          <h2>Play the audiobook</h2>
+          <audio controls>
+            <source src="../../shared/assets/sounds/the-school-that-learned-to-listen.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
       </div>
     </section>
+
+    <section class="bottom-grid">
+      <article class="panel">
+        <div class="panel-header">Your Answer</div>
+        <div class="panel-body">
+          <div class="record-grid">
+            <button class="btn btn-record" id="studentRecordBtn" type="button">⏺ Record</button>
+            <button class="btn btn-stop" id="studentStopBtn" type="button" disabled>⏹ Stop</button>
+            <button class="btn btn-play" id="studentPlayBtn" type="button" disabled>▶ Play</button>
+            <button class="btn btn-download" id="studentDownloadBtn" type="button" disabled>⬇ Download</button>
+          </div>
+
+          <p class="status" id="studentStatus">Ready to record your answer.</p>
+
+          <audio id="studentPlayback" controls></audio>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">Comprehension Question</div>
+        <div class="panel-body">
+          <span class="question-label">Question 1</span>
+          <p class="question-text">
+            What did the girl learn about listening?
+          </p>
+          <p class="helper-text">
+            Listen carefully, think about the message of the story, and then record your answer.
+          </p>
+        </div>
+      </article>
+    </section>
   </main>
+
+  <script>
+    function setupRecorder(config) {
+      const recordBtn = document.getElementById(config.recordBtnId);
+      const stopBtn = document.getElementById(config.stopBtnId);
+      const playBtn = document.getElementById(config.playBtnId);
+      const downloadBtn = document.getElementById(config.downloadBtnId);
+      const statusEl = document.getElementById(config.statusId);
+      const playbackEl = document.getElementById(config.playbackId);
+
+      let mediaRecorder = null;
+      let audioChunks = [];
+      let audioBlob = null;
+      let audioUrl = null;
+      let stream = null;
+
+      async function startRecording() {
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          mediaRecorder = new MediaRecorder(stream);
+          audioChunks = [];
+
+          mediaRecorder.ondataavailable = (event) => {
+            if (event.data.size > 0) {
+              audioChunks.push(event.data);
+            }
+          };
+
+          mediaRecorder.onstop = () => {
+            audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+
+            if (audioUrl) {
+              URL.revokeObjectURL(audioUrl);
+            }
+
+            audioUrl = URL.createObjectURL(audioBlob);
+            playbackEl.src = audioUrl;
+            playbackEl.style.display = "block";
+
+            playBtn.disabled = false;
+            downloadBtn.disabled = false;
+            statusEl.textContent = "Your answer is ready. You can play or download it.";
+
+            if (stream) {
+              stream.getTracks().forEach(track => track.stop());
+            }
+          };
+
+          mediaRecorder.start();
+          recordBtn.disabled = true;
+          stopBtn.disabled = false;
+          playBtn.disabled = true;
+          downloadBtn.disabled = true;
+          statusEl.textContent = "Recording your answer...";
+        } catch (error) {
+          statusEl.textContent = "Microphone access was not allowed.";
+          console.error(error);
+        }
+      }
+
+      function stopRecording() {
+        if (mediaRecorder && mediaRecorder.state !== "inactive") {
+          mediaRecorder.stop();
+        }
+        recordBtn.disabled = false;
+        stopBtn.disabled = true;
+      }
+
+      function playRecording() {
+        if (audioUrl) {
+          playbackEl.play();
+        }
+      }
+
+      function downloadRecording() {
+        if (!audioBlob || !audioUrl) return;
+
+        const link = document.createElement("a");
+        link.href = audioUrl;
+        link.download = config.downloadFileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      recordBtn.addEventListener("click", startRecording);
+      stopBtn.addEventListener("click", stopRecording);
+      playBtn.addEventListener("click", playRecording);
+      downloadBtn.addEventListener("click", downloadRecording);
+    }
+
+    setupRecorder({
+      recordBtnId: "studentRecordBtn",
+      stopBtnId: "studentStopBtn",
+      playBtnId: "studentPlayBtn",
+      downloadBtnId: "studentDownloadBtn",
+      statusId: "studentStatus",
+      playbackId: "studentPlayback",
+      downloadFileName: "the-school-that-learned-to-listen-answer.webm"
+    });
+  </script>
 </body>
 </html>
