@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flash Words | Vocabulary Builder</title>
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --card: #ffffff;
+      --primary: #2563eb;
+      --primary-soft: #dbeafe;
+      --accent: #7c3aed;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #dbe3f0;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --error: #b91c1c;
+      --error-bg: #fee2e2;
+      --warning-bg: #fff7ed;
+      --shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, #e9f1ff 0%, transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .app {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 28px 28px 18px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+    }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    .header p {
+      margin: 0;
+      max-width: 700px;
+      line-height: 1.5;
+      opacity: 0.95;
+    }
+
+    .content {
+      padding: 24px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 18px;
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+    }
+
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .controls {
+      display: grid;
+      gap: 14px;
+    }
+
+    .word-bank {
+      display: grid;
+      gap: 10px;
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: var(--primary-soft);
+      color: #1e40af;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .settings {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    label {
+      font-size: 0.92rem;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    select,
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 12px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.2s ease;
+      background: #fff;
+    }
+
+    select:focus,
+    input[type="number"]:focus,
+    input[type="text"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 14px;
+      padding: 13px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+    }
+
+    .btn-secondary {
+      background: #eef2ff;
+      color: #4338ca;
+    }
+
+    .btn-ghost {
+      background: #f8fafc;
+      color: #334155;
+      border: 1px solid var(--line);
+    }
+
+    .stage {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      padding: 28px 18px;
+      text-align: center;
+      min-height: 260px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .flash-wrap {
+      width: 100%;
+    }
+
+    .flash-label {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .flash-word {
+      font-size: clamp(2.2rem, 6vw, 4.4rem);
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      min-height: 1.2em;
+      display: grid;
+      place-items: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .flash-hidden {
+      opacity: 0;
+    }
+
+    .countdown {
+      margin-top: 16px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .status-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 14px;
+    }
+
+    .status-pill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .answer-section {
+      display: none;
+      gap: 16px;
+    }
+
+    .answer-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .answer-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .answer-card h3 {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .feedback {
+      margin-top: 10px;
+      min-height: 24px;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .correct {
+      color: var(--success);
+    }
+
+    .incorrect {
+      color: var(--error);
+    }
+
+    .results {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: #fcfdff;
+    }
+
+    .score-box {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .score-good {
+      color: var(--success);
+    }
+
+    .score-try {
+      color: #c2410c;
+    }
+
+    .word-review {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .word-row {
+      display: grid;
+      grid-template-columns: 50px 1fr 1fr 120px;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+    }
+
+    .word-row .tag {
+      font-weight: 800;
+      color: #475569;
+    }
+
+    .word-row .expected,
+    .word-row .typed {
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .word-row .badge {
+      justify-self: start;
+      font-size: 0.88rem;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 7px 10px;
+    }
+
+    .badge-success {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .badge-error {
+      background: var(--error-bg);
+      color: var(--error);
+    }
+
+    .instructions-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hint {
+      margin-top: 8px;
+      background: var(--warning-bg);
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: #9a3412;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .answer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .settings {
+        grid-template-columns: 1fr;
+      }
+
+      .word-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 14px;
+      }
+
+      .content,
+      .header {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .answer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      .button-row button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <header class="header">
+        <h1>Flash Words</h1>
+        <p>
+          A vocabulary-building game for automatic word recognition. Learners watch
+          five flashing common words, remember them, and type them back in order.
+        </p>
+      </header>
+
+      <div class="content">
+        <section class="top-grid">
+          <div class="panel controls">
+            <h2>Game Controls</h2>
+
+            <div class="settings">
+              <div>
+                <label for="levelSelect">Word Set</label>
+                <select id="levelSelect">
+                  <option value="easy">Easy Common Words</option>
+                  <option value="medium" selected>Medium Common Words</option>
+                  <option value="hard">Harder Common Words</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="flashTime">Flash Time (seconds)</label>
+                <input id="flashTime" type="number" min="1" max="5" step="1" value="2" />
+              </div>
+
+              <div>
+                <label for="blankTime">Pause Between Words (seconds)</label>
+                <input id="blankTime" type="number" min="0" max="3" step="1" value="1" />
+              </div>
+            </div>
+
+            <div class="button-row">
+              <button id="startBtn" class="btn-primary">Start Game</button>
+              <button id="checkBtn" class="btn-secondary" disabled>Check Answers</button>
+              <button id="playAgainBtn" class="btn-ghost">Play Again</button>
+            </div>
+
+            <div class="hint">
+              Watch carefully. The words will disappear after a short time.
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>How to Play</h2>
+            <ol class="instructions-list">
+              <li>Look at each flashing word.</li>
+              <li>Try to remember the 5 words in order.</li>
+              <li>Type the words into the 5 blocks.</li>
+              <li>Check your answers and see your score.</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="stage" aria-live="polite">
+          <div class="flash-wrap">
+            <div class="flash-label" id="flashLabel">Press “Start Game” to begin.</div>
+            <div class="flash-word" id="flashWord">Ready?</div>
+            <div class="countdown" id="countdownText"></div>
+
+            <div class="status-bar">
+              <span class="status-pill" id="statusRound">Words: 0 / 5</span>
+              <span class="status-pill" id="statusMode">Mode: Waiting</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="answer-section" id="answerSection">
+          <div class="panel">
+            <h2>Type the words in order</h2>
+            <div class="answer-grid" id="answerGrid"></div>
+          </div>
+        </section>
+
+        <section class="results" id="resultsSection">
+          <div class="score-box" id="scoreBox">Score: 0 / 5</div>
+          <p id="resultMessage"></p>
+          <div class="word-review" id="wordReview"></div>
+        </section>
+
+        <p class="footer-note">
+          Tip: You can change the level and flash speed to make the game easier or harder.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const WORD_SETS = {
+      easy: [
+        "cat", "dog", "run", "jump", "play", "ball", "tree", "book", "milk", "home",
+        "fish", "bird", "rain", "sun", "hat", "pen", "desk", "hand", "shoe", "cake"
+      ],
+      medium: [
+        "come", "said", "with", "here", "want", "there", "little", "school", "friend", "water",
+        "after", "under", "every", "green", "house", "happy", "people", "animal", "garden", "paper"
+      ],
+      hard: [
+        "because", "another", "through", "different", "children", "remember", "morning", "important", "sentence", "language",
+        "learning", "building", "question", "picture", "reading", "special", "vocabulary", "complete", "between", "without"
+      ]
+    };
+
+    const startBtn = document.getElementById("startBtn");
+    const checkBtn = document.getElementById("checkBtn");
+    const playAgainBtn = document.getElementById("playAgainBtn");
+    const levelSelect = document.getElementById("levelSelect");
+    const flashTimeInput = document.getElementById("flashTime");
+    const blankTimeInput = document.getElementById("blankTime");
+
+    const flashWord = document.getElementById("flashWord");
+    const flashLabel = document.getElementById("flashLabel");
+    const countdownText = document.getElementById("countdownText");
+    const statusRound = document.getElementById("statusRound");
+    const statusMode = document.getElementById("statusMode");
+
+    const answerSection = document.getElementById("answerSection");
+    const answerGrid = document.getElementById("answerGrid");
+    const resultsSection = document.getElementById("resultsSection");
+    const scoreBox = document.getElementById("scoreBox");
+    const resultMessage = document.getElementById("resultMessage");
+    const wordReview = document.getElementById("wordReview");
+
+    let currentWords = [];
+    let countdownInterval = null;
+    let gameRunning = false;
+
+    function shuffle(array) {
+      const copy = [...array];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function pickWords(level, count = 5) {
+      return shuffle(WORD_SETS[level]).slice(0, count);
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function clearCountdown() {
+      if (countdownInterval) {
+        clearInterval(countdownInterval);
+        countdownInterval = null;
+      }
+      countdownText.textContent = "";
+    }
+
+    function startVisibleCountdown(seconds, labelPrefix) {
+      clearCountdown();
+
+      if (seconds <= 0) {
+        countdownText.textContent = "";
+        return;
+      }
+
+      let remaining = seconds;
+      countdownText.textContent = `${labelPrefix} ${remaining}s`;
+
+      countdownInterval = setInterval(() => {
+        remaining -= 1;
+        if (remaining <= 0) {
+          clearCountdown();
+          return;
+        }
+        countdownText.textContent = `${labelPrefix} ${remaining}s`;
+      }, 1000);
+    }
+
+    function updateStatus(index, mode) {
+      statusRound.textContent = `Words: ${index} / 5`;
+      statusMode.textContent = `Mode: ${mode}`;
+    }
+
+    function buildAnswerInputs() {
+      answerGrid.innerHTML = "";
+
+      for (let i = 0; i < 5; i++) {
+        const card = document.createElement("div");
+        card.className = "answer-card";
+
+        const title = document.createElement("h3");
+        title.textContent = `Word ${i + 1}`;
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = `Type word ${i + 1}`;
+        input.autocomplete = "off";
+        input.spellcheck = false;
+        input.dataset.index = i;
+
+        const feedback = document.createElement("div");
+        feedback.className = "feedback";
+        feedback.id = `feedback-${i}`;
+
+        card.appendChild(title);
+        card.appendChild(input);
+        card.appendChild(feedback);
+        answerGrid.appendChild(card);
+      }
+    }
+
+    function resetGameUI() {
+      clearCountdown();
+      answerSection.style.display = "none";
+      resultsSection.style.display = "none";
+      answerGrid.innerHTML = "";
+      wordReview.innerHTML = "";
+      flashWord.textContent = "Ready?";
+      flashWord.classList.remove("flash-hidden");
+      flashLabel.textContent = 'Press “Start Game” to begin.';
+      updateStatus(0, "Waiting");
+      checkBtn.disabled = true;
+      startBtn.disabled = false;
+      gameRunning = false;
+    }
+
+    async function runGame() {
+      if (gameRunning) return;
+
+      const flashSeconds = Number(flashTimeInput.value);
+      const blankSeconds = Number(blankTimeInput.value);
+
+      if (flashSeconds < 1 || flashSeconds > 5) {
+        alert("Flash time must be between 1 and 5 seconds.");
+        return;
+      }
+
+      if (blankSeconds < 0 || blankSeconds > 3) {
+        alert("Pause time must be between 0 and 3 seconds.");
+        return;
+      }
+
+      gameRunning = true;
+      startBtn.disabled = true;
+      checkBtn.disabled = true;
+      answerSection.style.display = "none";
+      resultsSection.style.display = "none";
+      wordReview.innerHTML = "";
+
+      currentWords = pickWords(levelSelect.value, 5);
+
+      flashLabel.textContent = "Get ready...";
+      flashWord.textContent = "3";
+      updateStatus(0, "Starting");
+
+      await sleep(700);
+      flashWord.textContent = "2";
+      await sleep(700);
+      flashWord.textContent = "1";
+      await sleep(700);
+
+      for (let i = 0; i < currentWords.length; i++) {
+        const wordNumber = i + 1;
+        const word = currentWords[i];
+
+        flashLabel.textContent = `Watch word ${wordNumber}`;
+        flashWord.classList.remove("flash-hidden");
+        flashWord.textContent = word;
+        updateStatus(wordNumber, "Watching");
+        startVisibleCountdown(flashSeconds, "Hides in");
+
+        await sleep(flashSeconds * 1000);
+        clearCountdown();
+
+        if (i < currentWords.length - 1 || blankSeconds > 0) {
+          flashWord.classList.add("flash-hidden");
+          flashWord.textContent = "•";
+          flashLabel.textContent = "Remember the word...";
+          updateStatus(wordNumber, "Remembering");
+
+          if (blankSeconds > 0) {
+            startVisibleCountdown(blankSeconds, "Next word in");
+            await sleep(blankSeconds * 1000);
+            clearCountdown();
+          }
+        }
+      }
+
+      flashWord.classList.remove("flash-hidden");
+      flashWord.textContent = "Type the words!";
+      flashLabel.textContent = "Now type all 5 words in order.";
+      updateStatus(5, "Answering");
+
+      buildAnswerInputs();
+      answerSection.style.display = "grid";
+      checkBtn.disabled = false;
+      gameRunning = false;
+
+      const firstInput = answerGrid.querySelector("input");
+      if (firstInput) firstInput.focus();
+    }
+
+    function checkAnswers() {
+      const inputs = answerGrid.querySelectorAll("input");
+      if (!inputs.length) return;
+
+      let score = 0;
+      wordReview.innerHTML = "";
+
+      inputs.forEach((input, index) => {
+        const typed = input.value.trim().toLowerCase();
+        const expected = currentWords[index].toLowerCase();
+        const feedback = document.getElementById(`feedback-${index}`);
+        const correct = typed === expected;
+
+        if (correct) {
+          score += 1;
+          feedback.textContent = "Correct";
+          feedback.className = "feedback correct";
+        } else {
+          feedback.textContent = `Correct word: ${currentWords[index]}`;
+          feedback.className = "feedback incorrect";
+        }
+
+        const row = document.createElement("div");
+        row.className = "word-row";
+
+        row.innerHTML = `
+          <div class="tag">#${index + 1}</div>
+          <div>
+            <div class="tag">Expected</div>
+            <div class="expected">${currentWords[index]}</div>
+          </div>
+          <div>
+            <div class="tag">Typed</div>
+            <div class="typed">${input.value.trim() || "—"}</div>
+          </div>
+          <div class="badge ${correct ? "badge-success" : "badge-error"}">
+            ${correct ? "Correct" : "Try again"}
+          </div>
+        `;
+
+        wordReview.appendChild(row);
+      });
+
+      resultsSection.style.display = "block";
+      scoreBox.textContent = `Score: ${score} / 5`;
+      scoreBox.className = `score-box ${score >= 4 ? "score-good" : "score-try"}`;
+
+      if (score === 5) {
+        resultMessage.textContent = "Excellent! You remembered all five words correctly.";
+      } else if (score >= 3) {
+        resultMessage.textContent = "Well done! You are building strong word recognition.";
+      } else {
+        resultMessage.textContent = "Good try. Play again and see if you can beat your score.";
+      }
+    }
+
+    startBtn.addEventListener("click", runGame);
+    checkBtn.addEventListener("click", checkAnswers);
+    playAgainBtn.addEventListener("click", resetGameUI);
+
+    resetGameUI();
+  </script>
+</body>
+</html>
