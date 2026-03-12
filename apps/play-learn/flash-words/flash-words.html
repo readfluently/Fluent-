@@ -11,13 +11,41 @@
     <section class="card">
       <header class="header">
         <h1>Flash Words</h1>
-        <p>
-          Watch five words, remember them in order, then type them back.
-        </p>
+        <p>Watch five words, remember them in order, then type them back.</p>
       </header>
 
       <div class="content">
-        <section class="top-grid">
+        <section class="stage" aria-live="polite">
+          <div class="flash-wrap">
+            <div class="flash-label" id="flashLabel">Press "Start Game" to begin.</div>
+
+            <div class="flash-box">
+              <div class="flash-word" id="flashWord">Ready?</div>
+            </div>
+
+            <div class="countdown" id="countdownText"></div>
+
+            <div class="status-bar">
+              <span class="status-pill" id="statusRound">Words: 0 / 5</span>
+              <span class="status-pill" id="statusMode">Mode: Waiting</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="answer-section" id="answerSection">
+          <div class="panel">
+            <h2>Type the words in order</h2>
+            <div class="answer-grid" id="answerGrid"></div>
+          </div>
+        </section>
+
+        <section class="results" id="resultsSection">
+          <div class="score-box" id="scoreBox">Score: 0 / 5</div>
+          <p id="resultMessage"></p>
+          <div class="word-review" id="wordReview"></div>
+        </section>
+
+        <section class="bottom-grid">
           <div class="panel controls">
             <h2>Game Controls</h2>
 
@@ -49,7 +77,7 @@
             </div>
 
             <div class="hint">
-              Look carefully. Only the word in the flash box should appear during the flash round.
+              Watch carefully. The words appear only inside the flash box. Then type them in order.
             </div>
           </div>
 
@@ -62,36 +90,6 @@
               <li>Correct answers earn a star.</li>
             </ol>
           </div>
-        </section>
-
-        <section class="stage" aria-live="polite">
-          <div class="flash-wrap">
-            <div class="flash-label" id="flashLabel">Press “Start Game” to begin.</div>
-
-            <div class="flash-box">
-              <div class="flash-word" id="flashWord">Ready?</div>
-            </div>
-
-            <div class="countdown" id="countdownText"></div>
-
-            <div class="status-bar">
-              <span class="status-pill" id="statusRound">Words: 0 / 5</span>
-              <span class="status-pill" id="statusMode">Mode: Waiting</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="answer-section" id="answerSection">
-          <div class="panel">
-            <h2>Type the words in order</h2>
-            <div class="answer-grid" id="answerGrid"></div>
-          </div>
-        </section>
-
-        <section class="results" id="resultsSection">
-          <div class="score-box" id="scoreBox">Score: 0 / 5</div>
-          <p id="resultMessage"></p>
-          <div class="word-review" id="wordReview"></div>
         </section>
       </div>
     </section>
