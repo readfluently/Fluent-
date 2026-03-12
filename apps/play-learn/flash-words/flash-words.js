@@ -135,7 +135,7 @@ function resetGameUI() {
   wordReview.innerHTML = "";
   flashWord.textContent = "Ready?";
   flashWord.classList.remove("flash-hidden");
-  flashLabel.textContent = "Press “Start Game” to begin.";
+  flashLabel.textContent = 'Press "Start Game" to begin.';
   updateStatus(0, "Waiting");
   checkBtn.disabled = true;
   startBtn.disabled = false;
@@ -268,6 +268,7 @@ function checkAnswers() {
 
   resultsSection.style.display = "block";
   scoreBox.textContent = `Score: ${score} / 5`;
+  scoreBox.className = `score-box ${score >= 4 ? "score-good" : "score-try"}`;
 
   if (score === 5) {
     resultMessage.textContent = "Excellent! You remembered all five words correctly.";
