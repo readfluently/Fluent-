@@ -1,63 +1,143 @@
-let words = document.querySelectorAll(".word")
-let index = 0
-let encourageTimer
-let readTimer
+const words = document.querySelectorAll(".word");
+const startButton = document.getElementById("start");
 
-function speak(text){
+let index = 0;
+let encourageTimer = null;
+let readTimer = null;
+let recognition = null;
+let isReadingActive = false;
 
-let speech = new SpeechSynthesisUtterance(text)
-
-speech.rate = 0.8
-speech.pitch = 1
-
-speechSynthesis.speak(speech)
-
+function speak(text) {
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 0.85;
+  utterance.pitch = 1;
+  window.speechSynthesis.speak(utterance);
 }
 
-function encourage(){
-
-speak("Try the word. You can do it.")
-
+function normalizeWord(word) {
+  return word
+    .toLowerCase()
+    .replace(/[.,!?;:"'()]/g, "")
+    .trim();
 }
 
-function startReading(){
-
-index = 0
-highlightWord()
-
+function clearTimers() {
+  clearTimeout(encourageTimer);
+  clearTimeout(readTimer);
 }
 
-function highlightWord(){
+function setTimers() {
+  clearTimers();
 
-words.forEach(w=>w.classList.remove("active"))
+  encourageTimer = setTimeout(() => {
+    if (!isReadingActive) return;
+    speak(`Try the word ${words[index].innerText}`);
+  }, 5000);
 
-if(index >= words.length) return
-
-words[index].classList.add("active")
-
-clearTimeout(encourageTimer)
-clearTimeout(readTimer)
-
-encourageTimer = setTimeout(encourage,5000)
-
-readTimer = setTimeout(()=>{
-
-let word = words[index].innerText
-speak(word)
-
-},8000)
-
+  readTimer = setTimeout(() => {
+    if (!isReadingActive) return;
+    speak(words[index].innerText);
+  }, 8000);
 }
 
-words.forEach((word,i)=>{
+function highlightWord() {
+  words.forEach((word) => word.classList.remove("active"));
 
-word.addEventListener("click",()=>{
+  if (index >= words.length) {
+    finishReading();
+    return;
+  }
 
-index = i+1
-highlightWord()
+  words[index].classList.add("active");
+  setTimers();
+}
 
-})
+function moveToNextWord() {
+  index += 1;
+  highlightWord();
+}
 
-})
+function finishReading() {
+  isReadingActive = false;
+  clearTimers();
 
-document.getElementById("start").onclick = startReading
+  words.forEach((word) => word.classList.remove("active"));
+  speak("Well done. You finished the reading.");
+  
+  if (recognition) {
+    recognition.stop();
+  }
+}
+
+function setupRecognition() {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert("Speech recognition is not supported in this browser. Please use Chrome or Edge.");
+    return null;
+  }
+
+  const sr = new SpeechRecognition();
+  sr.continuous = true;
+  sr.interimResults = true;
+  sr.lang = "en-US";
+
+  sr.onresult = (event) => {
+    if (!isReadingActive || index >= words.length) return;
+
+    let transcript = "";
+
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      transcript += event.results[i][0].transcript + " ";
+    }
+
+    const heardWords = transcript
+      .split(/\s+/)
+      .map(normalizeWord)
+      .filter(Boolean);
+
+    const targetWord = normalizeWord(words[index].innerText);
+
+    if (heardWords.includes(targetWord)) {
+      moveToNextWord();
+    }
+  };
+
+  sr.onerror = (event) => {
+    console.log("Speech recognition error:", event.error);
+  };
+
+  sr.onend = () => {
+    if (isReadingActive) {
+      try {
+        sr.start();
+      } catch (error) {
+        console.log("Recognition restart blocked:", error);
+      }
+    }
+  };
+
+  return sr;
+}
+
+function startReading() {
+  if (!recognition) {
+    recognition = setupRecognition();
+  }
+
+  if (!recognition) return;
+
+  index = 0;
+  isReadingActive = true;
+  highlightWord();
+
+  try {
+    recognition.start();
+  } catch (error) {
+    console.log("Recognition already started:", error);
+  }
+}
+
+startButton.addEventListener("click", startReading);
