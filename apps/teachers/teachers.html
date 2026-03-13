@@ -399,13 +399,15 @@
 </head>
 <body>
   <div class="page">
+    <input id="planId" type="hidden" />
+
     <section class="hero">
       <h1>Lesson Plan Builder</h1>
       <p>
         Build, save, reuse, print, and auto-generate lesson plans inside Fluent.
-        This version is designed around the structure in your template, including
-        objectives, resources, concepts, teacher activity, learner activity,
-        assessment, accommodations, extension activities, and reflection.
+        This version is designed around lesson planning sections such as objectives,
+        resources, concepts, teacher activity, learner activity, assessment,
+        accommodations, extension activities, and reflection.
       </p>
 
       <div class="hero-actions">
@@ -425,9 +427,8 @@
           <div class="card-header">
             <h2>Plan Setup</h2>
             <p>
-              Start with grade, subject, and topic. The generator uses sample lesson structures
-              inspired by the uploaded template’s examples for Whole Numbers, Number Sentences,
-              and Time. :contentReference[oaicite:2]{index=2}
+              Start with grade, subject, and topic. The generator includes starter lesson structures
+              for Whole Numbers, Number Sentences, and Time.
             </p>
           </div>
           <div class="card-body grid grid-3">
@@ -500,7 +501,7 @@
         <section class="card">
           <div class="card-header">
             <h2>Lesson Header</h2>
-            <p>These fields mirror the repeating header pattern used in the template. :contentReference[oaicite:3]{index=3}</p>
+            <p>Complete the overview details for this lesson.</p>
           </div>
           <div class="card-body grid grid-2">
             <div class="field">
@@ -525,7 +526,7 @@
         <section class="card">
           <div class="card-header">
             <h2>Objectives, Resources, and Concepts</h2>
-            <p>The template places these as the core teaching plan sections. :contentReference[oaicite:4]{index=4}</p>
+            <p>Add the intended outcomes, teaching resources, and key lesson concepts.</p>
           </div>
           <div class="card-body grid">
             <div class="field">
@@ -549,10 +550,7 @@
         <section class="card">
           <div class="card-header">
             <h2>Teaching and Learning Activities</h2>
-            <p>
-              The sample document uses detailed teacher activity and learner activity blocks,
-              including introductions, main activity, and conclusions. :contentReference[oaicite:5]{index=5}
-            </p>
+            <p>Plan what the teacher will do and what learners will do during the lesson.</p>
           </div>
           <div class="card-body grid">
             <div class="split">
@@ -588,7 +586,7 @@
           <div class="card-header">
             <h2>Reflection and Connections</h2>
             <p>
-              This gives you space for post-lesson notes and simple links into Fluent Library and Audiobooks.
+              Add reflection notes and connect this lesson to Fluent Library and future Audiobooks.
             </p>
           </div>
           <div class="card-body grid">
@@ -600,17 +598,17 @@
             <div class="grid grid-2">
               <div class="field">
                 <label for="libraryLink">Fluent Library Link</label>
-                <input id="libraryLink" type="text" placeholder="../library/index.html" />
+                <input id="libraryLink" type="text" placeholder="../library/library.html" />
               </div>
               <div class="field">
                 <label for="audioLink">Fluent Audiobooks Link</label>
-                <input id="audioLink" type="text" placeholder="../audiobooks/index.html" />
+                <input id="audioLink" type="text" placeholder="#" />
               </div>
             </div>
 
             <div class="resource-grid">
-              <a id="openLibraryBtn" class="resource-link" href="../library/index.html">📚 Open Fluent Library</a>
-              <a id="openAudioBtn" class="resource-link" href="../audiobooks/index.html">🔊 Open Fluent Audiobooks</a>
+              <a id="openLibraryBtn" class="resource-link" href="../library/library.html">📚 Open Fluent Library</a>
+              <a id="openAudioBtn" class="resource-link" href="#">🔊 Open Fluent Audiobooks</a>
             </div>
 
             <div class="footer-actions">
@@ -643,8 +641,6 @@
               • Mathematics → Whole Numbers<br>
               • Mathematics → Number Sentences<br>
               • Mathematics → Time
-              <br><br>
-              Those are based on the patterns and examples in your uploaded lesson-plan template. :contentReference[oaicite:6]{index=6}
             </div>
           </div>
         </section>
@@ -668,6 +664,7 @@
   <script>
     const STORAGE_KEY = "fluentLessonPlans";
     const FIELD_IDS = [
+      "planId",
       "schoolName",
       "grade",
       "subject",
@@ -774,21 +771,25 @@
     function getFormData() {
       const data = {};
       FIELD_IDS.forEach((id) => {
-        data[id] = document.getElementById(id).value.trim();
+        const element = document.getElementById(id);
+        data[id] = element ? element.value.trim() : "";
       });
       return data;
     }
 
     function setFormData(data) {
       FIELD_IDS.forEach((id) => {
-        document.getElementById(id).value = data[id] || "";
+        const element = document.getElementById(id);
+        if (element) {
+          element.value = data[id] || "";
+        }
       });
       syncResourceLinks();
     }
 
     function syncResourceLinks() {
-      const libraryLink = document.getElementById("libraryLink").value.trim() || "../library/index.html";
-      const audioLink = document.getElementById("audioLink").value.trim() || "../audiobooks/index.html";
+      const libraryLink = document.getElementById("libraryLink").value.trim() || "../library/library.html";
+      const audioLink = document.getElementById("audioLink").value.trim() || "#";
 
       document.getElementById("openLibraryBtn").href = libraryLink;
       document.getElementById("openAudioBtn").href = audioLink;
@@ -853,11 +854,11 @@
       }
 
       if (!document.getElementById("libraryLink").value) {
-        document.getElementById("libraryLink").value = "../library/index.html";
+        document.getElementById("libraryLink").value = "../library/library.html";
       }
 
       if (!document.getElementById("audioLink").value) {
-        document.getElementById("audioLink").value = "../audiobooks/index.html";
+        document.getElementById("audioLink").value = "#";
       }
 
       syncResourceLinks();
@@ -872,18 +873,23 @@
         return;
       }
 
-      const existingIndex = plans.findIndex((plan) => plan.id === data.id);
+      const existingIndex = plans.findIndex((plan) => plan.id === data.planId);
 
       if (existingIndex >= 0) {
         plans[existingIndex] = {
           ...plans[existingIndex],
           ...data,
+          id: data.planId,
           updatedAt: new Date().toISOString()
         };
       } else {
+        const newId = makePlanId();
+        document.getElementById("planId").value = newId;
+
         const newPlan = {
-          id: makePlanId(),
+          id: newId,
           ...data,
+          planId: newId,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         };
@@ -904,7 +910,11 @@
       const plans = getSavedPlans();
       const plan = plans.find((item) => item.id === id);
       if (!plan) return;
-      setFormData(plan);
+
+      setFormData({
+        ...plan,
+        planId: plan.id
+      });
     }
 
     function duplicatePlan(id) {
@@ -912,9 +922,11 @@
       const plan = plans.find((item) => item.id === id);
       if (!plan) return;
 
+      const cloneId = makePlanId();
       const clone = {
         ...plan,
-        id: makePlanId(),
+        id: cloneId,
+        planId: cloneId,
         lessonNumber: plan.lessonNumber ? `${plan.lessonNumber} Copy` : "Lesson Copy",
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
@@ -929,6 +941,10 @@
       const plans = getSavedPlans().filter((item) => item.id !== id);
       setSavedPlans(plans);
       renderSavedPlans();
+
+      if (document.getElementById("planId").value === id) {
+        clearCurrentForm();
+      }
     }
 
     function renderSavedPlans() {
@@ -959,8 +975,13 @@
 
     function clearCurrentForm() {
       FIELD_IDS.forEach((id) => {
-        document.getElementById(id).value = "";
+        const element = document.getElementById(id);
+        if (element) {
+          element.value = "";
+        }
       });
+
+      document.getElementById("planId").value = "";
       syncResourceLinks();
     }
 
