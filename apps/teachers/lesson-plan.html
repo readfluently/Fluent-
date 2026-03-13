@@ -1,1 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluent | Lesson Plan Builder</title>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --surface-soft: #f3f6fb;
+      --text: #1f2937;
+      --muted: #667085;
+      --line: #d8e0ee;
+      --primary: #2563eb;
+      --primary-strong: #1d4ed8;
+      --primary-soft: #dbeafe;
+      --accent: #16a34a;
+      --accent-soft: #dcfce7;
+      --warning-soft: #fff7d6;
+      --danger-soft: #fee2e2;
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+      --radius: 20px;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #f9fbff 0%, #eef4ff 100%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 24px 16px 56px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #2563eb, #4f8cff);
+      color: white;
+      border-radius: 28px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 42px);
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      line-height: 1.6;
+      opacity: 0.96;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .hero-actions button,
+    .hero-actions a,
+    .footer-actions button,
+    .saved-list button,
+    .resource-link {
+      border: none;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .hero-actions button:hover,
+    .hero-actions a:hover,
+    .footer-actions button:hover,
+    .saved-list button:hover,
+    .resource-link:hover {
+      transform: translateY(-1px);
+      opacity: 0.97;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-green {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .btn-yellow {
+      background: #fff4c2;
+      color: #7a5b00;
+    }
+
+    .btn-blue {
+      background: var(--primary);
+      color: white;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .main,
+    .side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 16px 18px;
+      background: var(--surface-soft);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .card-header h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .card-header p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #344054;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text);
+      background: white;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .tall {
+      min-height: 150px;
+    }
+
+    .x-tall {
+      min-height: 220px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .mini-note {
+      background: var(--warning-soft);
+      border: 1px dashed #f4c84e;
+      color: #7a5b00;
+      border-radius: 16px;
+      padding: 14px;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .mini-danger {
+      background: var(--danger-soft);
+      border: 1px dashed #fca5a5;
+      color: #7f1d1d;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 8px;
+    }
+
+    .saved-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .saved-item {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      display: grid;
+      gap: 10px;
+      background: #fbfdff;
+    }
+
+    .saved-title {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .saved-meta {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .saved-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .saved-actions button {
+      padding: 9px 12px;
+      font-size: 13px;
+    }
+
+    .ghost {
+      background: #eef2f7;
+      color: #334155;
+    }
+
+    .danger {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .success-msg {
+      display: none;
+      margin-top: 10px;
+      color: #166534;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .resource-link {
+      background: #eef4ff;
+      color: #1d4ed8;
+      border: 1px solid #cfe0ff;
+      text-align: center;
+    }
+
+    .print-only {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2,
+      .grid-3,
+      .split,
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .hero,
+      .side,
+      .footer-actions,
+      .hero-actions {
+        display: none !important;
+      }
+
+      .page {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .main {
+        display: block;
+      }
+
+      .card {
+        box-shadow: none;
+        border: 1px solid #bbb;
+        break-inside: avoid;
+      }
+
+      .card + .card {
+        margin-top: 14px;
+      }
+
+      .print-only {
+        display: block;
+        margin-bottom: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <input id="planId" type="hidden" />
+
+    <section class="hero">
+      <h1>Lesson Plan Builder</h1>
+      <p>
+        Build, save, reuse, print, and auto-generate lesson plans inside Fluent.
+        This version is designed around lesson planning sections such as objectives,
+        resources, concepts, teacher activity, learner activity, assessment,
+        accommodations, extension activities, and reflection.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-white" onclick="autoGeneratePlan()">✨ Auto-Generate Plan</button>
+        <button class="btn-green" onclick="savePlan()">💾 Save Plan</button>
+        <button class="btn-yellow" onclick="exportPDF()">🖨️ Export to PDF</button>
+      </div>
+    </section>
+
+    <div class="layout">
+      <main class="main">
+        <div class="print-only">
+          <h1>Lesson Plan</h1>
+        </div>
+
+        <section class="card">
+          <div class="card-header">
+            <h2>Plan Setup</h2>
+            <p>
+              Start with grade, subject, and topic. The generator includes starter lesson structures
+              for Whole Numbers, Number Sentences, and Time.
+            </p>
+          </div>
+          <div class="card-body grid grid-3">
+            <div class="field">
+              <label for="schoolName">School Name</label>
+              <input id="schoolName" type="text" placeholder="Koster Intermediate School" />
+            </div>
+            <div class="field">
+              <label for="grade">Grade</label>
+              <select id="grade">
+                <option value="">Select grade</option>
+                <option>Grade 1</option>
+                <option>Grade 2</option>
+                <option>Grade 3</option>
+                <option>Grade 4</option>
+                <option>Grade 5</option>
+                <option>Grade 6</option>
+                <option>Grade 7</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="subject">Subject</label>
+              <select id="subject">
+                <option value="">Select subject</option>
+                <option>Mathematics</option>
+                <option>English Home Language</option>
+                <option>Social Sciences</option>
+                <option>Natural Sciences</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="term">Term</label>
+              <select id="term">
+                <option value="">Select term</option>
+                <option>Term 1</option>
+                <option>Term 2</option>
+                <option>Term 3</option>
+                <option>Term 4</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="year">Year</label>
+              <input id="year" type="number" placeholder="2026" />
+            </div>
+            <div class="field">
+              <label for="week">Week</label>
+              <input id="week" type="text" placeholder="Week 1–2" />
+            </div>
+            <div class="field">
+              <label for="topic">Topic</label>
+              <select id="topic">
+                <option value="">Select topic</option>
+                <option>Whole Numbers</option>
+                <option>Number Sentences</option>
+                <option>Time</option>
+                <option>Custom Topic</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="subtopic">Subtopic</label>
+              <input id="subtopic" type="text" placeholder="Revision of Grade 3 work" />
+            </div>
+            <div class="field">
+              <label for="lessonNumber">Lesson</label>
+              <input id="lessonNumber" type="text" placeholder="Lesson 1" />
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <h2>Lesson Header</h2>
+            <p>Complete the overview details for this lesson.</p>
+          </div>
+          <div class="card-body grid grid-2">
+            <div class="field">
+              <label for="summary">Lesson Summary</label>
+              <input id="summary" type="text" placeholder="Short overview of the lesson" />
+            </div>
+            <div class="field">
+              <label for="linkedResourceTitle">Linked Resource Title</label>
+              <input id="linkedResourceTitle" type="text" placeholder="Book, audiobook, worksheet, or article title" />
+            </div>
+            <div class="field">
+              <label for="dateStarted">Date Started</label>
+              <input id="dateStarted" type="date" />
+            </div>
+            <div class="field">
+              <label for="dateCompleted">Date Completed</label>
+              <input id="dateCompleted" type="date" />
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <h2>Objectives, Resources, and Concepts</h2>
+            <p>Add the intended outcomes, teaching resources, and key lesson concepts.</p>
+          </div>
+          <div class="card-body grid">
+            <div class="field">
+              <label for="objectives">Lesson Objectives</label>
+              <textarea id="objectives" class="tall" placeholder="Learners will be able to..."></textarea>
+            </div>
+
+            <div class="split">
+              <div class="field">
+                <label for="resources">Resources</label>
+                <textarea id="resources" placeholder="Base-ten blocks&#10;Number cards&#10;Worksheet"></textarea>
+              </div>
+              <div class="field">
+                <label for="concepts">Concepts</label>
+                <textarea id="concepts" placeholder="Key concepts for this lesson"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <h2>Teaching and Learning Activities</h2>
+            <p>Plan what the teacher will do and what learners will do during the lesson.</p>
+          </div>
+          <div class="card-body grid">
+            <div class="split">
+              <div class="field">
+                <label for="teacherActivity">Teacher’s Activity</label>
+                <textarea id="teacherActivity" class="x-tall" placeholder="Introduction&#10;Main activity&#10;Conclusion"></textarea>
+              </div>
+              <div class="field">
+                <label for="learnerActivity">Learners’ Activity</label>
+                <textarea id="learnerActivity" class="x-tall" placeholder="What learners will do during the lesson"></textarea>
+              </div>
+            </div>
+
+            <div class="grid grid-2">
+              <div class="field">
+                <label for="assessment">Assessment</label>
+                <textarea id="assessment" placeholder="Observation, worksheet, oral responses..."></textarea>
+              </div>
+              <div class="field">
+                <label for="accommodations">Accommodations</label>
+                <textarea id="accommodations" placeholder="Visual aids, modified worksheets, extra time..."></textarea>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="extensionActivities">Extension Activities</label>
+              <textarea id="extensionActivities" placeholder="Challenge task or enrichment activity"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <h2>Reflection and Connections</h2>
+            <p>
+              Add reflection notes and connect this lesson to Fluent Library and future Audiobooks.
+            </p>
+          </div>
+          <div class="card-body grid">
+            <div class="field">
+              <label for="reflection">Teacher’s Reflection</label>
+              <textarea id="reflection" class="tall" placeholder="What worked? What needs support next time?"></textarea>
+            </div>
+
+            <div class="grid grid-2">
+              <div class="field">
+                <label for="libraryLink">Fluent Library Link</label>
+                <input id="libraryLink" type="text" placeholder="../library/library.html" />
+              </div>
+              <div class="field">
+                <label for="audioLink">Fluent Audiobooks Link</label>
+                <input id="audioLink" type="text" placeholder="#" />
+              </div>
+            </div>
+
+            <div class="resource-grid">
+              <a id="openLibraryBtn" class="resource-link" href="../library/library.html">📚 Open Fluent Library</a>
+              <a id="openAudioBtn" class="resource-link" href="#">🔊 Open Fluent Audiobooks</a>
+            </div>
+
+            <div class="footer-actions">
+              <button class="ghost" onclick="clearCurrentForm()">Clear Current Form</button>
+              <button class="btn-green" onclick="savePlan()">Save Plan</button>
+              <button class="btn-yellow" onclick="exportPDF()">Export PDF</button>
+            </div>
+
+            <div id="successMessage" class="success-msg">Lesson plan saved.</div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="side">
+        <section class="card">
+          <div class="card-header">
+            <h2>Auto-Generator Guide</h2>
+            <p>Pick a grade, subject, and topic, then click Auto-Generate Plan.</p>
+          </div>
+          <div class="card-body">
+            <div class="pill-row">
+              <span class="pill">Auto-fill</span>
+              <span class="pill">Multiple saves</span>
+              <span class="pill">PDF export</span>
+              <span class="pill">Library links</span>
+            </div>
+            <div class="mini-note" style="margin-top: 16px;">
+              This generator currently includes starter plans for:
+              <br><br>
+              • Mathematics → Whole Numbers<br>
+              • Mathematics → Number Sentences<br>
+              • Mathematics → Time
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <h2>Saved Lesson Plans</h2>
+            <p>Multiple plans are saved in this browser.</p>
+          </div>
+          <div class="card-body">
+            <div class="mini-danger">
+              Saved plans are stored locally on this device only for now.
+            </div>
+            <div id="savedPlansList" class="saved-list"></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "fluentLessonPlans";
+    const FIELD_IDS = [
+      "planId",
+      "schoolName",
+      "grade",
+      "subject",
+      "term",
+      "year",
+      "week",
+      "topic",
+      "subtopic",
+      "lessonNumber",
+      "summary",
+      "linkedResourceTitle",
+      "dateStarted",
+      "dateCompleted",
+      "objectives",
+      "resources",
+      "concepts",
+      "teacherActivity",
+      "learnerActivity",
+      "assessment",
+      "accommodations",
+      "extensionActivities",
+      "reflection",
+      "libraryLink",
+      "audioLink"
+    ];
+
+    const planTemplates = {
+      "Mathematics::Whole Numbers": {
+        subtopic: "Revision of Grade 3 work",
+        summary: "Counting, ordering, comparing and representing whole numbers and understanding place value.",
+        objectives:
+          "Learners will be able to count, order, compare and represent whole numbers within a given range, as well as understand the place value of digits.",
+        resources:
+          "Base-ten blocks\nNumber charts\nNumber cards\nWhiteboard and markers\nWorksheet",
+        concepts:
+          "Whole numbers\nPlace value\nCounting forward and backwards\nOrder and compare numbers",
+        teacherActivity:
+          "Introduction (10 minutes):\n1. Activate prior knowledge about numbers used in daily life.\n2. Revise counting and identifying number symbols.\n\nMain Activity (35–40 minutes):\n1. Use base-ten blocks to model place value.\n2. Demonstrate how to order and compare numbers using charts and cards.\n3. Give examples from real life such as money, age, distances, and scores.\n4. Facilitate paired or group practice.\n\nConclusion (10 minutes):\n1. Review the key concepts.\n2. Ask learners to explain how they know which number is greater or smaller.",
+        learnerActivity:
+          "1. Count and represent numbers using blocks.\n2. Practise counting forward and backward.\n3. Order and compare whole numbers using number cards.\n4. Work in pairs or small groups to complete the task.",
+        assessment:
+          "Observation during lesson, oral responses, worksheet or short quiz.",
+        accommodations:
+          "Use visual aids, scaffolded tasks, extra support in pairs, and extra time where needed.",
+        extensionActivities:
+          "Ask fast finishers to create number patterns or explain place value using a number they choose."
+      },
+
+      "Mathematics::Number Sentences": {
+        subtopic: "Properties of whole numbers",
+        summary: "Write and solve number sentences to describe problem situations.",
+        objectives:
+          "Learners will write number sentences to describe problem situations, solve and complete number sentences by inspection or trial and improvement, and check solutions by substitution.",
+        resources:
+          "Whiteboard and markers\nWorksheets\nManipulatives (counters or cubes)",
+        concepts:
+          "Number sentences\nInspection\nTrial and improvement\nChecking by substitution",
+        teacherActivity:
+          "Introduction (10 minutes):\n1. Discuss everyday problem situations that can be written as number sentences.\n\nMain Activity (35–40 minutes):\n1. Model how to write number sentences from word problems.\n2. Demonstrate solving by inspection.\n3. Demonstrate solving by trial and improvement.\n4. Show how to check by substitution.\n5. Let learners practise in pairs.\n\nConclusion (10 minutes):\n1. Review methods used.\n2. Discuss why checking matters.",
+        learnerActivity:
+          "1. Write number sentences from given situations.\n2. Solve incomplete number sentences.\n3. Work in pairs or small groups.\n4. Complete worksheet tasks and check solutions.",
+        assessment:
+          "Worksheet completion, teacher observation, oral explanation of strategies used.",
+        accommodations:
+          "Use simplified examples, manipulatives, peer support, and step-by-step prompts.",
+        extensionActivities:
+          "Let learners write their own problem situation and exchange it with a partner to solve."
+      },
+
+      "Mathematics::Time": {
+        subtopic: "Reading and writing time",
+        summary: "Read, tell, and write time in 12-hour and 24-hour formats using analog and digital clocks.",
+        objectives:
+          "Learners will learn to read, tell, and write time in both 12-hour and 24-hour formats using analog and digital instruments, including clocks and watches. They will understand the concepts of hours, minutes, and seconds.",
+        resources:
+          "Analog clocks\nDigital clocks\nWatches (analog and digital)\nWhiteboard and markers\nWorksheets with clock faces\nTimer or stopwatch",
+        concepts:
+          "Time\nHours\nMinutes\nSeconds\nAnalog clocks\nDigital clocks\n12-hour format\n24-hour format",
+        teacherActivity:
+          "Introduction (15 minutes):\n1. Discuss why time is important.\n2. Introduce analog and digital clocks.\n\nUnderstanding Time (15 minutes):\n1. Draw a clock face and explain hour and minute hands.\n2. Explain hours, minutes, and seconds.\n\nMain Activity (20 minutes):\n1. Give learners clock-face worksheets.\n2. Model reading and writing time in 12-hour and 24-hour format.\n3. Practise several examples together.\n\nConclusion (10 minutes):\n1. Review key vocabulary.\n2. Check understanding with a few oral examples.",
+        learnerActivity:
+          "1. Participate in class discussion.\n2. Observe the clock face and identify hour and minute hands.\n3. Read times on analog clocks.\n4. Write times in 12-hour and 24-hour format.\n5. Complete worksheet activities.",
+        assessment:
+          "Worksheet completion, class participation, quick oral questioning.",
+        accommodations:
+          "Use enlarged visual clocks, repeated examples, guided pairing, and extra practice opportunities.",
+        extensionActivities:
+          "Ask learners to write a simple daily timetable using both analog and digital time."
+      }
+    };
+
+    function getSavedPlans() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function setSavedPlans(plans) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(plans));
+    }
+
+    function getFormData() {
+      const data = {};
+      FIELD_IDS.forEach((id) => {
+        const element = document.getElementById(id);
+        data[id] = element ? element.value.trim() : "";
+      });
+      return data;
+    }
+
+    function setFormData(data) {
+      FIELD_IDS.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.value = data[id] || "";
+        }
+      });
+      syncResourceLinks();
+    }
+
+    function syncResourceLinks() {
+      const libraryLink = document.getElementById("libraryLink").value.trim() || "../library/library.html";
+      const audioLink = document.getElementById("audioLink").value.trim() || "#";
+
+      document.getElementById("openLibraryBtn").href = libraryLink;
+      document.getElementById("openAudioBtn").href = audioLink;
+    }
+
+    function makePlanId() {
+      return "plan-" + Date.now();
+    }
+
+    function makePlanTitle(data) {
+      const grade = data.grade || "No grade";
+      const subject = data.subject || "No subject";
+      const topic = data.topic || "Untitled topic";
+      const lesson = data.lessonNumber || "Lesson";
+      return `${grade} • ${subject} • ${topic} • ${lesson}`;
+    }
+
+    function autoGeneratePlan() {
+      const grade = document.getElementById("grade").value;
+      const subject = document.getElementById("subject").value;
+      const topic = document.getElementById("topic").value;
+
+      if (!grade || !subject || !topic) {
+        alert("Please choose a grade, subject, and topic first.");
+        return;
+      }
+
+      const templateKey = `${subject}::${topic}`;
+      const template = planTemplates[templateKey];
+
+      if (!template) {
+        document.getElementById("summary").value = `${topic} lesson for ${grade}`;
+        document.getElementById("objectives").value = `Learners will develop understanding of ${topic.toLowerCase()} through guided explanation, practice, and discussion.`;
+        document.getElementById("resources").value = "Textbook\nWorksheet\nWhiteboard and markers\nTeacher-prepared examples";
+        document.getElementById("concepts").value = topic;
+        document.getElementById("teacherActivity").value =
+          "Introduction (10 minutes):\nIntroduce the topic and activate prior knowledge.\n\nMain Activity (35–40 minutes):\nTeach the concept with examples, guided practice, and class discussion.\n\nConclusion (10 minutes):\nReview the main idea and check understanding.";
+        document.getElementById("learnerActivity").value =
+          "Participate in discussion, complete guided examples, and work independently or in pairs on a practice task.";
+        document.getElementById("assessment").value = "Observation, class discussion, and worksheet activity.";
+        document.getElementById("accommodations").value = "Visual aids, peer support, scaffolded work, and extra time where needed.";
+        document.getElementById("extensionActivities").value = "Provide an enrichment task for fast finishers.";
+      } else {
+        document.getElementById("subtopic").value = document.getElementById("subtopic").value || template.subtopic;
+        document.getElementById("summary").value = template.summary;
+        document.getElementById("objectives").value = template.objectives;
+        document.getElementById("resources").value = template.resources;
+        document.getElementById("concepts").value = template.concepts;
+        document.getElementById("teacherActivity").value = template.teacherActivity;
+        document.getElementById("learnerActivity").value = template.learnerActivity;
+        document.getElementById("assessment").value = template.assessment;
+        document.getElementById("accommodations").value = template.accommodations;
+        document.getElementById("extensionActivities").value = template.extensionActivities;
+      }
+
+      if (!document.getElementById("lessonNumber").value) {
+        document.getElementById("lessonNumber").value = "Lesson 1";
+      }
+
+      if (!document.getElementById("linkedResourceTitle").value) {
+        document.getElementById("linkedResourceTitle").value = topic;
+      }
+
+      if (!document.getElementById("libraryLink").value) {
+        document.getElementById("libraryLink").value = "../library/library.html";
+      }
+
+      if (!document.getElementById("audioLink").value) {
+        document.getElementById("audioLink").value = "#";
+      }
+
+      syncResourceLinks();
+    }
+
+    function savePlan() {
+      const data = getFormData();
+      const plans = getSavedPlans();
+
+      if (!data.topic && !data.summary) {
+        alert("Please add at least a topic or lesson summary before saving.");
+        return;
+      }
+
+      const existingIndex = plans.findIndex((plan) => plan.id === data.planId);
+
+      if (existingIndex >= 0) {
+        plans[existingIndex] = {
+          ...plans[existingIndex],
+          ...data,
+          id: data.planId,
+          updatedAt: new Date().toISOString()
+        };
+      } else {
+        const newId = makePlanId();
+        document.getElementById("planId").value = newId;
+
+        const newPlan = {
+          id: newId,
+          ...data,
+          planId: newId,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        };
+        plans.unshift(newPlan);
+      }
+
+      setSavedPlans(plans);
+      renderSavedPlans();
+
+      const msg = document.getElementById("successMessage");
+      msg.style.display = "block";
+      setTimeout(() => {
+        msg.style.display = "none";
+      }, 2200);
+    }
+
+    function loadPlan(id) {
+      const plans = getSavedPlans();
+      const plan = plans.find((item) => item.id === id);
+      if (!plan) return;
+
+      setFormData({
+        ...plan,
+        planId: plan.id
+      });
+    }
+
+    function duplicatePlan(id) {
+      const plans = getSavedPlans();
+      const plan = plans.find((item) => item.id === id);
+      if (!plan) return;
+
+      const cloneId = makePlanId();
+      const clone = {
+        ...plan,
+        id: cloneId,
+        planId: cloneId,
+        lessonNumber: plan.lessonNumber ? `${plan.lessonNumber} Copy` : "Lesson Copy",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      };
+
+      plans.unshift(clone);
+      setSavedPlans(plans);
+      renderSavedPlans();
+    }
+
+    function deletePlan(id) {
+      const plans = getSavedPlans().filter((item) => item.id !== id);
+      setSavedPlans(plans);
+      renderSavedPlans();
+
+      if (document.getElementById("planId").value === id) {
+        clearCurrentForm();
+      }
+    }
+
+    function renderSavedPlans() {
+      const list = document.getElementById("savedPlansList");
+      const plans = getSavedPlans();
+
+      if (!plans.length) {
+        list.innerHTML = '<div class="saved-item"><div class="saved-meta">No saved plans yet.</div></div>';
+        return;
+      }
+
+      list.innerHTML = plans.map((plan) => {
+        const title = makePlanTitle(plan);
+        const meta = `${plan.week || "No week"} • ${plan.term || "No term"} • ${plan.year || "No year"}`;
+        return `
+          <div class="saved-item">
+            <div class="saved-title">${escapeHtml(title)}</div>
+            <div class="saved-meta">${escapeHtml(meta)}</div>
+            <div class="saved-actions">
+              <button class="btn-blue" onclick="loadPlan('${plan.id}')">Open</button>
+              <button class="ghost" onclick="duplicatePlan('${plan.id}')">Duplicate</button>
+              <button class="danger" onclick="deletePlan('${plan.id}')">Delete</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function clearCurrentForm() {
+      FIELD_IDS.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.value = "";
+        }
+      });
+
+      document.getElementById("planId").value = "";
+      syncResourceLinks();
+    }
+
+    function exportPDF() {
+      syncResourceLinks();
+      window.print();
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    ["libraryLink", "audioLink"].forEach((id) => {
+      document.getElementById(id).addEventListener("input", syncResourceLinks);
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      syncResourceLinks();
+      renderSavedPlans();
+
+      document.getElementById("schoolName").value = "Koster Intermediate School";
+      document.getElementById("subject").value = "Mathematics";
+      document.getElementById("grade").value = "Grade 4";
+      document.getElementById("term").value = "Term 1";
+      document.getElementById("year").value = "2026";
+      document.getElementById("week").value = "Week 1–2";
+      document.getElementById("topic").value = "Whole Numbers";
+      document.getElementById("lessonNumber").value = "Lesson 1";
+    });
+  </script>
+</body>
+</html>
