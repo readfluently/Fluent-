@@ -1,89 +1,274 @@
-Update the Listen & Learn book detail page and the Listen & Learn library so the layout is cleaner and more consistent with the app.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluent | Listen & Learn</title>
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --surface: #ffffff;
+      --surface-soft: #f3f5fb;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --line: #d8deea;
+      --primary: #2563eb;
+      --primary-soft: #dbeafe;
+      --accent-soft: #ede9fe;
+      --shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+      --shadow-hover: 0 14px 30px rgba(15, 23, 42, 0.14);
+      --radius: 20px;
+    }
 
-Context
-- Repo has a Listen & Learn section under: apps/listen-learn/
-- The book detail page is: apps/listen-learn/the-school-that-learned-to-listen.html
-- The library page is: apps/listen-learn/listen-learn.html
-- Assets are in shared/assets/
-- Current problems:
-  1. On the book detail page, the cover image is too large.
-  2. The audio/play controls are too small compared to the cover.
-  3. The full story text should be removed from the book detail page.
-  4. The second container on the book detail page should contain only the comprehension activity.
-  5. The book detail page should also include the same “Record and Play” style interaction used in the library, so learners can record and listen to themselves.
-  6. The Listen & Learn library and the book detail page should feel visually consistent.
+    * {
+      box-sizing: border-box;
+    }
 
-Make the following changes:
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f9fbff 0%, #f2f5fc 100%);
+    }
 
-1. Book detail page layout
-- Redesign the page so it has a balanced two-section layout.
-- Reduce the visual size of the book cover image so it does not dominate the page.
-- Make the audio player area more prominent and easier to use.
-- Keep the page responsive for desktop and mobile.
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
 
-2. Remove story text
-- Remove the full story text/content section from the book detail page.
-- Do not leave an empty text container behind.
-- The page should focus on:
-  - book cover
-  - title / short intro if needed
-  - audio player
-  - comprehension activity
-  - record and play learner response feature
+    .hero {
+      background: linear-gradient(135deg, #ede9fe, #eef4ff);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 22px;
+    }
 
-3. Comprehension container
-- Replace the second container so it contains only a comprehension question/activity.
-- Use a clean card style.
-- Keep it simple and suitable for learners.
-- Add a clear heading like “Comprehension” or similar.
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 42px);
+      color: #243b63;
+    }
 
-4. Record and Play feature
-- Replicate the same record/play interaction pattern already used in the Listen & Learn library.
-- Reuse the existing JavaScript logic and UI pattern if present instead of inventing a different implementation.
-- If the existing record/play code is embedded in another page, extract/reuse it cleanly.
-- The learner should be able to:
-  - start recording
-  - stop recording
-  - playback their recording
-  - see clear labels/buttons
-- Keep the controls larger and touch-friendly.
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
 
-5. Styling improvements
-- Make the cover image smaller with a sensible max-width.
-- Make the audio controls and record/play controls more visually prominent.
-- Improve spacing, alignment, button sizing, and container widths.
-- Keep the style aligned with the existing Fluent / Read Fluently look and feel.
-- Avoid oversized empty space.
-- Use accessible button labels and semantic structure.
+    .library-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
 
-6. Consistency across Listen & Learn pages
-- Update the Listen & Learn library styling if needed so the record/play area and book cards visually align better with the updated detail page.
-- Do not break existing working paths for images, audio, or book links.
+    .book-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 18px;
+      align-items: start;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
 
-7. Preserve working paths
-- Do not change any working relative asset paths unless necessary.
-- Keep the current working book link:
-  - href="the-school-that-learned-to-listen.html"
-- Keep working image/audio references intact unless only styling/layout needs change.
+    .book-cover {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 16px;
+      display: block;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+    }
 
-Implementation notes
-- Prefer editing existing HTML/CSS/JS rather than rewriting everything from scratch.
-- If styles are inline in the page, improve them there unless there is already a shared stylesheet for this section.
-- If JavaScript for record/play already exists elsewhere in the Listen & Learn pages, reuse and adapt it.
-- Ensure no 404s are introduced.
-- Ensure the book cover still displays correctly.
-- Ensure the audio still plays correctly.
+    .book-content h2 {
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+      color: #243b63;
+    }
 
-Acceptance criteria
-- Book detail page shows a smaller, well-proportioned cover image.
-- Audio controls are more prominent.
-- Full story text is removed.
-- Second container contains only comprehension content.
-- Record and play feature exists on the book detail page and works like the library version.
-- Layout is clean, responsive, and consistent with the library.
-- Existing image, audio, and open-book functionality still work.
+    .book-content p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
 
-After making changes:
-- Show a concise summary of what was changed.
-- List the exact files edited.
-- Show the key updated HTML/CSS/JS sections.
+    .book-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .book-link,
+    .record-btn,
+    .stop-btn,
+    .play-btn {
+      border: none;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+    }
+
+    .book-link {
+      background: var(--primary);
+      color: white;
+    }
+
+    .record-btn {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .stop-btn {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .play-btn {
+      background: var(--primary-soft);
+      color: #1d4ed8;
+    }
+
+    .record-panel {
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .record-panel h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: #334155;
+    }
+
+    .record-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .record-status {
+      font-size: 14px;
+      color: var(--muted);
+      min-height: 20px;
+    }
+
+    @media (max-width: 780px) {
+      .book-card {
+        grid-template-columns: 1fr;
+      }
+
+      .book-cover {
+        max-width: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <h1>Listen &amp; Learn</h1>
+      <p>
+        Listen to a story, enjoy the audio, and then practise speaking by recording and
+        playing back your own voice.
+      </p>
+    </section>
+
+    <section class="library-grid">
+      <article class="book-card">
+        <img
+          class="book-cover"
+          src="../../shared/assets/images/the-school-that-learned-to-listen%20cover.png"
+          alt="The School That Learned to Listen book cover"
+        />
+
+        <div class="book-content">
+          <h2>The School That Learned to Listen</h2>
+          <p>
+            Open the story page to listen, answer the comprehension activity, and record your own response.
+          </p>
+
+          <div class="book-actions">
+            <a class="book-link" href="the-school-that-learned-to-listen.html">Open Book</a>
+          </div>
+
+          <div class="record-panel">
+            <h3>Record and Play</h3>
+            <div class="record-row">
+              <button class="record-btn" type="button" onclick="startRecording('library')">🎙️ Start Recording</button>
+              <button class="stop-btn" type="button" onclick="stopRecording('library')">⏹️ Stop</button>
+              <button class="play-btn" type="button" onclick="playRecording('library')">▶️ Play Recording</button>
+            </div>
+            <div class="record-status" id="status-library">Ready to record.</div>
+            <audio id="audio-library" controls style="width: 100%; margin-top: 10px; display: none;"></audio>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const recorderStore = {};
+
+    async function startRecording(key) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const mediaRecorder = new MediaRecorder(stream);
+        const chunks = [];
+
+        mediaRecorder.addEventListener("dataavailable", (event) => {
+          if (event.data.size > 0) chunks.push(event.data);
+        });
+
+        mediaRecorder.addEventListener("stop", () => {
+          const blob = new Blob(chunks, { type: "audio/webm" });
+          const audioUrl = URL.createObjectURL(blob);
+          const audio = document.getElementById(`audio-${key}`);
+          audio.src = audioUrl;
+          audio.style.display = "block";
+          document.getElementById(`status-${key}`).textContent = "Recording saved. You can now play it.";
+          recorderStore[key].stream.getTracks().forEach(track => track.stop());
+        });
+
+        recorderStore[key] = { mediaRecorder, chunks, stream };
+        mediaRecorder.start();
+        document.getElementById(`status-${key}`).textContent = "Recording...";
+      } catch (error) {
+        document.getElementById(`status-${key}`).textContent = "Microphone access was blocked or unavailable.";
+      }
+    }
+
+    function stopRecording(key) {
+      const record = recorderStore[key];
+      if (record && record.mediaRecorder && record.mediaRecorder.state !== "inactive") {
+        record.mediaRecorder.stop();
+        document.getElementById(`status-${key}`).textContent = "Stopping recording...";
+      }
+    }
+
+    function playRecording(key) {
+      const audio = document.getElementById(`audio-${key}`);
+      if (audio && audio.src) {
+        audio.play();
+        document.getElementById(`status-${key}`).textContent = "Playing recording.";
+      } else {
+        document.getElementById(`status-${key}`).textContent = "Record something first.";
+      }
+    }
+  </script>
+</body>
+</html>
