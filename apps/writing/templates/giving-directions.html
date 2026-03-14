@@ -1,1 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluent | Invitation</title>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --surface-soft: #f8fbff;
+      --text: #1f2937;
+      --muted: #667085;
+      --line: #d9e2f0;
+      --primary: #7c3aed;
+      --primary-dark: #6d28d9;
+      --success: #16a34a;
+      --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      --max-width: 1200px;
+    }
 
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, #ede9fe 0%, transparent 24%),
+        linear-gradient(180deg, #faf9ff 0%, #f4f5fb 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: min(var(--max-width), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 42px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
+
+    .brand-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+      color: white;
+      border-radius: 28px;
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.9rem, 5vw, 2.5rem);
+    }
+
+    .hero p {
+      margin: 0;
+      line-height: 1.6;
+      max-width: 780px;
+      color: rgba(255,255,255,0.94);
+    }
+
+    .workspace {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      min-height: 620px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .panel-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: #faf7ff;
+    }
+
+    .panel-header h2,
+    .panel-header h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .panel-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+
+    .panel-scroll {
+      padding: 16px;
+      overflow: auto;
+      flex: 1;
+    }
+
+    .info-box {
+      border: 1px solid #ece8f7;
+      background: var(--surface-soft);
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .info-box strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .info-box p,
+    .info-box li {
+      line-height: 1.6;
+    }
+
+    .info-box p {
+      margin: 0;
+    }
+
+    .info-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: #fcfdff;
+    }
+
+    .tool-btn {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-weight: 800;
+      color: #374151;
+    }
+
+    .writer-area {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: white;
+    }
+
+    .writer-area input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .editor {
+      min-height: 300px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      outline: none;
+      line-height: 1.7;
+      font-size: 1rem;
+      background: white;
+      overflow: auto;
+    }
+
+    .editor:empty:before {
+      content: attr(data-placeholder);
+      color: #98a2b3;
+    }
+
+    .writer-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 14px;
+      background: #fcfdff;
+    }
+
+    .word-count {
+      font-weight: 800;
+    }
+
+    .word-count span {
+      color: var(--primary);
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .btn-submit {
+      background: var(--success);
+      color: white;
+    }
+
+    .results {
+      margin-top: 16px;
+      display: none;
+    }
+
+    .results.show {
+      display: block;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .result-box {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .result-box h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+
+    .result-box ul {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.65;
+    }
+
+    .result-box p {
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .score-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .score {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      background: #fcfdff;
+    }
+
+    .score strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 1000px) {
+      .workspace-grid,
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        width: min(100% - 18px, var(--max-width));
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .score-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-badge">💌</div>
+        <div>
+          <div>Invitation</div>
+          <div style="font-size:0.9rem; color:var(--muted); font-weight:700;">CAPS Grade 4–6</div>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="../transactional-writing.html">← Transactional Writing</a>
+        <a href="../writing.html">Writing Home</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Invitation</h1>
+      <p>
+        Write an invitation to an event. Include the important details clearly and use a polite tone.
+      </p>
+    </section>
+
+    <section class="workspace">
+      <div class="workspace-grid">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Writing guide</h2>
+            <p>Check the purpose, structure, and language features before you begin.</p>
+          </div>
+
+          <div class="panel-scroll">
+            <div class="info-box">
+              <strong>Purpose</strong>
+              <p>To invite someone to an event or activity.</p>
+            </div>
+
+            <div class="info-box">
+              <strong>Text structure</strong>
+              <ul>
+                <li>Name of invitee</li>
+                <li>Nature of the event</li>
+                <li>Date and time</li>
+                <li>Place or venue</li>
+                <li>Optional dress code</li>
+                <li>Optional RSVP</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <strong>Language features</strong>
+              <ul>
+                <li>Can be formal or informal</li>
+                <li>Short and clear</li>
+                <li>Uses polite invitation phrases</li>
+                <li>Response should be polite if included</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <strong>Task</strong>
+              <p>
+                Write an invitation to a school reading celebration. Invite a parent, guardian, or friend to attend.
+              </p>
+            </div>
+
+            <div class="info-box">
+              <strong>Helpful phrases</strong>
+              <p>
+                I would like to invite you to...<br />
+                Please join us for...<br />
+                The event will take place at...<br />
+                We hope to see you there.
+              </p>
+            </div>
+
+            <div class="info-box">
+              <strong>Checklist</strong>
+              <ul>
+                <li>Did I say what the event is?</li>
+                <li>Did I include the date and time?</li>
+                <li>Did I say where it will happen?</li>
+                <li>Is my invitation polite and clear?</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h3>Learner writing space</h3>
+            <p>No autocorrect while typing. Feedback appears after submission.</p>
+          </div>
+
+          <div class="toolbar">
+            <button class="tool-btn" type="button" onclick="formatText('bold')"><strong>B</strong></button>
+            <button class="tool-btn" type="button" onclick="formatText('underline')"><u>U</u></button>
+            <button class="tool-btn" type="button" onclick="setHeading()">H</button>
+            <button class="tool-btn" type="button" onclick="formatText('removeFormat')">Clear</button>
+          </div>
+
+          <div class="writer-area">
+            <input id="headingInput" type="text" value="Invitation" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            <div id="editor" class="editor" contenteditable="true" data-placeholder="Write your invitation here..." spellcheck="false"></div>
+          </div>
+
+          <div class="writer-footer">
+            <div class="word-count">Word count: <span id="wordCount">0</span></div>
+            <button class="btn btn-submit" onclick="submitWriting()">Submit writing</button>
+          </div>
+        </section>
+      </div>
+
+      <section id="results" class="results">
+        <div class="results-grid">
+          <div class="result-box">
+            <h3>Teacher-style feedback</h3>
+            <ul id="feedbackList"></ul>
+            <div class="score-row">
+              <div class="score"><strong>4/5</strong><span>Content</span></div>
+              <div class="score"><strong>4/5</strong><span>Format</span></div>
+              <div class="score"><strong>4/5</strong><span>Language</span></div>
+              <div class="score"><strong>12/15</strong><span>Total</span></div>
+            </div>
+          </div>
+
+          <div class="result-box">
+            <h3>Exemplar invitation</h3>
+            <p>
+              Dear Mrs Mokoena<br><br>
+              I would like to invite you to our Grade 5 Reading Celebration. The event will take place on Friday, 21 June 2026 at 14:00 in the school hall. Learners will share poems, short readings, and book displays. Smart casual dress is welcome. Please RSVP to the class teacher by Wednesday, 19 June. We hope you will be able to join us for this special afternoon.<br><br>
+              Yours sincerely<br>
+              Faith
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <script>
+    const editor = document.getElementById("editor");
+    const wordCount = document.getElementById("wordCount");
+
+    function formatText(command) {
+      editor.focus();
+      document.execCommand(command, false, null);
+    }
+
+    function setHeading() {
+      editor.focus();
+      document.execCommand("formatBlock", false, "h3");
+    }
+
+    function updateWordCount() {
+      const text = (editor.textContent || "").trim();
+      const count = text ? text.split(/\s+/).filter(Boolean).length : 0;
+      wordCount.textContent = count;
+    }
+
+    function submitWriting() {
+      const feedback = [
+        "Your invitation should clearly state the event.",
+        "Make sure the date, time, and venue are easy to find.",
+        "Use a polite and inviting tone.",
+        "Check punctuation and capital letters in names and places."
+      ];
+
+      const list = document.getElementById("feedbackList");
+      list.innerHTML = feedback.map(item => `<li>${item}</li>`).join("");
+      document.getElementById("results").classList.add("show");
+      document.getElementById("results").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    editor.addEventListener("input", updateWordCount);
+  </script>
+</body>
+</html>
