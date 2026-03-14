@@ -1,345 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fluent | Writing</title>
-  <style>
-    :root {
-      --bg: #f7f8fc;
-      --surface: #ffffff;
-      --surface-soft: #f8fafc;
-      --text: #1f2937;
-      --muted: #667085;
-      --line: #d9e2f0;
-      --primary: #f59e0b;
-      --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
-      --shadow-hover: 0 16px 34px rgba(15, 23, 42, 0.12);
-      --max-width: 1150px;
-    }
+<div class="cards">
+  <a class="card transactional" href="newspaper-article.html">
+    <div class="card-icon">🗞️</div>
+    <h3>Newspaper Article</h3>
+    <p>Write a report with a headline, facts, and organised paragraphs.</p>
+  </a>
 
-    * {
-      box-sizing: border-box;
-    }
+  <a class="card transactional" href="magazine-article.html">
+    <div class="card-icon">📖</div>
+    <h3>Magazine Article</h3>
+    <p>Write an interesting article that informs the reader in an engaging way.</p>
+  </a>
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top right, #fff1d6 0%, transparent 26%),
-        linear-gradient(180deg, #fffdf8 0%, #f7f8fc 100%);
-    }
+  <a class="card transactional" href="invitation.html">
+    <div class="card-icon">💌</div>
+    <h3>Invitation</h3>
+    <p>Create an invitation with the correct details, layout, and purpose.</p>
+  </a>
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+  <a class="card transactional" href="advertisement-poster-notice.html">
+    <div class="card-icon">📣</div>
+    <h3>Advertisement, Poster and Notice</h3>
+    <p>Design short persuasive or informative texts for different audiences.</p>
+  </a>
 
-    .page {
-      width: min(var(--max-width), calc(100% - 28px));
-      margin: 0 auto;
-      padding: 24px 0 42px;
-    }
+  <a class="card creative" href="dialogue.html">
+    <div class="card-icon">💬</div>
+    <h3>Dialogue</h3>
+    <p>Write a conversation using the correct format and punctuation.</p>
+  </a>
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 22px;
-      flex-wrap: wrap;
-    }
+  <a class="card creative" href="personal-recount.htm">
+    <div class="card-icon">📝</div>
+    <h3>Personal Recount</h3>
+    <p>Retell a personal experience in a clear and interesting sequence.</p>
+  </a>
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-    }
+  <a class="card essay" href="review.html">
+    <div class="card-icon">⭐</div>
+    <h3>Review</h3>
+    <p>Share your opinion about a book, film, event, or experience with reasons.</p>
+  </a>
 
-    .brand-badge {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      color: white;
-      background: linear-gradient(135deg, #f59e0b, #fbbf24);
-      box-shadow: var(--shadow);
-      font-size: 1.2rem;
-    }
+  <a class="card essay" href="procedures.html">
+    <div class="card-icon">📋</div>
+    <h3>Procedures</h3>
+    <p>Write instructions in the correct order using clear action steps.</p>
+  </a>
 
-    .brand small {
-      display: block;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 2px;
-      font-weight: 700;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-      border-color: #c9d5e6;
-      outline: none;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-      color: white;
-      border-radius: 28px;
-      padding: 28px 24px;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 5vw, 2.8rem);
-    }
-
-    .hero p {
-      margin: 0;
-      line-height: 1.65;
-      max-width: 760px;
-      color: rgba(255, 255, 255, 0.96);
-    }
-
-    .section {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
-      padding: 18px;
-      margin-bottom: 18px;
-    }
-
-    .section-header {
-      margin-bottom: 14px;
-    }
-
-    .section-header h2 {
-      margin: 0 0 6px;
-      font-size: 1.08rem;
-      color: #374151;
-      letter-spacing: 0.02em;
-    }
-
-    .section-header p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.95rem;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      display: block;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: white;
-      padding: 18px;
-      min-height: 150px;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
-      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-    }
-
-    .card:hover,
-    .card:focus-visible {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: #c9d5e6;
-      outline: none;
-    }
-
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-size: 1.25rem;
-      margin-bottom: 14px;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 1.08rem;
-      color: #22314d;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.94rem;
-    }
-
-    .transactional .card-icon {
-      background: #ede9fe;
-    }
-
-    .creative .card-icon {
-      background: #dbeafe;
-    }
-
-    .essay .card-icon {
-      background: #dcfce7;
-    }
-
-    .tips {
-      border: 1px solid #f4e0b8;
-      background: #fff8eb;
-      border-radius: 20px;
-      padding: 16px;
-      color: #5b4a1d;
-      line-height: 1.65;
-      font-size: 0.95rem;
-    }
-
-    .tips strong {
-      display: block;
-      margin-bottom: 8px;
-      color: #6b4f00;
-    }
-
-    @media (max-width: 850px) {
-      .cards {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .page {
-        width: min(100% - 18px, var(--max-width));
-      }
-
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero {
-        padding: 22px 18px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-badge">✍️</div>
-        <div>
-          <div>Writing</div>
-          <small>Choose a writing activity</small>
-        </div>
-      </div>
-
-      <nav class="nav-links">
-        <a href="../../index.html">← Home</a>
-      </nav>
-    </header>
-
-    <section class="hero">
-      <h1>Writing activities</h1>
-      <p>
-        Explore different kinds of writing. Choose a writing activity below to practise
-        planning, drafting, and improving your ideas in a clear and creative way.
-      </p>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>Available writing activities</h2>
-        <p>Select a writing block to open the full activity page.</p>
-      </div>
-
-      <div class="cards">
-        <a class="card transactional" href="newspaper-article.html">
-          <div class="card-icon">🗞️</div>
-          <h3>Newspaper Article</h3>
-          <p>Write a report with a headline, facts, and organised paragraphs.</p>
-        </a>
-
-        <a class="card transactional" href="magazine-article.html">
-          <div class="card-icon">📖</div>
-          <h3>Magazine Article</h3>
-          <p>Write an interesting article that informs the reader in an engaging way.</p>
-        </a>
-
-        <a class="card transactional" href="invitation.html">
-          <div class="card-icon">💌</div>
-          <h3>Invitation</h3>
-          <p>Create an invitation with the correct details, layout, and purpose.</p>
-        </a>
-
-        <a class="card transactional" href="advertisement-poster-notice.html">
-          <div class="card-icon">📣</div>
-          <h3>Advertisement, Poster and Notice</h3>
-          <p>Design short persuasive or informative texts for different audiences.</p>
-        </a>
-
-        <a class="card creative" href="dialogue.html">
-          <div class="card-icon">💬</div>
-          <h3>Dialogue</h3>
-          <p>Write a conversation using the correct format and punctuation.</p>
-        </a>
-
-        <a class="card creative" href="personal-recount.htm">
-          <div class="card-icon">📝</div>
-          <h3>Personal Recount</h3>
-          <p>Retell a personal experience in a clear and interesting sequence.</p>
-        </a>
-
-        <a class="card essay" href="review.html">
-          <div class="card-icon">⭐</div>
-          <h3>Review</h3>
-          <p>Share your opinion about a book, film, event, or experience with reasons.</p>
-        </a>
-
-        <a class="card essay" href="procedures.html">
-          <div class="card-icon">📋</div>
-          <h3>Procedures</h3>
-          <p>Write instructions in the correct order using clear action steps.</p>
-        </a>
-
-        <a class="card essay" href="giving-directions.html">
-          <div class="card-icon">🧭</div>
-          <h3>Giving Directions</h3>
-          <p>Explain clearly how to get from one place to another.</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="tips">
-      <strong>Writing tip</strong>
-      First think about the purpose, audience, and format. Then organise your ideas before you start writing.
-    </section>
-  </div>
-</body>
-</html>
+  <a class="card essay" href="giving-directions.html">
+    <div class="card-icon">🧭</div>
+    <h3>Giving Directions</h3>
+    <p>Explain clearly how to get from one place to another.</p>
+  </a>
+</div>
