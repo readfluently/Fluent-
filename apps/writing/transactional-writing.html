@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluent | Transactional Writing</title>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #667085;
+      --line: #d9e2f0;
+      --primary: #7c3aed;
+      --primary-dark: #6d28d9;
+      --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      --shadow-hover: 0 18px 34px rgba(15, 23, 42, 0.14);
+      --max-width: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, #ede9fe 0%, transparent 24%),
+        linear-gradient(180deg, #faf9ff 0%, #f4f5fb 100%);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      width: min(var(--max-width), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
+
+    .brand-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      box-shadow: var(--shadow);
+      font-size: 1.15rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+      color: white;
+      border-radius: 28px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.9rem, 5vw, 2.7rem);
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.94);
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 1.5rem;
+    }
+
+    .section-text {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      background: #f3e8ff;
+      color: #6d28d9;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-top: auto;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    @media (max-width: 1000px) {
+      .template-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        width: min(100% - 18px, var(--max-width));
+      }
+
+      .template-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-badge">📄</div>
+        <div>
+          <div>Transactional Writing</div>
+          <div style="font-size:0.9rem; color:var(--muted); font-weight:700;">Plan • Structure • Write</div>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="./writing.html">← Writing Home</a>
+        <a href="./picture-guided.html">Picture-Guided Writing</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Choose a writing template</h1>
+      <p>
+        Use a writing form with clear requirements. Learners can follow the structure,
+        write on their own topic, and then receive teacher-style feedback after submission.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Available templates</h2>
+      <p class="section-text">
+        Start with a familiar writing form and build confidence through structure, planning, and reflection.
+      </p>
+
+      <div class="template-grid">
+        <article class="card">
+          <h3>Narrative Essay</h3>
+          <div class="meta-row">
+            <span class="pill">Longer writing</span>
+            <span class="pill">180–250 words</span>
+            <span class="pill">Intermediate</span>
+          </div>
+          <p>Write a story with a clear setting, problem, events, climax, and ending.</p>
+          <a class="btn" href="./templates/narrative-essay.html">Open template</a>
+        </article>
+
+        <article class="card">
+          <h3>Descriptive Essay</h3>
+          <div class="meta-row">
+            <span class="pill">Longer writing</span>
+            <span class="pill">180–250 words</span>
+            <span class="pill">Intermediate</span>
+          </div>
+          <p>Describe a place, person, or experience using vivid sensory detail.</p>
+          <a class="btn" href="./templates/descriptive-essay.html">Open template</a>
+        </article>
+
+        <article class="card">
+          <h3>Formal Letter</h3>
+          <div class="meta-row">
+            <span class="pill">Shorter transactional</span>
+            <span class="pill">120–180 words</span>
+            <span class="pill">Intermediate</span>
+          </div>
+          <p>Write an official letter using polite language and the correct format.</p>
+          <a class="btn" href="./templates/formal-letter.html">Open template</a>
+        </article>
+
+        <article class="card">
+          <h3>Friendly Letter</h3>
+          <div class="meta-row">
+            <span class="pill">Shorter transactional</span>
+            <span class="pill">120–180 words</span>
+            <span class="pill">Developing</span>
+          </div>
+          <p>Write a personal letter to a friend or family member using the correct structure.</p>
+          <a class="btn" href="./templates/friendly-letter.html">Open template</a>
+        </article>
+
+        <article class="card">
+          <h3>Speech</h3>
+          <div class="meta-row">
+            <span class="pill">Shorter transactional</span>
+            <span class="pill">140–220 words</span>
+            <span class="pill">Developing</span>
+          </div>
+          <p>Write a speech with a strong opening, clear points, and a memorable closing.</p>
+          <a class="btn" href="./templates/speech.html">Open template</a>
+        </article>
+
+        <article class="card">
+          <h3>Newspaper Report</h3>
+          <div class="meta-row">
+            <span class="pill">Shorter transactional</span>
+            <span class="pill">140–220 words</span>
+            <span class="pill">Intermediate</span>
+          </div>
+          <p>Report an event clearly using a headline, facts, and an informative structure.</p>
+          <a class="btn" href="./templates/newspaper-report.html">Open template</a>
+        </article>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
