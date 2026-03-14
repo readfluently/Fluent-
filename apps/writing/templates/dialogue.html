@@ -1,1 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluent | Dialogue</title>
+  <style>
+    :root {
+      --surface: #ffffff;
+      --surface-soft: #f8fbff;
+      --text: #1f2937;
+      --muted: #667085;
+      --line: #d9e2f0;
+      --primary: #7c3aed;
+      --success: #16a34a;
+      --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      --max-width: 1200px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, #ede9fe 0%, transparent 24%),
+        linear-gradient(180deg, #faf9ff 0%, #f4f5fb 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    .page {
+      width: min(var(--max-width), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 42px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
+    .brand-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      box-shadow: var(--shadow);
+    }
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .hero {
+      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+      color: white;
+      border-radius: 28px;
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.9rem, 5vw, 2.5rem);
+    }
+    .hero p {
+      margin: 0;
+      line-height: 1.6;
+      max-width: 780px;
+      color: rgba(255,255,255,0.94);
+    }
+    .workspace {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      min-height: 620px;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    .panel-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: #faf7ff;
+    }
+    .panel-header h2,
+    .panel-header h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+    .panel-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+    .panel-scroll {
+      padding: 16px;
+      overflow: auto;
+      flex: 1;
+    }
+    .info-box {
+      border: 1px solid #ece8f7;
+      background: var(--surface-soft);
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .info-box strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+    .info-box p,
+    .info-box li {
+      line-height: 1.6;
+    }
+    .info-box p { margin: 0; }
+    .info-box ul { margin: 0; padding-left: 18px; }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: #fcfdff;
+    }
+    .tool-btn {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-weight: 800;
+      color: #374151;
+    }
+    .writer-area {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: white;
+    }
+    .writer-area input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .editor {
+      min-height: 300px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      outline: none;
+      line-height: 1.7;
+      font-size: 1rem;
+      background: white;
+      overflow: auto;
+      white-space: pre-wrap;
+    }
+    .editor:empty:before {
+      content: attr(data-placeholder);
+      color: #98a2b3;
+    }
+    .writer-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 14px;
+      background: #fcfdff;
+    }
+    .word-count { font-weight: 800; }
+    .word-count span { color: var(--primary); }
+    .btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .btn-submit {
+      background: var(--success);
+      color: white;
+    }
+    .results {
+      margin-top: 16px;
+      display: none;
+    }
+    .results.show {
+      display: block;
+    }
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .result-box {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 20px;
+      padding: 16px;
+    }
+    .result-box h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+    .result-box ul {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.65;
+    }
+    .result-box p {
+      margin: 0;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+    @media (max-width: 1000px) {
+      .workspace-grid,
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 700px) {
+      .page { width: min(100% - 18px, var(--max-width)); }
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-badge">💬</div>
+        <div>
+          <div>Dialogue</div>
+          <div style="font-size:0.9rem; color:var(--muted); font-weight:700;">CAPS Grade 4–6</div>
+        </div>
+      </div>
 
+      <nav class="nav-links">
+        <a href="../transactional-writing.html">← Transactional Writing</a>
+        <a href="../writing.html">Writing Home</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Dialogue</h1>
+      <p>
+        Write a conversation clearly using speaker names, colons, and a new line for each speaker.
+      </p>
+    </section>
+
+    <section class="workspace">
+      <div class="workspace-grid">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Writing guide</h2>
+            <p>Plan who is speaking, what they want to say, and how the conversation should flow.</p>
+          </div>
+
+          <div class="panel-scroll">
+            <div class="info-box">
+              <strong>Purpose</strong>
+              <p>To record a conversation directly from the speakers’ point of view.</p>
+            </div>
+
+            <div class="info-box">
+              <strong>Text structure</strong>
+              <ul>
+                <li>Write the speaker’s name on the left</li>
+                <li>Use a colon after the name</li>
+                <li>Use a new line for each speaker</li>
+                <li>Optional action notes in brackets</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <strong>Language features</strong>
+              <ul>
+                <li>Can be casual or more polite depending on speakers</li>
+                <li>Use natural-sounding speech</li>
+                <li>Use requests, questions, answers, and reactions clearly</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <strong>Task</strong>
+              <p>Write a dialogue between two learners planning a class reading event.</p>
+            </div>
+
+            <div class="info-box">
+              <strong>Helpful starter</strong>
+              <p>
+                Naledi: Are you ready to plan the reading event?<br>
+                Musa: Yes, but we still need to choose the books.
+              </p>
+            </div>
+
+            <div class="info-box">
+              <strong>Checklist</strong>
+              <ul>
+                <li>Did I use a new line for each speaker?</li>
+                <li>Did I use names and colons correctly?</li>
+                <li>Does the dialogue sound natural?</li>
+                <li>Does the conversation make sense from start to end?</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h3>Learner writing space</h3>
+            <p>No autocorrect while typing. Feedback appears after submission.</p>
+          </div>
+
+          <div class="toolbar">
+            <button class="tool-btn" type="button" onclick="formatText('bold')"><strong>B</strong></button>
+            <button class="tool-btn" type="button" onclick="formatText('underline')"><u>U</u></button>
+            <button class="tool-btn" type="button" onclick="formatText('removeFormat')">Clear</button>
+          </div>
+
+          <div class="writer-area">
+            <input id="headingInput" type="text" value="Planning the Reading Event" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            <div id="editor" class="editor" contenteditable="true" data-placeholder="Write your dialogue here..." spellcheck="false"></div>
+          </div>
+
+          <div class="writer-footer">
+            <div class="word-count">Word count: <span id="wordCount">0</span></div>
+            <button class="btn btn-submit" onclick="submitWriting()">Submit writing</button>
+          </div>
+        </section>
+      </div>
+
+      <section id="results" class="results">
+        <div class="results-grid">
+          <div class="result-box">
+            <h3>Teacher-style feedback</h3>
+            <ul id="feedbackList"></ul>
+          </div>
+
+          <div class="result-box">
+            <h3>Exemplar dialogue</h3>
+            <p>Naledi: We need to finish planning the reading event today.
+Musa: I know. Have we chosen the books yet?
+Naledi: Not yet. I think we should choose one storybook and one information book.
+Musa: That sounds good. Who will read the storybook aloud?
+Naledi: I can do that. Can you make the poster for the event?
+Musa: Yes, I can. What time should the event start?
+Naledi: Let’s start at two o’clock after school.
+Musa: Great. Then we just need to ask the teacher for permission.
+Naledi: Perfect. I think our plan is ready.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <script>
+    const editor = document.getElementById("editor");
+    const wordCount = document.getElementById("wordCount");
+
+    function formatText(command) {
+      editor.focus();
+      document.execCommand(command, false, null);
+    }
+
+    function updateWordCount() {
+      const text = (editor.textContent || "").trim();
+      const count = text ? text.split(/\s+/).filter(Boolean).length : 0;
+      wordCount.textContent = count;
+    }
+
+    function submitWriting() {
+      const feedback = [
+        "Make sure each speaker starts on a new line.",
+        "Use names and colons correctly.",
+        "Let the conversation sound natural and purposeful.",
+        "Check that the dialogue has a clear beginning, middle, and ending."
+      ];
+      document.getElementById("feedbackList").innerHTML = feedback.map(item => `<li>${item}</li>`).join("");
+      document.getElementById("results").classList.add("show");
+      document.getElementById("results").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    editor.addEventListener("input", updateWordCount);
+  </script>
+</body>
+</html>
