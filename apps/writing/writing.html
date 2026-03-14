@@ -1,363 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fluent | Writing</title>
-  <style>
-    :root {
-      --surface: #ffffff;
-      --surface-soft: #f8fbff;
-      --text: #1f2937;
-      --muted: #667085;
-      --line: #d9e2f0;
-      --primary: #f59e0b;
-      --secondary: #7c3aed;
-      --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
-      --shadow-hover: 0 16px 34px rgba(15, 23, 42, 0.12);
-      --max-width: 1200px;
-    }
+<script>
+  const editor = document.getElementById("editor");
+  const wordCount = document.getElementById("wordCount");
+  let currentMatches = [];
+  let popupEl = null;
 
-    * {
-      box-sizing: border-box;
-    }
+  function updateWordCount() {
+    const text = (editor.innerText || "").trim();
+    const count = text ? text.split(/\s+/).filter(Boolean).length : 0;
+    wordCount.textContent = count;
+  }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top right, #fff1d6 0%, transparent 22%),
-        radial-gradient(circle at bottom left, #ede9fe 0%, transparent 18%),
-        linear-gradient(180deg, #fffdf8 0%, #f4f6fb 100%);
-    }
+  async function submitWriting() {
+    const rawText = editor.innerText.trim();
+    if (!rawText) return;
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    try {
+      const formData = new URLSearchParams();
+      formData.append("text", rawText);
+      formData.append("language", "en-US");
 
-    .page {
-      width: min(var(--max-width), calc(100% - 28px));
-      margin: 0 auto;
-      padding: 24px 0 40px;
-    }
+      const response = await fetch("https://api.languagetool.org/v2/check", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: formData.toString()
+      });
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 22px;
-      flex-wrap: wrap;
-    }
+      const data = await response.json();
+      currentMatches = data.matches || [];
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-    }
+      renderHighlightedText(rawText, currentMatches);
+      showFeedbackList(currentMatches);
 
-    .brand-badge {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      color: white;
-      background: linear-gradient(135deg, #f59e0b, #fbbf24);
-      box-shadow: var(--shadow);
-      font-size: 1.2rem;
-    }
-
-    .brand small {
-      display: block;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 2px;
-      font-weight: 700;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-      border-color: #c9d5e6;
-      outline: none;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-      color: white;
-      border-radius: 28px;
-      padding: 28px 24px;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 5vw, 2.8rem);
-    }
-
-    .hero p {
-      margin: 0;
-      max-width: 760px;
-      line-height: 1.65;
-      color: rgba(255, 255, 255, 0.96);
-    }
-
-    .writing-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .panel {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-
-    .panel-header {
-      margin-bottom: 16px;
-    }
-
-    .panel-header h2 {
-      margin: 0 0 6px;
-      font-size: 1.15rem;
-      color: #243b63;
-    }
-
-    .panel-header p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.94rem;
-    }
-
-    .button-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .link-btn {
-      display: block;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px;
-      background: white;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .link-btn:hover,
-    .link-btn:focus-visible {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-      border-color: #c9d5e6;
-      outline: none;
-    }
-
-    .transactional .link-btn {
-      background: #fffaf0;
-    }
-
-    .picture-prompts .link-btn {
-      background: #faf5ff;
-    }
-
-    .link-btn strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1rem;
-      color: #22314d;
-    }
-
-    .link-btn span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.45;
-    }
-
-    .tips {
-      margin-top: 18px;
-      border: 1px solid #f4e0b8;
-      background: #fff8eb;
-      border-radius: 20px;
-      padding: 16px;
-      color: #5b4a1d;
-      line-height: 1.65;
-      font-size: 0.95rem;
-    }
-
-    .tips strong {
-      display: block;
-      margin-bottom: 8px;
-      color: #6b4f00;
-    }
-
-    @media (max-width: 900px) {
-      .writing-grid {
-        grid-template-columns: 1fr;
+      const results = document.getElementById("results");
+      if (results) {
+        results.classList.add("show");
       }
+    } catch (error) {
+      console.error("Language check failed:", error);
+      alert("The writing checker could not load right now.");
+    }
+  }
+
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function isSpellingMatch(match) {
+    const issueType = match.rule?.issueType || "";
+    const category = match.rule?.category?.id || "";
+    return issueType.toLowerCase().includes("misspelling") ||
+           category.toLowerCase().includes("typo") ||
+           category.toLowerCase().includes("misspelling");
+  }
+
+  function renderHighlightedText(text, matches) {
+    const sorted = [...matches].sort((a, b) => a.offset - b.offset);
+    let html = "";
+    let cursor = 0;
+
+    sorted.forEach((match, index) => {
+      const start = match.offset;
+      const end = match.offset + match.length;
+
+      if (start < cursor) return;
+
+      html += escapeHtml(text.slice(cursor, start));
+
+      const original = text.slice(start, end);
+      const cssClass = isSpellingMatch(match) ? "spell-error" : "grammar-error";
+      const suggestions = (match.replacements || []).slice(0, 3).map(r => r.value);
+
+      html += `
+        <span
+          class="${cssClass}"
+          data-match-index="${index}"
+          data-message="${escapeHtml(match.message || "")}"
+          data-suggestions="${escapeHtml(JSON.stringify(suggestions))}"
+        >${escapeHtml(original)}</span>
+      `;
+
+      cursor = end;
+    });
+
+    html += escapeHtml(text.slice(cursor));
+    editor.innerHTML = html;
+    attachErrorClickHandlers();
+  }
+
+  function attachErrorClickHandlers() {
+    document.querySelectorAll(".spell-error, .grammar-error").forEach(el => {
+      el.addEventListener("click", (event) => {
+        event.stopPropagation();
+        showSuggestionPopup(el);
+      });
+    });
+  }
+
+  function showSuggestionPopup(target) {
+    closePopup();
+
+    const rect = target.getBoundingClientRect();
+    const suggestions = JSON.parse(target.dataset.suggestions || "[]");
+    const message = target.dataset.message || "Possible correction";
+
+    popupEl = document.createElement("div");
+    popupEl.className = "suggestion-popup";
+    popupEl.innerHTML = `<strong>${message}</strong>`;
+
+    if (suggestions.length) {
+      suggestions.forEach(suggestion => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = suggestion;
+        btn.addEventListener("click", () => {
+          target.outerHTML = escapeHtml(suggestion);
+          closePopup();
+          updateWordCount();
+        });
+        popupEl.appendChild(btn);
+      });
+    } else {
+      const note = document.createElement("div");
+      note.style.marginTop = "8px";
+      note.textContent = "No automatic suggestion. Try rewriting this part.";
+      popupEl.appendChild(note);
     }
 
-    @media (max-width: 700px) {
-      .page {
-        width: min(100% - 18px, var(--max-width));
-      }
+    document.body.appendChild(popupEl);
+    popupEl.style.left = `${window.scrollX + rect.left}px`;
+    popupEl.style.top = `${window.scrollY + rect.bottom + 8}px`;
+  }
 
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero {
-        padding: 22px 18px;
-      }
+  function closePopup() {
+    if (popupEl) {
+      popupEl.remove();
+      popupEl = null;
     }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-badge">✍️</div>
-        <div>
-          <div>Writing</div>
-          <small>Choose a writing path</small>
-        </div>
-      </div>
+  }
 
-      <nav class="nav-links">
-        <a href="../../index.html">← Home</a>
-      </nav>
-    </header>
+  function showFeedbackList(matches) {
+    const feedbackList = document.getElementById("feedbackList");
+    if (!feedbackList) return;
 
-    <section class="hero">
-      <h1>Writing activities</h1>
-      <p>
-        Choose a writing section below. Practise different text types, build confidence,
-        and develop your ideas in a clear and creative way.
-      </p>
-    </section>
+    if (!matches.length) {
+      feedbackList.innerHTML = "<li>Great job — no spelling or grammar issues were found.</li>";
+      return;
+    }
 
-    <section class="writing-grid">
-      <section class="panel transactional">
-        <div class="panel-header">
-          <h2>Transactional Writing</h2>
-          <p>Open a writing template and practise using the correct purpose, audience, and format.</p>
-        </div>
+    feedbackList.innerHTML = matches.slice(0, 8).map(match => {
+      const label = isSpellingMatch(match) ? "Spelling" : "Grammar";
+      return `<li><strong>${label}:</strong> ${escapeHtml(match.message || "Check this part.")}</li>`;
+    }).join("");
+  }
 
-        <div class="button-list">
-          <a class="link-btn" href="templates/newspaper-article.html">
-            <strong>🗞️ Newspaper Article</strong>
-            <span>Write a report with a headline, facts, and organised paragraphs.</span>
-          </a>
-
-          <a class="link-btn" href="templates/magazine-article.html">
-            <strong>📖 Magazine Article</strong>
-            <span>Write an engaging article that informs and interests the reader.</span>
-          </a>
-
-          <a class="link-btn" href="templates/invitation.html">
-            <strong>💌 Invitation</strong>
-            <span>Create an invitation with the correct details and format.</span>
-          </a>
-
-          <a class="link-btn" href="templates/advertisement-poster-notice.html">
-            <strong>📣 Advertisement / Poster / Notice</strong>
-            <span>Design short persuasive or informative texts for different audiences.</span>
-          </a>
-
-          <a class="link-btn" href="templates/dialogue.html">
-            <strong>💬 Dialogue</strong>
-            <span>Write a conversation using the correct format and punctuation.</span>
-          </a>
-
-          <a class="link-btn" href="templates/personal-recount.htm">
-            <strong>📝 Personal Recount</strong>
-            <span>Retell a personal experience in a clear and interesting sequence.</span>
-          </a>
-
-          <a class="link-btn" href="templates/procedures.html">
-            <strong>📋 Procedures</strong>
-            <span>Write instructions in the correct order using clear action steps.</span>
-          </a>
-
-          <a class="link-btn" href="templates/review.html">
-            <strong>⭐ Review</strong>
-            <span>Share your opinion about a book, film, event, or experience.</span>
-          </a>
-
-          <a class="link-btn" href="templates/giving-directions.html">
-            <strong>🧭 Giving Directions</strong>
-            <span>Explain clearly how to get from one place to another.</span>
-          </a>
-        </div>
-      </section>
-
-      <section class="panel picture-prompts">
-        <div class="panel-header">
-          <h2>Picture Prompts Writing</h2>
-          <p>Choose a picture-based writing activity. You can connect these buttons to your picture prompt pages.</p>
-        </div>
-
-        <div class="button-list">
-          <a class="link-btn" href="#">
-            <strong>🖼️ Picture Prompt 1</strong>
-            <span>Write a story based on a single interesting picture.</span>
-          </a>
-
-          <a class="link-btn" href="#">
-            <strong>🌄 Picture Prompt 2</strong>
-            <span>Describe the setting, characters, and action shown in the image.</span>
-          </a>
-
-          <a class="link-btn" href="#">
-            <strong>👣 Picture Prompt 3</strong>
-            <span>Use the picture to plan a narrative with a beginning, middle, and end.</span>
-          </a>
-
-          <a class="link-btn" href="#">
-            <strong>🎒 Picture Prompt 4</strong>
-            <span>Write from the point of view of a character in the picture.</span>
-          </a>
-
-          <a class="link-btn" href="#">
-            <strong>🐾 Picture Prompt 5</strong>
-            <span>Use clues in the image to infer what happened before and after.</span>
-          </a>
-        </div>
-      </section>
-    </section>
-
-    <section class="tips">
-      <strong>Writing tip</strong>
-      Start by noticing the purpose of the task. Then think about who will read it and which details will make your writing clear and interesting.
-    </section>
-  </div>
-</body>
-</html>
+  document.addEventListener("click", closePopup);
+  editor.addEventListener("input", updateWordCount);
+</script>
