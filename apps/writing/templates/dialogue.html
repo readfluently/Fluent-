@@ -1,371 +1,698 @@
-<style>
-  :root {
-    --surface: #ffffff;
-    --surface-soft: #f8fbff;
-    --text: #1f2937;
-    --muted: #667085;
-    --line: #d9e2f0;
-    --primary: #7c3aed;
-    --success: #16a34a;
-    --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
-    --max-width: 1200px;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--text);
-    background:
-      radial-gradient(circle at top right, #ede9fe 0%, transparent 24%),
-      linear-gradient(180deg, #faf9ff 0%, #f4f5fb 100%);
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .page {
-    width: min(var(--max-width), calc(100% - 28px));
-    margin: 0 auto;
-    padding: 24px 0 42px;
-  }
-
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 22px;
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 800;
-  }
-
-  .brand-badge {
-    width: 46px;
-    height: 46px;
-    border-radius: 14px;
-    display: grid;
-    place-items: center;
-    color: white;
-    background: linear-gradient(135deg, #7c3aed, #a78bfa);
-    box-shadow: var(--shadow);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .nav-links a {
-    padding: 10px 14px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.85);
-    color: var(--muted);
-    font-weight: 700;
-    font-size: 0.95rem;
-  }
-
-  .hero {
-    background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
-    color: white;
-    border-radius: 28px;
-    padding: 26px 22px;
-    box-shadow: var(--shadow);
-    margin-bottom: 24px;
-  }
-
-  .hero h1 {
-    margin: 0 0 8px;
-    font-size: clamp(1.9rem, 5vw, 2.5rem);
-  }
-
-  .hero p {
-    margin: 0;
-    line-height: 1.6;
-    max-width: 780px;
-    color: rgba(255, 255, 255, 0.94);
-  }
-
-  .workspace {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 28px;
-    box-shadow: var(--shadow);
-    padding: 18px;
-  }
-
-  .workspace-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    min-height: 620px;
-  }
-
-  .panel {
-    border: 1px solid var(--line);
-    border-radius: 22px;
-    overflow: hidden;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-  }
-
-  .panel-header {
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--line);
-    background: #faf7ff;
-  }
-
-  .panel-header h2,
-  .panel-header h3 {
-    margin: 0 0 6px;
-    font-size: 1rem;
-  }
-
-  .panel-header p {
-    margin: 0;
-    color: var(--muted);
-    line-height: 1.5;
-    font-size: 0.92rem;
-  }
-
-  .panel-scroll {
-    padding: 16px;
-    overflow: auto;
-    flex: 1;
-  }
-
-  .info-box {
-    border: 1px solid #ece8f7;
-    background: var(--surface-soft);
-    border-radius: 18px;
-    padding: 14px;
-    margin-bottom: 12px;
-  }
-
-  .info-box strong {
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  .info-box p,
-  .info-box li {
-    line-height: 1.6;
-  }
-
-  .info-box p {
-    margin: 0;
-  }
-
-  .info-box ul {
-    margin: 0;
-    padding-left: 18px;
-  }
-
-  .toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 14px;
-    border-bottom: 1px solid var(--line);
-    background: #fcfdff;
-  }
-
-  .tool-btn {
-    border: 1px solid var(--line);
-    background: white;
-    border-radius: 12px;
-    padding: 10px 12px;
-    cursor: pointer;
-    font-weight: 800;
-    color: #374151;
-  }
-
-  .writer-area {
-    padding: 14px;
-    border-bottom: 1px solid var(--line);
-    background: white;
-  }
-
-  .writer-area input[type="text"] {
-    width: 100%;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 12px 14px;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  .editor {
-    min-height: 300px;
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: 14px;
-    outline: none;
-    line-height: 1.7;
-    font-size: 1rem;
-    background: white;
-    overflow: auto;
-    white-space: pre-wrap;
-  }
-
-  .editor:empty:before {
-    content: attr(data-placeholder);
-    color: #98a2b3;
-  }
-
-  .writer-footer {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 14px;
-    background: #fcfdff;
-  }
-
-  .word-count {
-    font-weight: 800;
-  }
-
-  .word-count span {
-    color: var(--primary);
-  }
-
-  .btn {
-    border: none;
-    cursor: pointer;
-    border-radius: 14px;
-    padding: 12px 16px;
-    font-weight: 800;
-    font-size: 0.95rem;
-  }
-
-  .btn-submit {
-    background: var(--success);
-    color: white;
-  }
-
-  .results {
-    margin-top: 16px;
-    display: none;
-  }
-
-  .results.show {
-    display: block;
-  }
-
-  .results-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .result-box {
-    border: 1px solid var(--line);
-    background: white;
-    border-radius: 20px;
-    padding: 16px;
-  }
-
-  .result-box h3 {
-    margin: 0 0 10px;
-    font-size: 1rem;
-  }
-
-  .result-box ul {
-    margin: 0;
-    padding-left: 18px;
-    line-height: 1.65;
-  }
-
-  .result-box p {
-    margin: 0;
-    line-height: 1.7;
-    white-space: pre-wrap;
-  }
-
-  .spell-error {
-    text-decoration: underline wavy red;
-    text-decoration-thickness: 2px;
-    cursor: pointer;
-    background: rgba(255, 0, 0, 0.04);
-  }
-
-  .grammar-error {
-    border: 2px solid #dc2626;
-    border-radius: 6px;
-    padding: 1px 2px;
-    background: rgba(220, 38, 38, 0.06);
-    cursor: pointer;
-  }
-
-  .correct-text {
-    background: rgba(34, 197, 94, 0.12);
-    border-bottom: 2px solid #22c55e;
-    border-radius: 4px;
-  }
-
-  .correct-sentence {
-    border: 2px solid #22c55e;
-    border-radius: 10px;
-    background: rgba(34, 197, 94, 0.08);
-    padding: 4px 6px;
-    display: inline;
-  }
-
-  .suggestion-popup {
-    position: absolute;
-    z-index: 50;
-    background: white;
-    border: 1px solid #d8deea;
-    border-radius: 12px;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
-    padding: 10px;
-    min-width: 220px;
-  }
-
-  .suggestion-popup button {
-    display: block;
-    width: 100%;
-    text-align: left;
-    margin: 6px 0 0;
-    padding: 8px 10px;
-    border: 1px solid #d8deea;
-    border-radius: 8px;
-    background: #fff;
-    cursor: pointer;
-  }
-
-  @media (max-width: 1000px) {
-    .workspace-grid,
-    .results-grid {
-      grid-template-columns: 1fr;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluent | Dialogue</title>
+  <style>
+    :root {
+      --surface: #ffffff;
+      --surface-soft: #f8fbff;
+      --text: #1f2937;
+      --muted: #667085;
+      --line: #d9e2f0;
+      --primary: #7c3aed;
+      --success: #16a34a;
+      --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      --max-width: 1200px;
     }
-  }
 
-  @media (max-width: 700px) {
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, #ede9fe 0%, transparent 24%),
+        linear-gradient(180deg, #faf9ff 0%, #f4f5fb 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .page {
-      width: min(100% - 18px, var(--max-width));
+      width: min(var(--max-width), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 42px;
     }
 
     .topbar {
-      flex-direction: column;
-      align-items: flex-start;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
     }
-  }
-</style>
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
+
+    .brand-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      box-shadow: var(--shadow);
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+      color: white;
+      border-radius: 28px;
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.9rem, 5vw, 2.5rem);
+    }
+
+    .hero p {
+      margin: 0;
+      line-height: 1.6;
+      max-width: 780px;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .workspace {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      min-height: 620px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .panel-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: #faf7ff;
+    }
+
+    .panel-header h2,
+    .panel-header h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .panel-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+
+    .panel-scroll {
+      padding: 16px;
+      overflow: auto;
+      flex: 1;
+    }
+
+    .info-box {
+      border: 1px solid #ece8f7;
+      background: var(--surface-soft);
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .info-box strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .info-box p,
+    .info-box li {
+      line-height: 1.6;
+    }
+
+    .info-box p {
+      margin: 0;
+    }
+
+    .info-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: #fcfdff;
+    }
+
+    .tool-btn {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-weight: 800;
+      color: #374151;
+    }
+
+    .writer-area {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: white;
+    }
+
+    .writer-area input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .editor {
+      min-height: 300px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      outline: none;
+      line-height: 1.7;
+      font-size: 1rem;
+      background: white;
+      overflow: auto;
+      white-space: pre-wrap;
+    }
+
+    .editor:empty:before {
+      content: attr(data-placeholder);
+      color: #98a2b3;
+    }
+
+    .writer-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 14px;
+      background: #fcfdff;
+    }
+
+    .word-count {
+      font-weight: 800;
+    }
+
+    .word-count span {
+      color: var(--primary);
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .btn-submit {
+      background: var(--success);
+      color: white;
+    }
+
+    .results {
+      margin-top: 16px;
+      display: none;
+    }
+
+    .results.show {
+      display: block;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .result-box {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .result-box h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+
+    .result-box ul {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.65;
+    }
+
+    .result-box p {
+      margin: 0;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .spell-error {
+      text-decoration: underline wavy red;
+      text-decoration-thickness: 2px;
+      cursor: pointer;
+      background: rgba(255, 0, 0, 0.04);
+    }
+
+    .grammar-error {
+      border: 2px solid #dc2626;
+      border-radius: 6px;
+      padding: 1px 2px;
+      background: rgba(220, 38, 38, 0.06);
+      cursor: pointer;
+    }
+
+    .correct-text {
+      background: rgba(34, 197, 94, 0.12);
+      border-bottom: 2px solid #22c55e;
+      border-radius: 4px;
+    }
+
+    .suggestion-popup {
+      position: absolute;
+      z-index: 50;
+      background: white;
+      border: 1px solid #d8deea;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
+      padding: 10px;
+      min-width: 220px;
+    }
+
+    .suggestion-popup button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin: 6px 0 0;
+      padding: 8px 10px;
+      border: 1px solid #d8deea;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1000px) {
+      .workspace-grid,
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        width: min(100% - 18px, var(--max-width));
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-badge">💬</div>
+        <div>
+          <div>Dialogue</div>
+          <div style="font-size:0.9rem; color:var(--muted); font-weight:700;">CAPS Writing Template</div>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="../writing.html">Writing Home</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Dialogue Writing</h1>
+      <p>
+        Write a dialogue between two or more people. Use the correct format, punctuation,
+        and clear speaking turns.
+      </p>
+    </section>
+
+    <section class="workspace">
+      <div class="workspace-grid">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Writing guide</h2>
+            <p>Use speaker names, correct punctuation, and natural conversation.</p>
+          </div>
+
+          <div class="panel-scroll">
+            <div class="info-box">
+              <strong>Purpose</strong>
+              <p>To show a conversation clearly between characters or people.</p>
+            </div>
+
+            <div class="info-box">
+              <strong>Text structure</strong>
+              <ul>
+                <li>Write the speaker’s name followed by a colon</li>
+                <li>Start a new line for each new speaker</li>
+                <li>Keep the conversation clear and logical</li>
+                <li>Make each speaker sound natural</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <strong>Language features</strong>
+              <ul>
+                <li>Use speech punctuation correctly</li>
+                <li>Use suitable tone for the situation</li>
+                <li>Keep the dialogue connected to the topic</li>
+                <li>Check spelling and grammar carefully</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <strong>Task</strong>
+              <p>Write a dialogue between two learners who are choosing a book from the library.</p>
+            </div>
+
+            <div class="info-box">
+              <strong>Helpful starter</strong>
+              <p>
+                Lerato: Which book do you want to choose?<br>
+                Thabo: I am not sure yet...<br>
+                Lerato: Let us look at...
+              </p>
+            </div>
+
+            <div class="info-box">
+              <strong>Checklist</strong>
+              <ul>
+                <li>Did I use speaker names?</li>
+                <li>Did I start a new line for each speaker?</li>
+                <li>Does the conversation make sense?</li>
+                <li>Did I check punctuation, spelling, and grammar?</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h3>Learner writing space</h3>
+            <p>Write first, then click submit to check spelling and grammar.</p>
+          </div>
+
+          <div class="toolbar">
+            <button class="tool-btn" type="button" onclick="formatText('bold')"><strong>B</strong></button>
+            <button class="tool-btn" type="button" onclick="formatText('underline')"><u>U</u></button>
+            <button class="tool-btn" type="button" onclick="formatText('insertUnorderedList')">• List</button>
+            <button class="tool-btn" type="button" onclick="formatText('removeFormat')">Clear</button>
+          </div>
+
+          <div class="writer-area">
+            <input
+              id="headingInput"
+              type="text"
+              value="At the Library"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
+            />
+            <div
+              id="editor"
+              class="editor"
+              contenteditable="true"
+              data-placeholder="Write your dialogue here..."
+              spellcheck="false"
+            ></div>
+          </div>
+
+          <div class="writer-footer">
+            <div class="word-count">Word count: <span id="wordCount">0</span></div>
+            <button class="btn btn-submit" onclick="submitWriting()">Submit writing</button>
+          </div>
+        </section>
+      </div>
+
+      <section id="results" class="results">
+        <div class="results-grid">
+          <div class="result-box">
+            <h3>Teacher-style feedback</h3>
+            <ul id="feedbackList"></ul>
+          </div>
+
+          <div class="result-box">
+            <h3>Exemplar dialogue</h3>
+            <p><strong>At the Library</strong>
+
+Lerato: Hi, Thabo. Which book do you want to choose today?
+Thabo: I am looking for a mystery story.
+Lerato: I saw one on the top shelf near the window.
+Thabo: Really? Can you show me where it is?
+Lerato: Yes, come with me. I think you will enjoy it.
+Thabo: Thank you, Lerato.
+Lerato: You are welcome. Maybe we can both borrow a book today.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <script>
+    const editor = document.getElementById("editor");
+    const wordCount = document.getElementById("wordCount");
+    const feedbackList = document.getElementById("feedbackList");
+    const results = document.getElementById("results");
+    let popupEl = null;
+
+    function formatText(command) {
+      editor.focus();
+      document.execCommand(command, false, null);
+    }
+
+    function updateWordCount() {
+      const text = (editor.innerText || "").trim();
+      const count = text ? text.split(/\s+/).filter(Boolean).length : 0;
+      wordCount.textContent = count;
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function isSpellingMatch(match) {
+      const issueType = (match.rule?.issueType || "").toLowerCase();
+      const category = (match.rule?.category?.id || "").toLowerCase();
+      return issueType.includes("misspelling") ||
+             category.includes("typo") ||
+             category.includes("misspelling");
+    }
+
+    function attachErrorClickHandlers() {
+      document.querySelectorAll(".spell-error, .grammar-error").forEach(el => {
+        el.addEventListener("click", (event) => {
+          event.stopPropagation();
+          showSuggestionPopup(el);
+        });
+      });
+    }
+
+    function closePopup() {
+      if (popupEl) {
+        popupEl.remove();
+        popupEl = null;
+      }
+    }
+
+    function showSuggestionPopup(target) {
+      closePopup();
+
+      const rect = target.getBoundingClientRect();
+      const suggestions = JSON.parse(target.dataset.suggestions || "[]");
+      const message = target.dataset.message || "Check this part";
+
+      popupEl = document.createElement("div");
+      popupEl.className = "suggestion-popup";
+      popupEl.innerHTML = `<strong>${escapeHtml(message)}</strong>`;
+
+      if (suggestions.length) {
+        suggestions.forEach((suggestion) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = suggestion;
+          btn.addEventListener("click", () => {
+            target.outerHTML = escapeHtml(suggestion);
+            closePopup();
+            updateWordCount();
+          });
+          popupEl.appendChild(btn);
+        });
+      } else {
+        const note = document.createElement("div");
+        note.style.marginTop = "8px";
+        note.textContent = "No automatic suggestion. Try rewriting this part.";
+        popupEl.appendChild(note);
+      }
+
+      document.body.appendChild(popupEl);
+      popupEl.style.left = `${window.scrollX + rect.left}px`;
+      popupEl.style.top = `${window.scrollY + rect.bottom + 8}px`;
+    }
+
+    function renderHighlightedText(text, matches) {
+      const sorted = [...matches].sort((a, b) => a.offset - b.offset);
+      let html = "";
+      let cursor = 0;
+
+      sorted.forEach((match, index) => {
+        const start = match.offset;
+        const end = match.offset + match.length;
+
+        if (start < cursor) return;
+
+        const cleanText = text.slice(cursor, start);
+        if (cleanText) {
+          html += `<span class="correct-text">${escapeHtml(cleanText)}</span>`;
+        }
+
+        const original = text.slice(start, end);
+        const cssClass = isSpellingMatch(match) ? "spell-error" : "grammar-error";
+        const suggestions = (match.replacements || []).slice(0, 3).map(r => r.value);
+
+        html += `
+          <span
+            class="${cssClass}"
+            data-message="${escapeHtml(match.message || "Check this part")}"
+            data-suggestions="${escapeHtml(JSON.stringify(suggestions))}"
+          >${escapeHtml(original)}</span>
+        `;
+
+        cursor = end;
+      });
+
+      const remaining = text.slice(cursor);
+      if (remaining) {
+        html += `<span class="correct-text">${escapeHtml(remaining)}</span>`;
+      }
+
+      editor.innerHTML = html;
+      attachErrorClickHandlers();
+    }
+
+    function showFeedbackList(matches) {
+      if (!matches.length) {
+        feedbackList.innerHTML = "<li>Excellent work. No spelling or grammar issues were found.</li>";
+        return;
+      }
+
+      feedbackList.innerHTML = matches.slice(0, 8).map(match => {
+        const label = isSpellingMatch(match) ? "Spelling" : "Grammar";
+        return `<li><strong>${label}:</strong> ${escapeHtml(match.message || "Check this part.")}</li>`;
+      }).join("");
+    }
+
+    async function submitWriting() {
+      const rawText = (editor.innerText || "").trim();
+
+      if (!rawText) {
+        feedbackList.innerHTML = "<li>Please write your dialogue first.</li>";
+        results.classList.add("show");
+        return;
+      }
+
+      try {
+        const formData = new URLSearchParams();
+        formData.append("text", rawText);
+        formData.append("language", "en-US");
+
+        const response = await fetch("https://api.languagetool.org/v2/check", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: formData.toString()
+        });
+
+        const data = await response.json();
+        const matches = data.matches || [];
+
+        renderHighlightedText(rawText, matches);
+        showFeedbackList(matches);
+        results.classList.add("show");
+        results.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (error) {
+        feedbackList.innerHTML = "<li>The checker could not load right now. Please try again.</li>";
+        results.classList.add("show");
+        console.error(error);
+      }
+    }
+
+    document.addEventListener("click", closePopup);
+    editor.addEventListener("input", updateWordCount);
+  </script>
+</body>
+</html>
